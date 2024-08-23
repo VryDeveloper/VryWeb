@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+<head>
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!--Google Fonts-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor A.R.O</title>
+    <link rel="shortcut icon" href="assets/iconvictor.png" type="image/x0icon">
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="interface">
+                <div class="logo">
+                    <a href="#">
+                        <img src="assets/iconvictor.png" width="64" height="64" alt="logo">
+                    </a>
+                </div>
+            
+            <nav class="menu-desktop" id="menu">
+                <ul>
+                    <li><a href="#inicio">Start</a></li>
+                    <li><a href="#habilidades">Skills</a></li>
+                    <li><a href="#sobre">Bio</a></li>
+                    <li><a href="#projetos">Projetcs</a></li>
+                </ul>
+            </nav>
+
+            <div class="victor-contato" id="toggleBtn">
+                <a href="#footer" style="transition: 5s;">
+                    <button>Contact</button>
+                </a>
+            </div>
+        </div>
+        <div class="btn-abrir-menu" id="btn-abrir-menu">
+            <i class="bi bi-list"></i>
+        </div>
+        <div class="menu-mobile" id="menu-mobile">
+            <div class="btn-fechar">
+                <i class="bi bi-x-lg"></i>
+            </div>
+
+            <nav id="menu">
+                <ul>
+                    <li><a href="#inicio">Start</a></li>
+                    <li><a href="#habilidades">Habilits</a></li>
+                    <li><a href="#sobre">Bio</a></li>
+                    <li><a href="#projetos">Projetcs</a></li>
+                    <li><a href="#footer">Hire me!</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="overlay-menu-mobile" id="overlay-menu-mobile"></div>
+        <div class="dark-button">
+            <input type="checkbox" class="checkbox" id="chk"/>
+                <label class="label" for="chk">
+                    <i class="bi bi-brightness-high-fill"></i>
+                    <i class="bi bi-moon-fill"></i>
+                    <div class="ball"></div>
+                </label>
+        </div>
+    </header>
+
+    <main>
+        <section class="topo-do-site" id="inicio" >
+                <div class="interface">
+                    <div class="flex">
+                        <div class="txt-topo-site">
+                            <h1>Hi there 👋, i'm <strong>Victor.</strong></h1>
+                            <p>I'm a developer searching for starting my career! This is my first web project, created to show the world my knowledge of <strong>HTML, CSS, PHP, PYTHON and JAVASCRIPT.</strong></p>
+                            <p>Please give me feedback and let's work together!</p>
+
+                            <div class="victor-contato">
+                                <a href="#footer">
+                                    <button>FEEDBACK</button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="img-topo-site">
+                            <img src="assets/profilepic.jpeg" wight="364" height="364"  alt="Apresentacao">
+                        </div><!--img topo site-->
+                    </div><!--flex-->
+                </div><!--Interface-->
+        </section><!--Topo do site-->
+
+        <section class="habilidades" id="habilidades">
+            <div class="interface">
+                <h2 class="titulo">Skills<span>.</span></h2>
+                <div class="flex">
+                    <div class="habilidades-box"> <!--habilidades-box-1-->
+                        <i class="bi bi-code-slash"></i>
+                        <h3>Tecnologys.</h3>
+                        <p><strong>></strong>Python</p>
+                        <p><strong>></strong>Java</p>
+                        <p><strong>></strong>HTML & CSS</p>
+                        <p><strong>></strong>SQL</p>
+                        <p><strong>></strong>Git/Github</p>
+                    </div><!--habilidades-box-1-->
+                    <div class="habilidades-box"> <!--habilidades-box-2-->
+                        <i class="bi bi-envelope-check-fill"></i>
+                        <h3>Soft Skills</h3>
+                        <p><strong>></strong>Critical Thinking</p>
+                        <p><strong>></strong>Problem Solving</p>
+                        <p><strong>></strong>Teamwork</p>
+                        <p><strong>></strong>Proactiveness</p>
+                        <p><strong>></strong>Assertive communication</p>
+                    </div><!--habilidades-box-2-->
+                    <div class="habilidades-box"> <!--habilidades-box-3-->
+                        <i class="bi bi-pc-display"></i>
+                        <h3>Hard Skills</h3>
+                        <p><strong>></strong>Languagens: English/Portuguese</p>
+                        <p><strong>></strong>Microsoft Oficce</p>
+                        <p><strong>></strong>Programming Logic</p>
+                        <p><strong>></strong>Image and Video Editing</p>
+                    </div><!--habilidades-box-3-->
+
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--habilidades-->
+
+        <section class="sobre" id="sobre">
+            <div class="interface">
+                <div class="flex">
+                    <div class="img-sobre">
+                        <img src="assets/fotosobre.jpg" alt="Sobre.img">
+                    </div>
+                    <div class="txt-sobre">
+                        <h2>Nice to meet you, <strong>I'm wanna be a FullStack Developer.</strong></h2>
+                        <p>My name is Victor Augusto R. de Oliveira. I'm Brazilian, studying systems analysis and development at FIAP / ALURA college.</p>
+                        <p>Open to receive offers and learn while working in the area that I love most, programming! <strong>Take a look at my socials below.</strong></p>
+                        <div class="victor-social">
+                            <a href="https://www.instagram.com/victor_a.r.o/" target="_blank"><button><i class="bi bi-instagram"></i></button></a>
+                            <a href="https://github.com/VictorVryDev" target="_blank"><button><i class="bi bi-github"></i></button></a>
+                            <a href="https://www.linkedin.com" target="_blank"><button><i class="bi bi-linkedin"></i></button></a>
+                        </div>
+                    </div><!--txt-sobre-->
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--sobre-->
+        <section class="portfolio" id="projetos">
+            <div class="interface">
+                <h2 class="titulo">MY <strong>PROJECTS.</strong></h2>
+                
+                <div class="flex">
+                    <div class="img-port" style="background-image: url(assets/projeto1.png)"><div class="overlay">First Web Project.</div></div>
+                    <div class="img-port" style="background-image: url(assets/projeto2.png)"><div class="overlay">IA Assistent.</div></div>
+                    <div class="img-port" style="background-image: url(assets/projeto3.png)"><div class="overlay">Face recognizer.</div></div>
+                </div><!--flex-->
+            </div><!--interface-->
+        </section><!--Portifolio-->
+        <section class="formulario">
+            <div class="interface"><!--interface-->
+                <a href="pages/form.html">➤Let's Work Together!</a>
+            </div><!--interface-->
+        </section><!--formulario-->
+    </main>
+    <script src="scripts/javascript.js"></script>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script>
+        let btnMenu = document.getElementById('btn-abrir-menu')
+        let menu = document.getElementById('menu-mobile')
+        let overlay = document.getElementById('overlay-menu-mobile')
+
+        btnMenu.addEventListener('click', ()=>{
+            menu.classList.add('abrir-menu')
+        })
+        menu.addEventListener('click', ()=>{
+            menu.classList.remove('abrir-menu')
+        })
+        overlay.addEventListener('click', ()=>{
+            menu.classList.remove('abrir-menu')
+        })
+    </script>
+    <footer id="footer">
+        <div class="borda"></div>
+        <div class="interface">
+            <div class="flex">
+
+                <div class="logo-footer">
+                    <img src="assets/iconvictor.png" alt="logovictoraro">
+                </div><!--logo-footer-->
+                <div class="line-footer">
+                    <p><i class="bi bi-envelope"></i> <a href="victor.092.augusto@gmail.com" target="_blank">victor.092.augusto@gmail.com</a></p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
