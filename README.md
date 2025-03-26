@@ -1,7 +1,5 @@
 # VryDeveloper - Portfólio Pessoal
 
-![VryDeveloper Logo](assets/iconvictor.png)
-
 ## 📝 Sobre o Projeto
 
 Este é meu portfólio pessoal, desenvolvido para apresentar meus projetos, habilidades e experiências como desenvolvedor. O site foi criado com foco em design moderno, responsividade e experiência do usuário.
@@ -24,26 +22,6 @@ Este é meu portfólio pessoal, desenvolvido para apresentar meus projetos, habi
 - HTML5
 - CSS3
 - JavaScript
-- React
-- Next.js
-- Tailwind CSS
-
-### Back-end
-- Java
-- Python
-- PHP
-- SQL
-
-### Mobile
-- Kotlin
-- React Native
-- Android Studio
-
-### Frameworks e Ferramentas
-- Spring Boot
-- Git/GitHub
-- VS Code
-- Figma
 
 ## 📱 Responsividade
 
@@ -52,19 +30,6 @@ O site é totalmente responsivo e se adapta aos seguintes breakpoints:
 - Tablet: 768px - 1020px
 - Mobile: < 768px
 
-## 🚀 Como Executar
-
-1. Clone o repositório:
-```bash
-git clone https://github.com/VryDeveloper/VryWeb.git
-```
-
-2. Navegue até o diretório do projeto:
-```bash
-cd VryWeb
-```
-
-3. Abra o arquivo `index.html` em seu navegador ou utilize um servidor local.
 
 ## 🔧 Estrutura do Projeto
 
@@ -85,15 +50,6 @@ VryWeb/
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
-## 🤝 Contribuições
-
-Contribuições são sempre bem-vindas! Para contribuir:
-
-1. Faça um Fork do projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
 
 ## 📞 Contato
 
