@@ -6,6 +6,60 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
     transition: 0.5s;
+    cursor: default;
+}
+
+/* Elementos clicáveis */
+a, button, .view-btn, .whatsapp-button {
+    cursor: pointer;
+}
+
+/* Elementos não clicáveis */
+p, h1, h2, h3, h4, .titulo, .txt-topo-site p, .txt-port p, .txt-sobre p, 
+.snake-text h2, .snake-text p, .github-info h3, .github-info p,
+.stat-item p, .activity-item p, .txt-port h3, .projeto-info h3, 
+.projeto-info p, .categoria-titulo, .txt-port p, .txt-sobre p {
+    cursor: default;
+}
+
+/* Elementos de formulário */
+input, textarea {
+    cursor: text;
+}
+
+/* Elementos de menu */
+.menu-desktop ul li a, 
+.menu-mobile ul li a {
+    cursor: pointer;
+}
+
+/* Elementos de projeto */
+.projeto-card {
+    cursor: default;
+}
+
+.projeto-links a {
+    cursor: pointer;
+}
+
+/* Elementos de contato */
+.contato-social a {
+    cursor: pointer;
+}
+
+/* Elementos de tema */
+.dark-button .label {
+    cursor: pointer;
+}
+
+/* Elementos de carregamento */
+.loader {
+    cursor: default;
+}
+
+/* Elementos de animação */
+.snake-card, .snake-container, .snake, .commits {
+    cursor: default;
 }
 
 :root{
