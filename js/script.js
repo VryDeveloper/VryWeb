@@ -8,6 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Modo Escuro
+const $html = document.querySelector('html');
+const $checkbox = document.querySelector('#chk');
+
+// Verifica se há uma preferência salva
+const darkMode = localStorage.getItem('darkMode');
+if (darkMode === 'true') {
+    $html.classList.add('dark-mode');
+    $checkbox.checked = true;
+}
+
+$checkbox.addEventListener('change', function() {
+    $html.classList.toggle('dark-mode');
+    // Salva a preferência
+    localStorage.setItem('darkMode', $html.classList.contains('dark-mode'));
+});
+
 // Controles de Visualização de Projetos
 const viewButtons = document.querySelectorAll('.view-btn');
 const portfolioGrid = document.querySelector('.portfolio-grid');

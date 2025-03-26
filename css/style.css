@@ -9,89 +9,30 @@
     cursor: default;
 }
 
-/* Elementos clicáveis */
-a, button, .view-btn, .whatsapp-button {
-    cursor: pointer;
-}
-
-/* Elementos não clicáveis */
-p, h1, h2, h3, h4, .titulo, .txt-topo-site p, .txt-port p, .txt-sobre p, 
-.snake-text h2, .snake-text p, .github-info h3, .github-info p,
-.stat-item p, .activity-item p, .txt-port h3, .projeto-info h3, 
-.projeto-info p, .categoria-titulo, .txt-port p, .txt-sobre p {
-    cursor: default;
-}
-
-/* Elementos de formulário */
-input, textarea {
-    cursor: text;
-}
-
-/* Elementos de menu */
-.menu-desktop ul li a, 
-.menu-mobile ul li a {
-    cursor: pointer;
-}
-
-/* Elementos de projeto */
-.projeto-card {
-    cursor: default;
-}
-
-.projeto-links a {
-    cursor: pointer;
-}
-
-/* Elementos de contato */
-.contato-social a {
-    cursor: pointer;
-}
-
-/* Elementos de tema */
-.dark-button .label {
-    cursor: pointer;
-}
-
-/* Elementos de carregamento */
-.loader {
-    cursor: default;
-}
-
-/* Elementos de animação */
-.snake-card, .snake-container, .snake, .commits {
-    cursor: default;
-}
-
 :root{
     --body-bg: #030105;
     --body-color: #f8f8f8;
     --button-bg: rgb(0, 0, 0);
-
     --text-color-p: rgb(255, 255, 255);
     --text-color-h: rgb(255, 255, 255);
     --text-contact-bg: rgb(255, 255, 255);
     --text-contact-hover: rgb(0, 0, 0);
-
     --border-color: white;
     --menu-bg: rgb(255, 255, 255);
-
     --link-color: rgb(22, 22, 22);
     --link-color-hover: #000000;
 }
 
-.dark-mode:root {
+.dark-mode {
     --body-bg: #fffefc;
     --body-color: #555;
     --button-bg: rgb(255, 255, 255);
-
     --text-color-p: rgb(0, 0, 0);
     --text-color-h: black;
     --text-contact-bg: rgb(0, 0, 0);
     --text-contact-hover: rgb(255, 255, 255);
-
     --border-color: black;
     --menu-bg: rgb(0, 0, 0);
-
     --link-color: rgb(255, 255, 255);
     --link-color-hover: white;
 }
@@ -201,12 +142,17 @@ header .dark-button{
     position: fixed;
     top: 0;
     right: 0;
-    justify-content: space-between
+    justify-content: space-between;
+    z-index: 1001;
 }
 
 header .dark-button .checkbox{
     opacity: 0;
     position: absolute;
+    width: 50px;
+    height: 25px;
+    cursor: pointer;
+    z-index: 1002;
 }
 header .dark-button .label i{
     color: rgb(0, 0, 0);
@@ -218,33 +164,31 @@ header .dark-button .label{
     background-color: var(--menu-bg);
     border-radius: 30px;
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-
     padding: 5px;
     position: relative;
-    height: 28px;
-    width: 54px;
-
-    transform: scale(1.5s);
+    height: 25px;
+    width: 50px;
+    transform: scale(1.3);
+    z-index: 1001;
 }
 
 header .dark-button .label .ball{
     background-color: var(--button-bg);
     border-radius: 50%;
     position: absolute;
-    top: 3px;
-    right: 4px;
-    height: 22px;
-    width: 22px;
+    top: 2px;
+    right: 3px;
+    height: 21px;
+    width: 21px;
     transition: transform 0.2s linear;
     transform: translateX(0px)
 }
 
 .checkbox:checked + .label .ball{
-    transform: translateX(-24px);
+    transform: translateX(-22px);
 }
 
 header .victor-contato button{
