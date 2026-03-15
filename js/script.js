@@ -1,77 +1,77 @@
-// Loader
+// ── Loader ────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
     const loader = document.querySelector('.loader');
     if (loader) {
-        setTimeout(() => {
-            loader.classList.add('hidden');
-        }, 1000);
+        setTimeout(() => { loader.classList.add('hidden'); }, 1000);
     }
 });
 
-// Modo Escuro
+// ── Dark Mode ─────────────────────────────────────────────────────────────────
 const $html = document.querySelector('html');
 const $checkbox = document.querySelector('#chk');
 
-// Verifica se há uma preferência salva
 const darkMode = localStorage.getItem('darkMode');
 if (darkMode === 'true') {
     $html.classList.add('dark-mode');
     $checkbox.checked = true;
 }
 
-$checkbox.addEventListener('change', function() {
+$checkbox.addEventListener('change', function () {
     $html.classList.toggle('dark-mode');
-    // Salva a preferência
     localStorage.setItem('darkMode', $html.classList.contains('dark-mode'));
 });
 
-// Controles de Visualização de Projetos
+// ── Language Toggle ───────────────────────────────────────────────────────────
+let currentLang = localStorage.getItem('lang') || 'en';
+
+function applyLang(lang) {
+    document.querySelectorAll('[data-pt][data-en]').forEach(el => {
+        el.innerHTML = el.getAttribute(`data-${lang}`);
+    });
+    const btn = document.getElementById('lang-toggle');
+    if (btn) btn.textContent = lang === 'pt' ? '🇺🇸 EN' : '🇧🇷 PT';
+    document.documentElement.lang = lang === 'pt' ? 'pt-br' : 'en';
+    localStorage.setItem('lang', lang);
+    currentLang = lang;
+}
+
+function toggleLang() {
+    applyLang(currentLang === 'pt' ? 'en' : 'pt');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    applyLang(currentLang);
+});
+
+// ── Project View Controls ─────────────────────────────────────────────────────
 const viewButtons = document.querySelectorAll('.view-btn');
 const portfolioGrid = document.querySelector('.portfolio-grid');
 
 viewButtons.forEach(button => {
     button.addEventListener('click', () => {
-        // Remove active class from all buttons
         viewButtons.forEach(btn => btn.classList.remove('active'));
-        // Add active class to clicked button
         button.classList.add('active');
-        // Update view
         portfolioGrid.classList.toggle('list-view', button.dataset.view === 'list');
     });
 });
 
-// Animações de Scroll
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
+// ── Scroll Animations ─────────────────────────────────────────────────────────
+const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
     });
 }, observerOptions);
 
-// Adiciona a classe fade-in aos elementos que devem ser animados
 document.querySelectorAll('section').forEach(section => {
     section.classList.add('fade-in');
     observer.observe(section);
 });
 
-// Observa os cards de habilidades
-document.querySelectorAll('.habilidades-box').forEach(box => {
-    observer.observe(box);
-});
+document.querySelectorAll('.habilidades-box').forEach(box => observer.observe(box));
+document.querySelectorAll('.projeto-card').forEach(card => observer.observe(card));
 
-// Observa os cards de projetos
-document.querySelectorAll('.projeto-card').forEach(card => {
-    observer.observe(card);
-});
-
-// Executa uma vez ao carregar a página para verificar elementos visíveis
 const checkVisibleElements = () => {
     document.querySelectorAll('.fade-in, .habilidades-box, .projeto-card').forEach(element => {
         const rect = element.getBoundingClientRect();
@@ -81,60 +81,47 @@ const checkVisibleElements = () => {
     });
 };
 
-// Verifica elementos visíveis ao carregar a página
 window.addEventListener('load', checkVisibleElements);
-
-// Verifica elementos visíveis durante a rolagem
 window.addEventListener('scroll', checkVisibleElements);
 
-// GitHub Stats
+// ── GitHub Stats ──────────────────────────────────────────────────────────────
 async function fetchGitHubStats() {
     try {
         const username = 'VryDeveloper';
+
+        // sem token — API pública, 60 req/hora por IP
         const response = await fetch(`https://api.github.com/users/${username}`);
         const data = await response.json();
-        
-        // Atualiza as estatísticas básicas
         document.getElementById('repos').textContent = data.public_repos;
-        
-        // Busca os commits (requer autenticação)
+
         const commitsResponse = await fetch(`https://api.github.com/users/${username}/events`);
         const commitsData = await commitsResponse.json();
         const commits = commitsData.filter(event => event.type === 'PushEvent').length;
         document.getElementById('commits').textContent = commits;
-        
-        // Busca as linguagens mais usadas
-        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos`);
+
+        const reposResponse = await fetch(`https://api.github.com/users/${username}/repos?per_page=100`);
         const reposData = await reposResponse.json();
         const languages = new Set();
-        for (const repo of reposData) {
-            if (repo.language) {
-                languages.add(repo.language);
-            }
-        }
+        reposData.forEach(repo => { if (repo.language) languages.add(repo.language); });
         document.getElementById('languages').textContent = languages.size;
-        
-        // Atualiza a atividade recente
+
         const activityList = document.getElementById('recent-activity');
         activityList.innerHTML = '';
-        
         commitsData.slice(0, 5).forEach(event => {
             if (event.type === 'PushEvent') {
-                const activityItem = document.createElement('div');
-                activityItem.className = 'activity-item';
-                activityItem.innerHTML = `
+                const item = document.createElement('div');
+                item.className = 'activity-item';
+                item.innerHTML = `
                     <i class="bi bi-git-commit"></i>
-                    <p>Commit em ${event.repo.name.split('/')[1]}</p>
+                    <p>Pushed to ${event.repo.name.split('/')[1]}</p>
                 `;
-                activityList.appendChild(activityItem);
+                activityList.appendChild(item);
             }
         });
+
     } catch (error) {
-        console.error('Erro ao buscar dados do GitHub:', error);
+        console.error('GitHub fetch error:', error);
     }
 }
 
-// Chama a função quando a página carregar
-document.addEventListener('DOMContentLoaded', () => {
-    fetchGitHubStats();
-}); 
+document.addEventListener('DOMContentLoaded', () => { fetchGitHubStats(); });

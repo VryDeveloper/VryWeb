@@ -1,78 +1,80 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
     
 <head>
-    <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <!--Google Fonts-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio profissional de desenvolvedor web e mobile - Projetos, habilidades e experiências">
-    <meta name="keywords" content="desenvolvedor web, desenvolvedor mobile, programador, portfolio, projetos web">
+    <meta name="description" content="Professional portfolio of a full stack web and mobile developer - Projects, skills and experience">
+    <meta name="keywords" content="full stack developer, web developer, programmer, portfolio, web projects">
     <meta name="author" content="VryDeveloper">
     <meta name="theme-color" content="#0f0f0f">
-    <title>VryDeveloper - Desenvolvedor Web & Mobile</title>
+    <title>VryDeveloper - Full Stack Developer</title>
     <link rel="shortcut icon" href="./assets/iconvictor.png" type="image/x0icon">
-    <!--Bootstrap icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!--Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
     <link rel="stylesheet" href="./css/style.css">
     <script src="./js/script.js" defer></script>
 </head>
 
 <body>
-    <!-- Loader -->
     <div class="loader">
         <div class="loader-content">
             <div class="loader-circle"></div>
-            <div class="loader-text">Carregando...</div>
+            <div class="loader-text" data-pt="Carregando..." data-en="Loading...">Loading...</div>
         </div>
     </div>
 
     <header>
         <div class="interface">
-                <div class="logo">
-                    <a href="#">
-                        <img src="assets/iconvictor.png" width="64" height="64" alt="logo">
-                    </a>
-                </div>
+            <div class="logo">
+                <a href="#">
+                    <img src="assets/iconvictor.png" width="64" height="64" alt="logo">
+                </a>
+            </div>
             
             <nav class="menu-desktop" id="menu">
                 <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#habilidades">Habilidades</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#inicio" data-pt="Início" data-en="Home">Home</a></li>
+                    <li><a href="#habilidades" data-pt="Habilidades" data-en="Skills">Skills</a></li>
+                    <li><a href="#sobre" data-pt="Sobre" data-en="About">About</a></li>
+                    <li><a href="#projetos" data-pt="Projetos" data-en="Projects">Projects</a></li>
                 </ul>
             </nav>
 
             <div class="victor-contato" id="toggleBtn">
                 <a href="#footer" style="transition: 5s;">
-                    <button>Contato</button>
+                    <button data-pt="Contato" data-en="Contact">Contact</button>
                 </a>
             </div>
         </div>
+
         <div class="btn-abrir-menu" id="btn-abrir-menu">
             <i class="bi bi-list"></i>
         </div>
+
         <div class="menu-mobile" id="menu-mobile">
             <div class="btn-fechar">
                 <i class="bi bi-x-lg"></i>
             </div>
-
-            <nav id="menu">
+            <nav id="menu-mobile-nav">
                 <ul>
-                    <li><a href="#inicio">Início</a></li>
-                    <li><a href="#habilidades">Habilidades</a></li>
-                    <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#projetos">Projetos</a></li>
-                    <li><a href="#footer">Contrate-me!</a></li>
+                    <li><a href="#inicio" data-pt="Início" data-en="Home">Home</a></li>
+                    <li><a href="#habilidades" data-pt="Habilidades" data-en="Skills">Skills</a></li>
+                    <li><a href="#sobre" data-pt="Sobre" data-en="About">About</a></li>
+                    <li><a href="#projetos" data-pt="Projetos" data-en="Projects">Projects</a></li>
+                    <li><a href="#footer" data-pt="Contrate-me!" data-en="Hire me!">Hire me!</a></li>
                 </ul>
             </nav>
         </div>
         <div class="overlay-menu-mobile" id="overlay-menu-mobile"></div>
+
+        <div class="lang-button">
+            <button id="lang-toggle" onclick="toggleLang()">🇧🇷 PT</button>
+        </div>
+
         <div class="dark-button">
             <input type="checkbox" class="checkbox" id="chk"/>
             <label class="label" for="chk">
@@ -84,174 +86,242 @@
     </header>
 
     <main>
-        <section class="topo-do-site" id="inicio" >
-                <div class="interface">
-                    <div class="flex">
-                        <div class="txt-topo-site">
-                            <h1>Olá 👋, eu sou o <strong>Victor.</strong></h1>
-                            <p>Sou um desenvolvedor em busca de iniciar minha carreira! Este é meu primeiro projeto web, criado para mostrar ao mundo meu conhecimento em <strong>HTML, CSS, JAVA, KOTLIN, PYTHON e JAVASCRIPT.</strong></p>
-                            <p>Por favor, me dê um feedback e vamos programar juntos!</p>
+        <section class="topo-do-site" id="inicio">
+            <div class="interface">
+                <div class="flex">
+                    <div class="txt-topo-site">
+                        <h1 data-pt="Olá 👋, eu sou o <strong>Victor Augusto.</strong>"
+                            data-en="Hi 👋, I'm <strong>Victor Augusto.</strong>">
+                            Hi 👋, I'm <strong>Victor Augusto.</strong>
+                        </h1>
 
-                            <div class="victor-contato">
-                                <a href="assets/curriculo.pdf" download="Victor A.R.O - Curriculo.pdf">
-                                    <button>DOWNLOAD CV</button>
-                                </a>
-                            </div>
+                        <p data-pt="Desenvolvedor Full Stack focado em construir soluções eficientes, escaláveis e bem estruturadas, com forte base em desenvolvimento web, back-end e mobile."
+                           data-en="Full Stack Developer focused on building efficient, scalable and well-structured solutions, with a strong foundation in web, back-end and mobile development.">
+                            Full Stack Developer focused on building efficient, scalable and well-structured solutions, with a strong foundation in web, back-end and mobile development.
+                        </p>
+
+                        <p data-pt="Trabalho com <strong>JavaScript, TypeScript, Python, Java, C#, Kotlin, SQL, HTML e CSS</strong>, além de ferramentas modernas como <strong>React.js, Node.js, Docker e APIs REST</strong>. Experiência com <strong>Git/GitHub, Firebase, bancos de dados relacionais e NoSQL</strong>, seguindo boas práticas de código limpo."
+                           data-en="I work with <strong>JavaScript, TypeScript, Python, Java, C#, Kotlin, SQL, HTML and CSS</strong>, alongside modern tools like <strong>React.js, Node.js, Docker and REST APIs</strong>. Experienced with <strong>Git/GitHub, Firebase, relational and NoSQL databases</strong>, following clean code best practices.">
+                            I work with <strong>JavaScript, TypeScript, Python, Java, C#, Kotlin, SQL, HTML and CSS</strong>, alongside modern tools like <strong>React.js, Node.js, Docker and REST APIs</strong>. Experienced with <strong>Git/GitHub, Firebase, relational and NoSQL databases</strong>, following clean code best practices.
+                        </p>
+
+                        <p data-pt="Fique à vontade para explorar meus projetos e entrar em contato. Vamos construir algo incrível juntos!"
+                           data-en="Feel free to explore my projects and reach out — let's build something great together!">
+                            Feel free to explore my projects and reach out — let's build something great together!
+                        </p>
+
+                        <div class="victor-contato">
+                            <a href="assets/curriculo.pdf" download="Victor A.R.O - CV.pdf">
+                                <button data-pt="BAIXAR CV" data-en="DOWNLOAD CV">DOWNLOAD CV</button>
+                            </a>
                         </div>
-                        <div class="img-topo-site">
-                            <!--foto ta muito feia <img src="" wight="364" height="364"  alt="Apresentacao"> --> 
-                        </div><!--img topo site-->
-                    </div><!--flex-->
-                </div><!--Interface-->
-        </section><!--Topo do site-->
+                    </div>
+                    <div class="img-topo-site"></div>
+                </div>
+            </div>
+        </section>
 
         <section class="portfolio" id="projetos">
             <div class="interface">
-                <h2 class="titulo">Projetos</h2>
+                <h2 class="titulo" data-pt="Projetos" data-en="Projects">Projects</h2>
                 <div class="view-controls">
-                    <button class="view-btn active" data-view="grid">
-                        <i class="bi bi-grid"></i>
-                    </button>
-                    <button class="view-btn" data-view="list">
-                        <i class="bi bi-list"></i>
-                    </button>
+                    <button class="view-btn active" data-view="grid"><i class="bi bi-grid"></i></button>
+                    <button class="view-btn" data-view="list"><i class="bi bi-list"></i></button>
                 </div>
                 <div class="portfolio-grid">
-                    <h3 class="categoria-titulo">Projetos Web</h3>
+
+                    <h3 class="categoria-titulo" data-pt="Projetos Web" data-en="Web Projects">Web Projects</h3>
                     <div class="flex">
+
+                        <!-- Rock Paper Scissors -->
                         <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto1.png)">
-                                <div class="overlay">Rock Paper Scissors</div>
-                            </div>
+                            <div class="img-port" style="background-image: url(assets/projeto1.png)"></div>
                             <div class="projeto-info">
                                 <h3>Rock Paper Scissors</h3>
-                                <p>Jogo de pedra, papel e tesoura, com interface simples e  mecanicas diversas!.</p>
-                                <p>Tecnologias: HTML, CSS, JavaScript.</p>
+                                <p data-pt="Jogo de pedra, papel e tesoura com interface temática do Minecraft e mecânicas de clicker game."
+                                   data-en="Rock Paper Scissors game with a Minecraft-themed interface and clicker game mechanics.">
+                                    Rock Paper Scissors game with a Minecraft-themed interface and clicker game mechanics.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-html5-plain colored" title="HTML5"></i>
+                                    <i class="devicon-css3-plain colored" title="CSS3"></i>
+                                    <i class="devicon-javascript-plain colored" title="JavaScript"></i>
+                                </div>
                                 <div class="projeto-links">
-                                    <a href="https://github.com/VryDeveloper/Rock-Paper-Scissors" target="_blank" class="github-link"><i class="bi bi-github"></i> GitHub</a>
-                                    <a href="https://vrydeveloper.github.io/Rock-Paper-Scissors/" target="_blank" class="demo-link"><i class="bi bi-link-45deg"></i> Demo</a>
+                                    <a href="https://github.com/VryDeveloper/Rock-Paper-Scissors" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                                    <a href="https://vrydeveloper.github.io/Rock-Paper-Scissors/" target="_blank"><i class="bi bi-link-45deg"></i> Demo</a>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Copec -->
                         <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto-copec.png)">
-                                <div class="overlay">Copec</div>
-                            </div>
+                            <div class="img-port" style="background-image: url(assets/projeto-copec.png)"></div>
                             <div class="projeto-info">
                                 <h3>Copec</h3>
-                                <p>Site profissional da empresa Copec, com informações sobre a empresa, produtos e serviços.</p>
-                                <p>Tecnologias: React, Next.js, Tailwind CSS, TypeScript, API Google Maps.</p>
+                                <p data-pt="Site profissional da empresa Copec, com informações sobre a empresa, produtos e serviços."
+                                   data-en="Professional website for Copec, featuring company information, products and services.">
+                                    Professional website for Copec, featuring company information, products and services.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-react-original colored" title="React"></i>
+                                    <i class="devicon-nextjs-plain" title="Next.js"></i>
+                                    <i class="devicon-tailwindcss-plain colored" title="Tailwind CSS"></i>
+                                    <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+                                    <i class="devicon-google-plain colored" title="Google Maps API"></i>
+                                </div>
                                 <div class="projeto-links">
-                                    <a href="https://acoscopec.com" target="_blank" class="demo-link"><i class="bi bi-link-45deg"></i> Confira o Site!</a>
+                                    <a href="https://acoscopec.com" target="_blank"><i class="bi bi-link-45deg"></i> Visit Site</a>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Kitsuy Store -->
                         <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto-isa.png)">
-                                <div class="overlay">Hi</div>
-                            </div>
+                            <div class="img-port" style="background-image: url(assets/projeto-kitsuy.png)"></div>
                             <div class="projeto-info">
-                                <h3>Hi Cosplayer</h3>
-                                <p>Site feito para minha namorada Isa, com para comissões de produtos e apresentação de seu trabalho.</p>
-                                <p>Tecnologias: HTML, CSS, JavaScript, SQL.</p>
+                                <h3>Kitsuy Store</h3>
+                                <p data-pt="E-commerce com integração de pagamento via MercadoPago, gerenciamento de produtos e rastreamento de pedidos."
+                                   data-en="E-commerce with MercadoPago payment integration, product management and order tracking.">
+                                    E-commerce with MercadoPago payment integration, product management and order tracking.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-react-original colored" title="React"></i>
+                                    <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+                                    <i class="devicon-firebase-plain colored" title="Firebase"></i>
+                                    <i class="devicon-vercel-plain" title="Vercel"></i>
+                                </div>
                                 <div class="projeto-links">
-                                    <a href="#" target="_blank" class="github-link"><i class="bi bi-github"></i> GitHub</a>
-                                    <a href="#" target="_blank" class="demo-link"><i class="bi bi-link-45deg"></i> Demo</a>
+                                    <a href="https://github.com/VryDeveloper/kitsuy-store-realese" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                                    <a href="https://kitsuy-store-realese.vercel.app" target="_blank"><i class="bi bi-link-45deg"></i> Demo</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="categoria-titulo">Projetos Mobile</h3>
+                    <h3 class="categoria-titulo" data-pt="Projetos Mobile" data-en="Mobile Projects">Mobile Projects</h3>
                     <div class="flex">
+
+                        <!-- CMeter -->
                         <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto-CMeter.PNG)">
-                                <div class="overlay">Calculadora de Pegada de Carbono</div>
-                            </div>
+                            <div class="img-port" style="background-image: url(assets/projeto-CMeter.PNG)"></div>
                             <div class="projeto-info">
-                                <h3>Calculadora de Pegada de Carbono</h3>
-                                <p>Calcula a pegada de carbono de acordo com o consumo de energia e distancias percorridas.</p>
-                                <p>Tecnologias: Kotlin, Android Studio, Firebase, Jetpack Compose, Carbon Interface API.</p>
+                                <h3>CMeter</h3>
+                                <p data-pt="Calculadora de pegada de carbono com base no consumo de energia e distâncias percorridas."
+                                   data-en="Carbon footprint calculator based on energy consumption and distances traveled.">
+                                    Carbon footprint calculator based on energy consumption and distances traveled.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-kotlin-plain colored" title="Kotlin"></i>
+                                    <i class="devicon-android-plain colored" title="Android Studio"></i>
+                                    <i class="devicon-firebase-plain colored" title="Firebase"></i>
+                                </div>
                                 <div class="projeto-links">
-                                    <a href="https://github.com/VryDeveloper/CMeter" target="_blank" class="github-link"><i class="bi bi-github"></i> GitHub</a>
-                
+                                    <a href="https://github.com/VryDeveloper/CMeter" target="_blank"><i class="bi bi-github"></i> GitHub</a>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- BMI Calculator -->
                         <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto-calimc.png)">
-                                <div class="overlay">Calculadora de IMC</div>
-                            </div>
+                            <div class="img-port" style="background-image: url(assets/projeto-calimc.png)"></div>
                             <div class="projeto-info">
-                                <h3>Calculadora de IMC</h3>
-                                <p>Calcula o IMC de acordo com o peso e altura informados.</p>
-                                <p>Tecnologias: Kotlin, Android Studio, Jetpack Compose.</p>
+                                <h3 data-pt="Calculadora de IMC" data-en="BMI Calculator">BMI Calculator</h3>
+                                <p data-pt="Calcula o IMC de acordo com o peso e altura informados."
+                                   data-en="Calculates BMI based on the user's weight and height.">
+                                    Calculates BMI based on the user's weight and height.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-kotlin-plain colored" title="Kotlin"></i>
+                                    <i class="devicon-android-plain colored" title="Android Studio"></i>
+                                </div>
                                 <div class="projeto-links">
-                                    <a href="https://github.com/VryDeveloper/Calculadora-IMC" target="_blank" class="github-link"><i class="bi bi-github"></i> GitHub</a>
+                                    <a href="https://github.com/VryDeveloper/Calculadora-IMC" target="_blank"><i class="bi bi-github"></i> GitHub</a>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Interest Calculator -->
                         <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto-caljuros.PNG)">
-                                <div class="overlay">Calculadora de Juros</div>
-                            </div>
+                            <div class="img-port" style="background-image: url(assets/projeto-caljuros.PNG)"></div>
                             <div class="projeto-info">
-                                <h3>Calculadora de Juros</h3>
-                                <p>Calcula o juros de acordo com o valor, taxa e tempo informados.</p>
-                                <p>Tecnologias: Kotlin, Android Studio, Jetpack Compose.</p>
+                                <h3 data-pt="Calculadora de Juros" data-en="Interest Calculator">Interest Calculator</h3>
+                                <p data-pt="Calcula os juros de acordo com o valor, taxa e tempo informados."
+                                   data-en="Calculates interest based on the principal amount, rate and time period.">
+                                    Calculates interest based on the principal amount, rate and time period.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-kotlin-plain colored" title="Kotlin"></i>
+                                    <i class="devicon-android-plain colored" title="Android Studio"></i>
+                                </div>
                                 <div class="projeto-links">
-                                    <a href="https://github.com/VryDeveloper/Calculadora-de-Juros" target="_blank" class="github-link"><i class="bi bi-github"></i> GitHub</a>
-                                
+                                    <a href="https://github.com/VryDeveloper/Calculadora-de-Juros" target="_blank"><i class="bi bi-github"></i> GitHub</a>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <h3 class="categoria-titulo">Projetos Back-end</h3>
+                    <h3 class="categoria-titulo" data-pt="Projetos Back-end" data-en="Back-end Projects">Back-end Projects</h3>
                     <div class="flex">
+
+                        <!-- ESG Intelligent -->
                         <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto-vrybot.png)">
-                                <div class="overlay">DISCORD IA BOT</div>
+                            <div class="img-port" style="background-image: url(assets/projeto-esg.png)"></div>
+                            <div class="projeto-info">
+                                <h3>ESG Intelligent</h3>
+                                <p data-pt="API REST para monitoramento de consumo energético com métricas ESG, pipeline CI/CD e containerização com Docker."
+                                   data-en="REST API for energy monitoring with ESG metrics, CI/CD pipeline and Docker containerization.">
+                                    REST API for energy monitoring with ESG metrics, CI/CD pipeline and Docker containerization.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-csharp-plain colored" title="C#"></i>
+                                    <i class="devicon-dotnetcore-plain colored" title=".NET 8"></i>
+                                    <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
+                                    <i class="devicon-docker-plain colored" title="Docker"></i>
+                                    <i class="devicon-github-original" title="GitHub Actions"></i>
+                                </div>
+                                <div class="projeto-links">
+                                    <a href="https://github.com/VryDeveloper/ESGInteligentes" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                                </div>
                             </div>
+                        </div>
+
+                        <!-- VryBot -->
+                        <div class="projeto-card">
+                            <div class="img-port" style="background-image: url(assets/projeto-vrybot.png)"></div>
                             <div class="projeto-info">
                                 <h3>VryBot</h3>
-                                <p>Um bot para o discord com IA, que pode responder perguntas e conversar com usuarios.</p>
-                                <p>Tecnologias: Python, Discord.py, Gemini API.</p>
+                                <p data-pt="Bot para Discord com IA, integrado à API do Gemini para respostas inteligentes em tempo real."
+                                   data-en="AI-powered Discord bot integrated with the Gemini API for real-time intelligent responses.">
+                                    AI-powered Discord bot integrated with the Gemini API for real-time intelligent responses.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-python-plain colored" title="Python"></i>
+                                    <i class="devicon-google-plain colored" title="Gemini API"></i>
+                                    <i class="devicon-discord-plain colored" title="Discord"></i>
+                                </div>
                                 <div class="projeto-links">
-                                    <a href="https://github.com/VryDeveloper/VryBot" target="_blank" class="github-link"><i class="bi bi-github"></i> GitHub</a>
-                                
+                                    <a href="https://github.com/VryDeveloper/VryBot" target="_blank"><i class="bi bi-github"></i> GitHub</a>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Fintech Java -->
                         <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto-fintech.png)">
-                                <div class="overlay">Fintech - Java</div>
-                            </div>
-                            <div class="projeto-info">  
-                                <h3>Fintech - Java</h3>
-                                <p>Projeto de trainamento em POO com Java.</p>
-                                <div class="projeto-links">
-                                    <a href="https://github.com/VryDeveloper/Classes-Fintech---JAVA" target="_blank" class="github-link"><i class="bi bi-github"></i> GitHub</a>
-                                
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto9.png)">
-                                <div class="overlay">Microserviços</div>
-                            </div>
+                            <div class="img-port" style="background-image: url(assets/projeto-fintech.png)"></div>
                             <div class="projeto-info">
-                                <h3>Microserviços</h3>
-                                <p>Arquitetura de microserviços desenvolvida com Python, utilizando Docker e Kubernetes para orquestração.</p>
+                                <h3>Fintech - Java</h3>
+                                <p data-pt="Projeto de treinamento em POO com Java, com autenticação, DAOs e banco de dados Oracle."
+                                   data-en="OOP training project in Java with authentication, DAOs and Oracle database integration.">
+                                    OOP training project in Java with authentication, DAOs and Oracle database integration.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-java-plain colored" title="Java"></i>
+                                    <i class="devicon-oracle-original colored" title="Oracle DB"></i>
+                                    <i class="devicon-tomcat-plain colored" title="Servlets / JSP"></i>
+                                </div>
                                 <div class="projeto-links">
-                                    <a href="#" target="_blank" class="github-link"><i class="bi bi-github"></i> GitHub</a>
-                                    <a href="#" target="_blank" class="demo-link"><i class="bi bi-link-45deg"></i> Demo</a>
+                                    <a href="https://github.com/VryDeveloper/Classes-Fintech---JAVA" target="_blank"><i class="bi bi-github"></i> GitHub</a>
                                 </div>
                             </div>
                         </div>
@@ -262,28 +332,16 @@
 
         <section class="habilidades" id="habilidades">
             <div class="interface">
-                <h2 class="titulo">Habilidades<span>.</span></h2>
+                <h2 class="titulo" data-pt="Habilidades<span>.</span>" data-en="Skills<span>.</span>">Skills<span>.</span></h2>
                 <div class="flex">
                     <div class="habilidades-box tecnologias">
                         <i class="bi bi-code-square"></i>
                         <h3>Front-End</h3>
                         <div class="tech-grid">
-                            <div class="tech-item">
-                                <i class="bi bi-filetype-html"></i>
-                                <span>HTML5</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-filetype-css"></i>
-                                <span>CSS3</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-filetype-js"></i>
-                                <span>JavaScript</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-filetype-jsx"></i>
-                                <span>React</span>
-                            </div>
+                            <div class="tech-item"><i class="bi bi-filetype-html"></i><span>HTML5</span></div>
+                            <div class="tech-item"><i class="bi bi-filetype-css"></i><span>CSS3</span></div>
+                            <div class="tech-item"><i class="bi bi-filetype-js"></i><span>JavaScript</span></div>
+                            <div class="tech-item"><i class="bi bi-filetype-jsx"></i><span>React</span></div>
                         </div>
                     </div>
 
@@ -291,45 +349,21 @@
                         <i class="bi bi-server"></i>
                         <h3>Back-End</h3>
                         <div class="tech-grid">
-                            <div class="tech-item">
-                                <i class="bi bi-filetype-java"></i>
-                                <span>Java</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-filetype-py"></i>
-                                <span>Python</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-filetype-php"></i>
-                                <span>PHP</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-database"></i>
-                                <span>SQL</span>
-                            </div>
+                            <div class="tech-item"><i class="bi bi-filetype-java"></i><span>Java</span></div>
+                            <div class="tech-item"><i class="bi bi-filetype-py"></i><span>Python</span></div>
+                            <div class="tech-item"><i class="bi bi-filetype-js"></i><span>Node.js</span></div>
+                            <div class="tech-item"><i class="bi bi-database"></i><span>SQL</span></div>
                         </div>
                     </div>
 
                     <div class="habilidades-box tecnologias">
                         <i class="bi bi-tools"></i>
-                        <h3>Ferramentas</h3>
+                        <h3 data-pt="Ferramentas" data-en="Tools">Tools</h3>
                         <div class="tech-grid">
-                            <div class="tech-item">
-                                <i class="bi bi-git"></i>
-                                <span>Git</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-github"></i>
-                                <span>GitHub</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-window"></i>
-                                <span>VS Code</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-palette"></i>
-                                <span>Figma</span>
-                            </div>
+                            <div class="tech-item"><i class="bi bi-git"></i><span>Git</span></div>
+                            <div class="tech-item"><i class="bi bi-github"></i><span>GitHub</span></div>
+                            <div class="tech-item"><i class="bi bi-box"></i><span>Docker</span></div>
+                            <div class="tech-item"><i class="bi bi-palette"></i><span>Figma</span></div>
                         </div>
                     </div>
 
@@ -337,26 +371,16 @@
                         <i class="bi bi-grid"></i>
                         <h3>Frameworks</h3>
                         <div class="tech-grid">
-                            
-                            <div class="tech-item">
-                                <i class="bi bi-filetype-jsx"></i>
-                                <span>Next.js</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-filetype-jsx"></i>
-                                <span>React Native</span>
-                            </div>
-                            <div class="tech-item">
-                                <i class="bi bi-filetype-java"></i>
-                                <span>Spring Boot</span>
-                            </div>
+                            <div class="tech-item"><i class="bi bi-filetype-jsx"></i><span>Next.js</span></div>
+                            <div class="tech-item"><i class="bi bi-filetype-jsx"></i><span>React Native</span></div>
+                            <div class="tech-item"><i class="bi bi-filetype-java"></i><span>Spring Boot</span></div>
+                            <div class="tech-item"><i class="bi bi-filetype-tsx"></i><span>TypeScript</span></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- GitHub Stats -->
         <section class="github-stats">
             <div class="interface">
                 <h2 class="titulo">GitHub<span>.</span></h2>
@@ -373,7 +397,7 @@
                             <div class="stat-item">
                                 <i class="bi bi-star"></i>
                                 <span id="repos">0</span>
-                                <p>Repositórios</p>
+                                <p data-pt="Repositórios" data-en="Repositories">Repositories</p>
                             </div>
                             <div class="stat-item">
                                 <i class="bi bi-git"></i>
@@ -383,14 +407,12 @@
                             <div class="stat-item">
                                 <i class="bi bi-code-square"></i>
                                 <span id="languages">0</span>
-                                <p>Linguagens</p>
+                                <p data-pt="Linguagens" data-en="Languages">Languages</p>
                             </div>
                         </div>
                         <div class="github-activity">
-                            <h4>Atividade Recente</h4>
-                            <div id="recent-activity" class="activity-list">
-                                <!-- Atividade será inserida via JavaScript -->
-                            </div>
+                            <h4 data-pt="Atividade Recente" data-en="Recent Activity">Recent Activity</h4>
+                            <div id="recent-activity" class="activity-list"></div>
                         </div>
                     </div>
                 </div>
@@ -401,10 +423,18 @@
             <div class="interface">
                 <div class="flex">
                     <div class="txt-sobre">
-                        <h2>OBRIGADO POR VISITAR MEU <strong>PORTFÓLIO!</strong></h2>
-                        <p>Foi um prazer compartilhar minha jornada e projetos com você. Espero que tenha gostado de conhecer um pouco mais sobre meu trabalho e minhas habilidades como desenvolvedor.</p>
-                        <p>Se você se interessou pelo meu perfil, não hesite em entrar em contato! Estou sempre aberto a novas oportunidades e parcerias. Vamos criar algo incrível juntos!</p>
-                        <p>Abaixo estão meus contatos e redes sociais, sinta-se à vontade para entrar em contato comigo. Clique em "Vamos Trabalhar Juntos!" Voltar ao meu linkedin.</p>
+                        <h2 data-pt="OBRIGADO POR VISITAR MEU <strong>PORTFÓLIO!</strong>"
+                            data-en="THANKS FOR VISITING MY <strong>PORTFOLIO!</strong>">
+                            THANKS FOR VISITING MY <strong>PORTFOLIO!</strong>
+                        </h2>
+                        <p data-pt="Foi um prazer compartilhar minha jornada e projetos com você. Espero que tenha gostado de conhecer um pouco mais sobre meu trabalho e minhas habilidades como desenvolvedor."
+                           data-en="It was a pleasure sharing my journey and projects with you. I hope you enjoyed learning a bit more about my work and skills as a developer.">
+                            It was a pleasure sharing my journey and projects with you. I hope you enjoyed learning a bit more about my work and skills as a developer.
+                        </p>
+                        <p data-pt="Se você se interessou pelo meu perfil, não hesite em entrar em contato! Estou sempre aberto a novas oportunidades e parcerias."
+                           data-en="If you're interested in my profile, don't hesitate to reach out! I'm always open to new opportunities and partnerships.">
+                            If you're interested in my profile, don't hesitate to reach out! I'm always open to new opportunities and partnerships.
+                        </p>
                         <div class="victor-social">
                             <a href="https://github.com/VictorVryDev" target="_blank"><button><i class="bi bi-github"></i></button></a>
                             <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank"><button><i class="bi bi-linkedin"></i></button></a>
@@ -416,50 +446,42 @@
         </section>
 
         <section class="formulario">
-            <div class="interface"><!--interface-->
-                <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank">➤Vamos Trabalhar Juntos!</a>
-            </div><!--interface-->
-        </section><!--formulario-->
+            <div class="interface">
+                <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank"
+                   data-pt="➤ Vamos Trabalhar Juntos!"
+                   data-en="➤ Let's Work Together!">➤ Let's Work Together!</a>
+            </div>
+        </section>
     </main>
+
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-    
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
     </script>
     <script>
-        let btnMenu = document.getElementById('btn-abrir-menu')
-        let menu = document.getElementById('menu-mobile')
-        let overlay = document.getElementById('overlay-menu-mobile')
-
-        btnMenu.addEventListener('click', ()=>{
-            menu.classList.add('abrir-menu')
-        })
-        menu.addEventListener('click', ()=>{
-            menu.classList.remove('abrir-menu')
-        })
-        overlay.addEventListener('click', ()=>{
-            menu.classList.remove('abrir-menu')
-        })
+        let btnMenu = document.getElementById('btn-abrir-menu');
+        let menuMobile = document.getElementById('menu-mobile');
+        let overlay = document.getElementById('overlay-menu-mobile');
+        btnMenu.addEventListener('click', () => { menuMobile.classList.add('abrir-menu'); });
+        menuMobile.addEventListener('click', () => { menuMobile.classList.remove('abrir-menu'); });
+        overlay.addEventListener('click', () => { menuMobile.classList.remove('abrir-menu'); });
     </script>
+
     <footer id="footer">
         <div class="borda"></div>
         <div class="interface">
             <div class="flex">
-
                 <div class="logo-footer">
                     <img src="assets/iconvictor.png" alt="logovictoraro">
-                </div><!--logo-footer-->
-                <div class="line-footer">
-                    <p><i class="bi bi-envelope"></i> <a href="victor.092.augusto@gmail.com" target="_blank">victor.092.augusto@gmail.com</a></p>
-                    <p><i class="bi bi-envelope"></i> <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank">Linkedin</a></p>
                 </div>
-
+                <div class="line-footer">
+                    <p><i class="bi bi-envelope"></i> <a href="mailto:victor.092.augusto@gmail.com" target="_blank">victor.092.augusto@gmail.com</a></p>
+                    <p><i class="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank">LinkedIn</a></p>
+                </div>
             </div>
         </div>
     </footer>
@@ -467,6 +489,5 @@
     <a href="https://wa.me/5531996588742" class="whatsapp-button" target="_blank">
         <i class="bi bi-whatsapp"></i>
     </a>
-
 </body>
 </html>
