@@ -47,9 +47,9 @@
     --text-contact-hover: #ffffff;
     --glass-bg: rgba(28, 24, 18, 0.04);
     --glass-border: rgba(28, 24, 18, 0.1);
-    --accent: #c8631a;
+    --accent: #a8501a;
     --accent-2: #4d7c33;
-    --glow: rgba(200, 99, 26, 0.18);
+    --glow: rgba(168, 80, 26, 0.18);
     --nav-bg: rgba(250, 246, 239, 0.75);
     --nav-link: #ffffff;
     --nav-hover-bg: rgba(28, 24, 18, 0.08);
@@ -166,14 +166,15 @@ h2.titulo span,
 /* ═══════════════════════════════════════════════════════════════
    BUTTONS
 ═══════════════════════════════════════════════════════════════ */
-.victor-contato button {
+.btn-pill {
+    display: inline-block;
     padding: 12px 44px;
     font-size: 16px;
     font-weight: 600;
     color: #fff;
     -webkit-text-fill-color: #fff;
     background: var(--grad-static);
-    border: 0;
+    border: 0; text-decoration: none;
     border-radius: 50px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
@@ -182,7 +183,7 @@ h2.titulo span,
     will-change: transform;
 }
 
-.victor-contato button::after {
+.btn-pill::after {
     content: '';
     position: absolute;
     inset: 0;
@@ -192,8 +193,8 @@ h2.titulo span,
     border-radius: inherit;
 }
 
-.victor-contato button:hover::after { opacity: 1; }
-button:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 30px var(--glow); }
+.btn-pill:hover::after { opacity: 1; }
+button:hover, .btn-pill:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 30px var(--glow); }
 
 /* ═══════════════════════════════════════════════════════════════
    HEADER
@@ -261,7 +262,7 @@ header nav.menu-desktop ul li a:hover {
     -webkit-text-fill-color: var(--nav-hover-color);
 }
 
-header .victor-contato button { padding: 8px 24px; font-size: 14px; margin: 0; }
+header .victor-contato .btn-pill { padding: 8px 24px; font-size: 14px; margin: 0; }
 
 /* ── Dark / Lang buttons ── */
 header .dark-button, .lang-button { position: fixed; top: 20px; z-index: 1001; }
@@ -327,16 +328,19 @@ header .dark-button .label .ball {
     background: rgba(0,0,0,0.08);
     color: #111; -webkit-text-fill-color: #111;
 }
-.dark-mode header .victor-contato button {
+.dark-mode header .victor-contato .btn-pill {
     background: linear-gradient(90deg, #111 0%, #333 100%);
     color: #fff; -webkit-text-fill-color: #fff;
 }
 
 /* ── Mobile Menu ── */
-.btn-abrir-menu i {
-    color: #ffffff; font-size: 48px; display: none;
+.btn-abrir-menu {
+    background: none; border: 0; padding: 0; margin: 0;
+    display: none; cursor: pointer;
     position: fixed; top: 14px; right: 140px; z-index: 999;
 }
+
+.btn-abrir-menu i { color: #ffffff; font-size: 48px; }
 
 .menu-mobile {
     background: rgba(5, 5, 15, 0.97);
@@ -367,7 +371,10 @@ header .dark-button .label .ball {
     padding-right: 12%;
 }
 
-.menu-mobile .btn-fechar { padding: 24px 8%; cursor: pointer; text-align: right; }
+.menu-mobile .btn-fechar {
+    background: none; border: 0; width: 100%;
+    padding: 24px 8%; cursor: pointer; text-align: right; display: block;
+}
 .menu-mobile .btn-fechar i { color: #fff; font-size: 28px; }
 
 .overlay-menu-mobile {
@@ -491,7 +498,7 @@ section.portfolio .flex {
     font-size: 14px; font-weight: 500;
     margin: 56px 0 8px; text-align: center;
     letter-spacing: 3px; text-transform: uppercase;
-    color: var(--text-color-p); opacity: 0.75;
+    color: var(--text-color-p); opacity: 0.9;
 }
 
 .categoria-titulo.produto { margin-top: 0; }
@@ -539,6 +546,62 @@ section.portfolio .flex {
 
 .img-port:hover { background-position: bottom; }
 .overlay { display: none; }
+
+/* ── Placeholder cover for projects without a screenshot yet ── */
+.img-port.placeholder {
+    display: flex; align-items: center; justify-content: center;
+    background:
+        repeating-linear-gradient(135deg, rgba(255,157,61,0.05) 0, rgba(255,157,61,0.05) 2px, transparent 2px, transparent 14px),
+        var(--body-bg-alt);
+}
+.img-port.placeholder::after { content: none; }
+.img-port.placeholder i { font-size: 46px; color: var(--accent); opacity: 0.4; }
+
+/* ── Featured project (Kitsuy Store) ── */
+.featured-wrap { display: flex; justify-content: center; margin-bottom: 8px; }
+
+.projeto-card.featured {
+    width: 100%; max-width: 940px;
+    display: flex; flex-direction: row;
+    border-color: rgba(255,157,61,0.3);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px var(--glow);
+}
+
+.projeto-card.featured .img-port { width: 42%; flex-shrink: 0; height: auto; min-height: 300px; }
+.projeto-card.featured .img-port.placeholder i { font-size: 64px; }
+
+.projeto-card.featured .projeto-info {
+    width: 58%; padding: 40px 44px;
+    display: flex; flex-direction: column; justify-content: center;
+}
+
+.projeto-card.featured .projeto-info h3 { font-size: 30px; }
+.projeto-card.featured .projeto-info p { font-size: 15.5px; }
+
+.projeto-badge {
+    display: inline-flex; align-items: center; gap: 9px;
+    font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--accent-2); margin-bottom: 16px; width: fit-content;
+}
+
+.pulse-dot {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2);
+    animation: pulse-dot-anim 2s infinite;
+}
+
+@keyframes pulse-dot-anim {
+    0%   { box-shadow: 0 0 0 0 rgba(142,192,124,0.5); }
+    70%  { box-shadow: 0 0 0 8px rgba(142,192,124,0); }
+    100% { box-shadow: 0 0 0 0 rgba(142,192,124,0); }
+}
+
+.tag-private {
+    font-family: var(--font-mono); font-size: 12px; font-weight: 500;
+    color: var(--text-color-p); opacity: 0.85;
+    border: 1px dashed var(--glass-border); border-radius: 30px;
+    padding: 7px 16px;
+}
 
 .projeto-info { padding: 20px 20px 24px; position: relative; z-index: 1; }
 .projeto-info h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--text-color-h); }
@@ -746,18 +809,18 @@ section.sobre .flex { align-items: center; gap: 54px; }
 
 .sobre .txt-sobre .victor-social { display: flex; gap: 12px; margin-top: 28px; }
 
-.sobre .txt-sobre .victor-social button {
+.sobre .txt-sobre .victor-social a {
     width: 52px; height: 52px; border-radius: 50%;
     border: 1px solid var(--glass-border); background: var(--glass-bg);
     font-size: 22px; color: var(--text-color-h);
     -webkit-text-fill-color: var(--text-color-h);
-    cursor: pointer;
+    cursor: pointer; text-decoration: none;
     transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
     display: flex; align-items: center; justify-content: center;
     padding: 0; will-change: transform;
 }
 
-.sobre .txt-sobre .victor-social button:hover {
+.sobre .txt-sobre .victor-social a:hover {
     background: var(--grad-static); border-color: transparent;
     color: #fff; -webkit-text-fill-color: #fff;
     transform: translateY(-4px) scale(1.1);
@@ -853,7 +916,7 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
     margin: 0 auto 16px; will-change: transform;
 }
 
-.loader-text { color: var(--text-color-p); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
+.loader-text { font-family: var(--font-mono); color: var(--text-color-p); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
 
 /* ═══════════════════════════════════════════════════════════════
    SCROLL ANIMATIONS
@@ -870,18 +933,21 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
 ═══════════════════════════════════════════════════════════════ */
 :focus-visible { outline: 2px solid rgba(255,157,61,0.6); outline-offset: 3px; border-radius: 4px; }
 
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    html { scroll-behavior: auto; }
+}
+
 /* ═══════════════════════════════════════════════════════════════
    RESPONSIVE
 ═══════════════════════════════════════════════════════════════ */
 @media screen and (max-width: 1020px) {
     .flex { flex-direction: column; }
-    h2.titulo { font-size: 36px; }
     .menu-desktop, header .victor-contato { display: none; }
-    .btn-abrir-menu i { display: block; }
+    .btn-abrir-menu { display: block; }
     header > .interface { width: calc(100% - 120px); left: 20px; transform: none; border-radius: 20px; }
     section.topo-do-site { padding: 20px 6%; }
     section.topo-do-site .flex { padding-top: 120px; gap: 40px; }
-    .topo-do-site h1 { font-size: 34px; }
     .topo-do-site .txt-topo-site p { font-size: 16px; }
     section.habilidades { padding: 60px 6%; margin-bottom: 60px; }
     .habilidades .habilidades-box { max-width: 100%; }
@@ -892,10 +958,12 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
     .sobre .txt-sobre .victor-social { justify-content: center; }
     section.portfolio { padding: 60px 6%; }
     .projeto-card { width: 100%; max-width: 380px; margin: 0 auto; }
+    .projeto-card.featured { flex-direction: column; max-width: 380px; }
+    .projeto-card.featured .img-port { width: 100%; height: 200px; min-height: 0; }
+    .projeto-card.featured .projeto-info { width: 100%; padding: 24px 20px; }
+    .projeto-card.featured .projeto-info h3 { font-size: 22px; }
     section.formulario { padding: 40px 6%; }
     section.formulario .interface a { font-size: 24px; letter-spacing: 2px; padding: 16px 24px; }
-    .github-stats-grid { grid-template-columns: 1fr; }
-    .github-header { flex-direction: column; text-align: center; }
 }
 
 /* Fix devicon — reset font-family e background nos pseudo-elementos */
@@ -909,7 +977,5 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
 }
 
 @media (max-width: 480px) {
-    .topo-do-site h1 { font-size: 26px; }
-    h2.titulo { font-size: 28px; }
     .lang-button { right: 72px; }
 }

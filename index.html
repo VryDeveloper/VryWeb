@@ -30,8 +30,8 @@
     <header>
         <div class="interface">
             <div class="logo">
-                <a href="#">
-                    <img src="assets/iconvictor.png" width="64" height="64" alt="logo">
+                <a href="#" aria-label="VryDeveloper — back to top">
+                    <img src="assets/iconvictor.png" width="64" height="64" alt="VryDeveloper logo">
                 </a>
             </div>
             
@@ -45,20 +45,18 @@
             </nav>
 
             <div class="victor-contato" id="toggleBtn">
-                <a href="#footer" style="transition: 5s;">
-                    <button data-pt="Contato" data-en="Contact">Contact</button>
-                </a>
+                <a href="#footer" class="btn-pill" data-pt="Contato" data-en="Contact">Contact</a>
             </div>
         </div>
 
-        <div class="btn-abrir-menu" id="btn-abrir-menu">
+        <button class="btn-abrir-menu" id="btn-abrir-menu" aria-label="Open menu" aria-expanded="false" aria-controls="menu-mobile">
             <i class="bi bi-list"></i>
-        </div>
+        </button>
 
         <div class="menu-mobile" id="menu-mobile">
-            <div class="btn-fechar">
+            <button class="btn-fechar" aria-label="Close menu">
                 <i class="bi bi-x-lg"></i>
-            </div>
+            </button>
             <nav id="menu-mobile-nav">
                 <ul>
                     <li><a href="#inicio" data-pt="Início" data-en="Home">Home</a></li>
@@ -112,9 +110,7 @@
                         </p>
 
                         <div class="victor-contato">
-                            <a href="assets/curriculo.pdf" download="Victor A.R.O - CV.pdf">
-                                <button data-pt="BAIXAR CV" data-en="DOWNLOAD CV">DOWNLOAD CV</button>
-                            </a>
+                            <a href="assets/curriculo.pdf" download="Victor A.R.O - CV.pdf" class="btn-pill" data-pt="BAIXAR CV" data-en="DOWNLOAD CV">DOWNLOAD CV</a>
                         </div>
                     </div>
                     <div class="img-topo-site"></div>
@@ -131,7 +127,110 @@
                 </div>
                 <div class="portfolio-grid">
 
-                    <h3 class="categoria-titulo" data-pt="Projetos Web" data-en="Web Projects">Web Projects</h3>
+                    <!-- ═══ FEATURED: Kitsuy Store ═══ -->
+                    <div class="featured-wrap">
+                        <div class="projeto-card featured">
+                            <div class="img-port placeholder" role="img" aria-label="Kitsuy Store — e-commerce icon">
+                                <i class="bi bi-bag-check-fill"></i>
+                            </div>
+                            <div class="projeto-info">
+                                <div class="projeto-badge">
+                                    <span class="pulse-dot"></span>
+                                    <span data-pt="EM PRODUÇÃO" data-en="IN PRODUCTION">IN PRODUCTION</span>
+                                </div>
+                                <h3>Kitsuy Store</h3>
+                                <p data-pt="E-commerce em produção com auditoria de segurança própria: transações atômicas no Firestore para impedir overselling, expiração automática de pedidos pendentes via Vercel Cron Jobs, sanitização de dados de entrada com Zod e rate limiting com Upstash contra abuso de API. Pagamentos via MercadoPago."
+                                   data-en="E-commerce in production, built with its own security hardening: atomic Firestore transactions to prevent overselling, automatic expiration of pending orders via Vercel Cron Jobs, input sanitization with Zod, and rate limiting with Upstash to prevent API abuse. Payments via MercadoPago.">
+                                    E-commerce in production, built with its own security hardening: atomic Firestore transactions to prevent overselling, automatic expiration of pending orders via Vercel Cron Jobs, input sanitization with Zod, and rate limiting with Upstash to prevent API abuse. Payments via MercadoPago.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-react-original colored" title="React"></i>
+                                    <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+                                    <i class="devicon-firebase-plain colored" title="Firebase / Firestore"></i>
+                                    <i class="devicon-vercel-plain" title="Vercel"></i>
+                                </div>
+                                <div class="projeto-links">
+                                    <a href="https://github.com/VryDeveloper/kitsuy-store-realese" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                                    <a href="https://kitsuy-store-realese.vercel.app" target="_blank"><i class="bi bi-link-45deg"></i> Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="categoria-titulo produto" data-pt="Projetos em Produção" data-en="Production Projects">Production Projects</h3>
+                    <div class="flex">
+
+                        <!-- Kitsuy Storage -->
+                        <div class="projeto-card">
+                            <div class="img-port placeholder" role="img" aria-label="Kitsuy Storage — admin panel icon">
+                                <i class="bi bi-hdd-stack-fill"></i>
+                            </div>
+                            <div class="projeto-info">
+                                <h3>Kitsuy Storage</h3>
+                                <p data-pt="Painel administrativo interno para gestão de pedidos e precificação. Inclui modo escuro, upload de imagens via Supabase Storage, calculadora de precificação com campo de taxa de conversão (Wise) e autenticação com Row-Level Security (RLS) no Supabase."
+                                   data-en="Internal admin panel for order management and pricing. Includes dark mode, image uploads via Supabase Storage, a pricing calculator with a Wise exchange-rate field, and authentication with Row-Level Security (RLS) on Supabase.">
+                                    Internal admin panel for order management and pricing. Includes dark mode, image uploads via Supabase Storage, a pricing calculator with a Wise exchange-rate field, and authentication with Row-Level Security (RLS) on Supabase.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-react-original colored" title="React 18"></i>
+                                    <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+                                    <i class="devicon-vitejs-plain colored" title="Vite"></i>
+                                    <i class="devicon-supabase-plain colored" title="Supabase"></i>
+                                </div>
+                                <div class="projeto-links">
+                                    <span class="tag-private" data-pt="Repositório privado" data-en="Private repository">Private repository</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Copec -->
+                        <div class="projeto-card">
+                            <div class="img-port" style="background-image: url(assets/projeto-copec.jpg)"></div>
+                            <div class="projeto-info">
+                                <h3>Copec</h3>
+                                <p data-pt="Site institucional em produção para a Copec, com apresentação da empresa, catálogo de produtos e serviços."
+                                   data-en="Production website for Copec, presenting the company, its product catalog and services.">
+                                    Production website for Copec, presenting the company, its product catalog and services.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-react-original colored" title="React"></i>
+                                    <i class="devicon-nextjs-plain" title="Next.js"></i>
+                                    <i class="devicon-tailwindcss-plain colored" title="Tailwind CSS"></i>
+                                    <i class="devicon-typescript-plain colored" title="TypeScript"></i>
+                                    <i class="devicon-google-plain colored" title="Google Maps API"></i>
+                                </div>
+                                <div class="projeto-links">
+                                    <a href="https://acoscopec.com" target="_blank"><i class="bi bi-link-45deg"></i> Visit Site</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ESG Inteligentes -->
+                        <div class="projeto-card">
+                            <div class="img-port placeholder" role="img" aria-label="ESG Inteligentes — API icon">
+                                <i class="bi bi-lightning-charge-fill"></i>
+                            </div>
+                            <div class="projeto-info">
+                                <h3>ESG Inteligentes</h3>
+                                <p data-pt="API REST para monitoramento de consumo energético com métricas ESG. Persistência com Entity Framework Core e PostgreSQL, containerização com Docker, pipeline de CI/CD no GitHub Actions, testes automatizados com xUnit e documentação da API via Swagger."
+                                   data-en="REST API for energy consumption monitoring with ESG metrics. Persistence with Entity Framework Core and PostgreSQL, Docker containerization, a CI/CD pipeline on GitHub Actions, automated testing with xUnit, and API documentation via Swagger.">
+                                    REST API for energy consumption monitoring with ESG metrics. Persistence with Entity Framework Core and PostgreSQL, Docker containerization, a CI/CD pipeline on GitHub Actions, automated testing with xUnit, and API documentation via Swagger.
+                                </p>
+                                <div class="tech-icons">
+                                    <i class="devicon-csharp-plain colored" title="C#"></i>
+                                    <i class="devicon-dotnetcore-plain colored" title=".NET 8 / EF Core"></i>
+                                    <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
+                                    <i class="devicon-docker-plain colored" title="Docker"></i>
+                                    <i class="devicon-github-original" title="GitHub Actions"></i>
+                                </div>
+                                <div class="projeto-links">
+                                    <a href="https://github.com/VryDeveloper/ESGInteligentes" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="categoria-titulo" data-pt="Projetos de Aprendizado" data-en="Learning Projects">Learning Projects</h3>
                     <div class="flex">
 
                         <!-- Rock Paper Scissors -->
@@ -154,54 +253,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Copec -->
-                        <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto-copec.jpg)"></div>
-                            <div class="projeto-info">
-                                <h3>Copec</h3>
-                                <p data-pt="Site profissional da empresa Copec, com informações sobre a empresa, produtos e serviços."
-                                   data-en="Professional website for Copec, featuring company information, products and services.">
-                                    Professional website for Copec, featuring company information, products and services.
-                                </p>
-                                <div class="tech-icons">
-                                    <i class="devicon-react-original colored" title="React"></i>
-                                    <i class="devicon-nextjs-plain" title="Next.js"></i>
-                                    <i class="devicon-tailwindcss-plain colored" title="Tailwind CSS"></i>
-                                    <i class="devicon-typescript-plain colored" title="TypeScript"></i>
-                                    <i class="devicon-google-plain colored" title="Google Maps API"></i>
-                                </div>
-                                <div class="projeto-links">
-                                    <a href="https://acoscopec.com" target="_blank"><i class="bi bi-link-45deg"></i> Visit Site</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Kitsuy Store -->
-                        <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto-kitsuy.png)"></div>
-                            <div class="projeto-info">
-                                <h3>Kitsuy Store</h3>
-                                <p data-pt="E-commerce com integração de pagamento via MercadoPago, gerenciamento de produtos e rastreamento de pedidos."
-                                   data-en="E-commerce with MercadoPago payment integration, product management and order tracking.">
-                                    E-commerce with MercadoPago payment integration, product management and order tracking.
-                                </p>
-                                <div class="tech-icons">
-                                    <i class="devicon-react-original colored" title="React"></i>
-                                    <i class="devicon-typescript-plain colored" title="TypeScript"></i>
-                                    <i class="devicon-firebase-plain colored" title="Firebase"></i>
-                                    <i class="devicon-vercel-plain" title="Vercel"></i>
-                                </div>
-                                <div class="projeto-links">
-                                    <a href="https://github.com/VryDeveloper/kitsuy-store-realese" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-                                    <a href="https://kitsuy-store-realese.vercel.app" target="_blank"><i class="bi bi-link-45deg"></i> Demo</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h3 class="categoria-titulo" data-pt="Projetos Mobile" data-en="Mobile Projects">Mobile Projects</h3>
-                    <div class="flex">
 
                         <!-- CMeter -->
                         <div class="projeto-card">
@@ -257,32 +308,6 @@
                                 </div>
                                 <div class="projeto-links">
                                     <a href="https://github.com/VryDeveloper/Calculadora-de-Juros" target="_blank"><i class="bi bi-github"></i> GitHub</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h3 class="categoria-titulo" data-pt="Projetos Back-end" data-en="Back-end Projects">Back-end Projects</h3>
-                    <div class="flex">
-
-                        <!-- ESG Intelligent -->
-                        <div class="projeto-card">
-                            <div class="img-port" style="background-image: url(assets/projeto-esg.png)"></div>
-                            <div class="projeto-info">
-                                <h3>ESG Intelligent</h3>
-                                <p data-pt="API REST para monitoramento de consumo energético com métricas ESG, pipeline CI/CD e containerização com Docker."
-                                   data-en="REST API for energy monitoring with ESG metrics, CI/CD pipeline and Docker containerization.">
-                                    REST API for energy monitoring with ESG metrics, CI/CD pipeline and Docker containerization.
-                                </p>
-                                <div class="tech-icons">
-                                    <i class="devicon-csharp-plain colored" title="C#"></i>
-                                    <i class="devicon-dotnetcore-plain colored" title=".NET 8"></i>
-                                    <i class="devicon-postgresql-plain colored" title="PostgreSQL"></i>
-                                    <i class="devicon-docker-plain colored" title="Docker"></i>
-                                    <i class="devicon-github-original" title="GitHub Actions"></i>
-                                </div>
-                                <div class="projeto-links">
-                                    <a href="https://github.com/VryDeveloper/ESGInteligentes" target="_blank"><i class="bi bi-github"></i> GitHub</a>
                                 </div>
                             </div>
                         </div>
@@ -423,9 +448,9 @@
                             If you're interested in my profile, don't hesitate to reach out! I'm always open to new opportunities and partnerships.
                         </p>
                         <div class="victor-social">
-                            <a href="https://github.com/VictorVryDev" target="_blank"><button><i class="bi bi-github"></i></button></a>
-                            <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank"><button><i class="bi bi-linkedin"></i></button></a>
-                            <a href="https://www.instagram.com/victor_a.r.o/" target="_blank"><button><i class="bi bi-instagram"></i></button></a>
+                            <a href="https://github.com/VictorVryDev" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                            <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://www.instagram.com/victor_a.r.o/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                         </div>
                     </div>
                 </div>
@@ -453,9 +478,9 @@
         let btnMenu = document.getElementById('btn-abrir-menu');
         let menuMobile = document.getElementById('menu-mobile');
         let overlay = document.getElementById('overlay-menu-mobile');
-        btnMenu.addEventListener('click', () => { menuMobile.classList.add('abrir-menu'); });
-        menuMobile.addEventListener('click', () => { menuMobile.classList.remove('abrir-menu'); });
-        overlay.addEventListener('click', () => { menuMobile.classList.remove('abrir-menu'); });
+        btnMenu.addEventListener('click', () => { menuMobile.classList.add('abrir-menu'); btnMenu.setAttribute('aria-expanded', 'true'); });
+        menuMobile.addEventListener('click', () => { menuMobile.classList.remove('abrir-menu'); btnMenu.setAttribute('aria-expanded', 'false'); });
+        overlay.addEventListener('click', () => { menuMobile.classList.remove('abrir-menu'); btnMenu.setAttribute('aria-expanded', 'false'); });
     </script>
 
     <footer id="footer">
@@ -463,7 +488,7 @@
         <div class="interface">
             <div class="flex">
                 <div class="logo-footer">
-                    <img src="assets/iconvictor.png" alt="logovictoraro">
+                    <img src="assets/iconvictor.png" alt="VryDeveloper logo">
                 </div>
                 <div class="line-footer">
                     <p><i class="bi bi-envelope"></i> <a href="mailto:victor.092.augusto@gmail.com" target="_blank">victor.092.augusto@gmail.com</a></p>
@@ -473,7 +498,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5531996588742" class="whatsapp-button" target="_blank">
+    <a href="https://wa.me/5531996588742" class="whatsapp-button" target="_blank" aria-label="WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 </body>
