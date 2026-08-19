@@ -306,7 +306,7 @@ header .dark-button .label .ball {
     color: var(--toggle-icon);
     -webkit-text-fill-color: var(--toggle-icon);
     border-radius: 20px; padding: 5px 14px;
-    font-size: 12px; font-family: 'Poppins', sans-serif;
+    font-size: 12px; font-family: var(--font-mono);
     cursor: pointer;
     transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
     font-weight: 500;
