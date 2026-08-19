@@ -10,7 +10,7 @@ Este é meu portfólio pessoal, desenvolvido para apresentar meus projetos, habi
 - **Tema Claro/Escuro**: Alternância entre temas para melhor experiência visual
 - **Animações Suaves**: Transições e efeitos visuais para melhor engajamento
 - **Visualização de Projetos**: Alternância entre visualização em grade e lista
-- **Integração com GitHub**: Exibição de estatísticas e atividades recentes
+- **Idioma PT/EN**: Alternância entre português e inglês em todo o conteúdo
 - **Seção de Habilidades**: Apresentação organizada das tecnologias dominadas
 - **Botão de WhatsApp**: Contato rápido via WhatsApp
 - **Download de CV**: Acesso fácil ao currículo
@@ -37,8 +37,8 @@ O site é totalmente responsivo e se adapta aos seguintes breakpoints:
 VryWeb/
 ├── assets/
 │   ├── iconvictor.png
-│   ├── profilepic.jpeg
-│   └── projetos/
+│   ├── curriculo.pdf
+│   └── projeto-*.png / .jpg
 ├── css/
 │   └── style.css
 ├── js/
