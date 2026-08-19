@@ -28,6 +28,11 @@
     --glow: rgba(139, 0, 255, 0.3);
     --grad: linear-gradient(133deg, rgba(250,0,255,1) 0%, rgba(0,11,255,1) 32%, rgba(139,0,255,1) 68%, rgba(178,0,182,1) 100%);
     --grad-static: linear-gradient(133deg, rgba(250,0,255,1) 0%, rgba(0,11,255,1) 32%, rgba(139,0,255,1) 68%, rgba(178,0,182,1) 100%);
+    /* the 4 gradient stops as flat, contrast-safe colors — used to vary icons instead of clipping the same blend onto every one */
+    --pal-1: #fa00ff;
+    --pal-2: #5b8cff;
+    --pal-3: #b388ff;
+    --pal-4: #d946ef;
     --nav-bg: rgba(10, 10, 20, 0.6);
     --nav-link: #ffffff;
     --nav-hover-bg: rgba(255, 255, 255, 0.1);
@@ -52,6 +57,10 @@
     --accent-text: #6d28d9;
     --accent-2: #1d4ed8;
     --glow: rgba(139, 0, 255, 0.15);
+    --pal-1: #a3007a;
+    --pal-2: #1d4ed8;
+    --pal-3: #6d28d9;
+    --pal-4: #86198f;
     --nav-bg: rgba(240, 240, 240, 0.75);
     --nav-link: #ffffff;
     --nav-hover-bg: rgba(0, 0, 0, 0.08);
@@ -123,7 +132,19 @@ h1 strong, h2 strong {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: degrade 10s linear infinite alternate;
+    animation: degrade 5s linear infinite alternate;
+}
+
+/* the hero name gets the most emphasis: faster sweep + a subtle breathing scale */
+.topo-do-site h1 strong {
+    display: inline-block;
+    background-size: 300%;
+    animation: degrade 3.5s linear infinite alternate, breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.015); }
 }
 
 p strong {
@@ -197,6 +218,25 @@ h2.titulo span,
 
 .btn-pill:hover::after { opacity: 1; }
 button:hover, .btn-pill:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 30px var(--glow); }
+
+/* light sweep across gradient buttons on hover */
+.btn-pill::before,
+.projeto-links a::before {
+    content: '';
+    position: absolute; top: 0; left: -75%;
+    width: 40%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+
+.btn-pill:hover::before,
+.projeto-links a:hover::before { animation: shimmer-sweep 0.85s ease; }
+
+@keyframes shimmer-sweep {
+    from { left: -75%; }
+    to   { left: 125%; }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    HEADER
@@ -419,6 +459,13 @@ section.topo-do-site .flex {
     content: ''; width: 8px; height: 8px; border-radius: 50%;
     background: var(--accent-2); box-shadow: 0 0 8px var(--accent-2);
     flex-shrink: 0;
+    animation: pulse-dot-anim 2s infinite;
+}
+
+.topo-do-site .kicker::after {
+    content: '_';
+    animation: blink 1s step-end infinite;
+    margin-left: 1px;
 }
 
 .topo-do-site h1 {
@@ -650,6 +697,7 @@ section.portfolio .flex {
     padding: 7px 16px; border-radius: 30px;
     background: var(--grad-static); cursor: pointer;
     transition: transform 0.2s, box-shadow 0.2s;
+    position: relative; overflow: hidden;
     will-change: transform;
 }
 
@@ -703,9 +751,20 @@ section.habilidades .flex { gap: 24px; flex-wrap: wrap; justify-content: center;
 
 .habilidades .habilidades-box > i {
     font-size: 40px;
-    background: var(--grad-static);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; margin-bottom: 12px;
+    margin-bottom: 12px;
+    display: inline-block;
+    animation: icon-float 3.4s ease-in-out infinite;
+}
+
+/* one flat color per category icon instead of the same gradient clipped onto each */
+.habilidades-box:nth-child(4n+1) > i { color: var(--pal-1); }
+.habilidades-box:nth-child(4n+2) > i { color: var(--pal-2); animation-delay: 0.4s; }
+.habilidades-box:nth-child(4n+3) > i { color: var(--pal-3); animation-delay: 0.8s; }
+.habilidades-box:nth-child(4n+4) > i { color: var(--pal-4); animation-delay: 1.2s; }
+
+@keyframes icon-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
 }
 
 .habilidades .habilidades-box h3 {
@@ -729,12 +788,15 @@ section.habilidades .flex { gap: 24px; flex-wrap: wrap; justify-content: center;
     transform: translateX(4px);
 }
 
-.tech-item i {
-    font-size: 20px; flex-shrink: 0;
-    background: var(--grad-static);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
+.tech-item i { font-size: 20px; flex-shrink: 0; transition: transform 0.2s; }
+
+/* each tech-grid always has exactly 4 items — cycle the 4 palette colors across them */
+.tech-item:nth-child(4n+1) i { color: var(--pal-1); }
+.tech-item:nth-child(4n+2) i { color: var(--pal-2); }
+.tech-item:nth-child(4n+3) i { color: var(--pal-3); }
+.tech-item:nth-child(4n+4) i { color: var(--pal-4); }
+
+.tech-item:hover i { transform: scale(1.15) rotate(-6deg); }
 
 .tech-item span { font-family: var(--font-mono); font-size: 13px; color: var(--text-color-p); font-weight: 500; }
 
@@ -894,6 +956,19 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
     will-change: transform;
 }
 
+.whatsapp-button::before {
+    content: '';
+    position: absolute; inset: 0; border-radius: 50%;
+    background: #25d366;
+    animation: whatsapp-ring 2.4s ease-out infinite;
+    z-index: -1;
+}
+
+@keyframes whatsapp-ring {
+    0%   { transform: scale(1); opacity: 0.55; }
+    100% { transform: scale(1.9); opacity: 0; }
+}
+
 .whatsapp-button:hover {
     transform: scale(1.1) translateY(-4px);
     box-shadow: 0 8px 32px rgba(37,211,102,0.5);
@@ -941,10 +1016,13 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
    WCAG 2.3.3 is concerned with. */
 @media (prefers-reduced-motion: reduce) {
     .topo-do-site h1::after,
+    .topo-do-site .kicker::before, .topo-do-site .kicker::after,
     section.topo-do-site::before,
     .topo-do-site h1 strong, .sobre .txt-sobre h2 strong,
     section.formulario .interface a,
-    .pulse-dot {
+    .pulse-dot,
+    .habilidades .habilidades-box > i,
+    .whatsapp-button::before {
         animation: none;
     }
     html { scroll-behavior: auto; }
