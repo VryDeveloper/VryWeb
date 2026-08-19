@@ -538,9 +538,11 @@ section.topo-do-site .flex {
     color: var(--text-color-p); margin: 0 auto; opacity: 0.7;
 }
 
+.hero-code-body, .hero-code-body * { font-family: var(--font-mono); }
+
 .hero-code-body {
     padding: 24px 22px;
-    font-family: var(--font-mono); font-size: 13.5px; line-height: 1.9;
+    font-size: 13.5px; line-height: 1.9;
     color: var(--text-color-p);
     white-space: pre; overflow-x: auto;
 }
@@ -688,9 +690,13 @@ section.portfolio .flex {
 .projeto-card.featured .projeto-info h3 { font-size: 30px; }
 .projeto-card.featured .projeto-info p { font-size: 15.5px; }
 
+.projeto-badge, .projeto-badge span {
+    font-family: var(--font-mono);
+}
+
 .projeto-badge {
     display: inline-flex; align-items: center; gap: 9px;
-    font-family: var(--font-mono); font-size: 11px; font-weight: 600;
+    font-size: 11px; font-weight: 600;
     letter-spacing: 1.5px; text-transform: uppercase;
     color: var(--accent-2); margin-bottom: 16px; width: fit-content;
 }
@@ -903,7 +909,10 @@ section.habilidades .flex { gap: 24px; flex-wrap: wrap; justify-content: center;
     color: var(--text-color-p); margin: 0 auto; opacity: 0.7;
 }
 
-.terminal-body { padding: 24px 22px; font-family: var(--font-mono); }
+/* the universal `* { font-family }` reset matches descendants directly, so it
+   beats plain inheritance here — force mono on every child explicitly */
+.terminal-body, .terminal-body * { font-family: var(--font-mono); }
+.terminal-body { padding: 24px 22px; }
 
 .term-line {
     font-size: 13.5px; line-height: 1.9; color: var(--text-color-p);
@@ -913,9 +922,13 @@ section.habilidades .flex { gap: 24px; flex-wrap: wrap; justify-content: center;
 .term-line.result   { padding-left: 20px; color: var(--text-color-h); opacity: 0.85; }
 .term-line.result .arrow { color: var(--accent-text); margin-right: 6px; }
 
+.terminal-cta, .terminal-cta span {
+    font-family: var(--font-mono);
+}
+
 .terminal-cta {
     display: flex; align-items: center; justify-content: center; gap: 8px;
-    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    font-size: 14px; font-weight: 500;
     color: var(--accent-text); text-decoration: none;
     padding: 16px; border-top: 1px solid var(--glass-border);
     transition: background 0.2s, color 0.2s, gap 0.2s;
