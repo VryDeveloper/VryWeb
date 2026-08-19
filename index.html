@@ -113,14 +113,27 @@
                             <a href="assets/curriculo.pdf" download="Victor A.R.O - CV.pdf" class="btn-pill" data-pt="BAIXAR CV" data-en="DOWNLOAD CV">DOWNLOAD CV</a>
                         </div>
                     </div>
-                    <div class="img-topo-site"></div>
+                    <div class="hero-code" aria-hidden="true">
+                        <div class="hero-code-bar">
+                            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                            <span class="hero-code-tab">profile.ts</span>
+                        </div>
+                        <pre class="hero-code-body"><code><span class="c-comment">// full-stack developer</span>
+<span class="c-key">const</span> <span class="c-var">developer</span> = {
+  <span class="c-prop">name</span>: <span class="c-str">"Victor Augusto"</span>,
+  <span class="c-prop">role</span>: <span class="c-str">"Full Stack Developer"</span>,
+  <span class="c-prop">stack</span>: [<span class="c-str">"TypeScript"</span>, <span class="c-str">"React"</span>, <span class="c-str">"C#"</span>, <span class="c-str">"Python"</span>],
+  <span class="c-prop">focus</span>: <span class="c-str">"clean, scalable code"</span>,
+  <span class="c-prop">openTo</span>: <span class="c-str">"new opportunities"</span>,
+};<span class="hero-code-cursor"></span></code></pre>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="portfolio" id="projetos">
             <div class="interface">
-                <h2 class="titulo" data-pt="Projetos" data-en="Projects">Projects</h2>
+                <h2 class="titulo" data-path="// ~/projects" data-pt="Projetos" data-en="Projects">Projects</h2>
                 <div class="view-controls">
                     <button class="view-btn active" data-view="grid"><i class="bi bi-grid"></i></button>
                     <button class="view-btn" data-view="list"><i class="bi bi-list"></i></button>
@@ -358,7 +371,7 @@
 
         <section class="habilidades" id="habilidades">
             <div class="interface">
-                <h2 class="titulo" data-pt="Habilidades<span>.</span>" data-en="Skills<span>.</span>">Skills<span>.</span></h2>
+                <h2 class="titulo" data-path="// ~/skills" data-pt="Habilidades<span>.</span>" data-en="Skills<span>.</span>">Skills<span>.</span></h2>
                 <div class="flex">
                     <div class="habilidades-box tecnologias">
                         <i class="bi bi-code-square"></i>
@@ -409,7 +422,7 @@
 
         <section class="github-stats" id="github">
             <div class="interface">
-                <h2 class="titulo">GitHub<span>.</span></h2>
+                <h2 class="titulo" data-path="// ~/github">GitHub<span>.</span></h2>
                 <div class="github-container">
                     <div class="terminal-card">
                         <div class="terminal-bar">

@@ -28,7 +28,9 @@
     --glow: rgba(139, 0, 255, 0.3);
     --grad: linear-gradient(133deg, rgba(250,0,255,1) 0%, rgba(0,11,255,1) 32%, rgba(139,0,255,1) 68%, rgba(178,0,182,1) 100%);
     --grad-static: linear-gradient(133deg, rgba(250,0,255,1) 0%, rgba(0,11,255,1) 32%, rgba(139,0,255,1) 68%, rgba(178,0,182,1) 100%);
-    /* the 4 gradient stops as flat, contrast-safe colors — used to vary icons instead of clipping the same blend onto every one */
+    /* the 4 gradient stops as flat, contrast-safe colors — a syntax-highlighting
+       logic: string/identity (1), keyword/interactive (2), primary/property (3),
+       comment/meta (4). Used for icon variety and for the hero code card. */
     --pal-1: #fa00ff;
     --pal-2: #5b8cff;
     --pal-3: #b388ff;
@@ -41,7 +43,6 @@
     --toggle-border: rgba(255, 255, 255, 0.2);
     --toggle-icon: #ffffff;
     --toggle-ball: #ffffff;
-    --strong-p-color: inherit;
 }
 
 .dark-mode {
@@ -69,7 +70,6 @@
     --toggle-border: rgba(0, 0, 0, 0.25);
     --toggle-icon: #111111;
     --toggle-ball: #111111;
-    --strong-p-color: #6d28d9;
 }
 
 /* ── Scrollbar ── */
@@ -147,10 +147,11 @@ h1 strong, h2 strong {
     50%      { transform: scale(1.015); }
 }
 
+/* tech/tool names read as "keywords" — same role as the keyword color in the hero code card */
 p strong {
     background: none;
     -webkit-text-fill-color: currentColor;
-    color: var(--strong-p-color);
+    color: var(--pal-2);
     font-weight: 700;
 }
 
@@ -494,18 +495,76 @@ section.topo-do-site .flex {
 .topo-do-site .txt-topo-site p:nth-of-type(2) { animation-delay: 0.46s; }
 .topo-do-site .txt-topo-site p:nth-of-type(3) { animation-delay: 0.58s; }
 .topo-do-site .victor-contato { opacity: 0; animation: reveal-up 0.7s ease-out 0.7s forwards; }
-.topo-do-site .img-topo-site { opacity: 0; animation: reveal-up 0.8s ease-out 0.3s forwards; }
 
 @keyframes reveal-up {
     from { opacity: 0; transform: translateY(18px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
+/* ── Hero signature: a "profile.ts" code card standing in for a portrait ── */
+.hero-code {
+    width: 100%; max-width: 440px; flex-shrink: 0;
+    background: var(--body-bg-alt);
+    border: 1px solid var(--glass-border);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45), 0 0 60px var(--glow);
+    opacity: 0; animation: reveal-up 0.8s ease-out 0.3s forwards;
+}
+
+@media (min-width: 1021px) {
+    .hero-code {
+        transform: perspective(1200px) rotateY(-8deg) rotateX(3deg);
+        transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+    .hero-code:hover {
+        transform: perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1.015);
+        box-shadow: 0 30px 90px rgba(0,0,0,0.5), 0 0 80px var(--glow);
+    }
+}
+
+.hero-code-bar {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 16px; background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.hero-code-bar .dot { width: 11px; height: 11px; border-radius: 50%; }
+.hero-code-bar .dot.red    { background: #ff5f56; }
+.hero-code-bar .dot.yellow { background: #ffbd2e; }
+.hero-code-bar .dot.green  { background: #27c93f; }
+
+.hero-code-tab {
+    font-family: var(--font-mono); font-size: 12px;
+    color: var(--text-color-p); margin: 0 auto; opacity: 0.7;
+}
+
+.hero-code-body {
+    padding: 24px 22px;
+    font-family: var(--font-mono); font-size: 13.5px; line-height: 1.9;
+    color: var(--text-color-p);
+    white-space: pre; overflow-x: auto;
+}
+
+/* syntax roles — the same 4 gradient colors, now meaning something:
+   comment = meta, keyword = language, property = primary/brand, string = identity */
+.c-comment { color: var(--pal-4); opacity: 0.75; font-style: italic; }
+.c-key     { color: var(--pal-2); }
+.c-var     { color: var(--text-color-h); }
+.c-prop    { color: var(--accent-text); }
+.c-str     { color: var(--pal-1); }
+
+.hero-code-cursor {
+    display: inline-block; width: 8px; height: 15px;
+    background: var(--accent-2); margin-left: 2px; vertical-align: -2px;
+    animation: blink 1s step-end infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .topo-do-site .kicker, .topo-do-site h1, .topo-do-site .txt-topo-site p,
-    .topo-do-site .victor-contato, .topo-do-site .img-topo-site {
+    .topo-do-site .victor-contato, .hero-code {
         animation: none; opacity: 1;
     }
+    .hero-code { transform: none; }
 }
 
 /* ═══════════════════════════════════════════════════════════════
@@ -518,11 +577,13 @@ h2.titulo {
     margin-bottom: 0; position: relative;
 }
 
+/* each section eyebrow names its own path instead of a generic repeated marker */
 h2.titulo::before {
-    content: '// ';
-    font-family: var(--font-mono); font-size: 0.4em; font-weight: 500;
-    color: var(--accent-text); vertical-align: middle;
-    letter-spacing: 1px; opacity: 0.85;
+    content: attr(data-path);
+    display: block;
+    font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+    color: var(--accent-text); letter-spacing: 1px; opacity: 0.85;
+    margin-bottom: 10px;
 }
 
 h2.titulo::after {
@@ -1022,7 +1083,8 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
     section.formulario .interface a,
     .pulse-dot,
     .habilidades .habilidades-box > i,
-    .whatsapp-button::before {
+    .whatsapp-button::before,
+    .hero-code-cursor {
         animation: none;
     }
     html { scroll-behavior: auto; }
