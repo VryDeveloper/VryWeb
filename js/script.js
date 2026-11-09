@@ -6,19 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// ── Dark Mode ─────────────────────────────────────────────────────────────────
-const $html = document.querySelector('html');
+// ── Theme (data-theme on <html> is set by the inline script in <head>) ───────
+const root = document.documentElement;
 const $checkbox = document.querySelector('#chk');
+$checkbox.checked = root.dataset.theme === 'light';
 
-const darkMode = localStorage.getItem('darkMode');
-if (darkMode === 'true') {
-    $html.classList.add('dark-mode');
-    $checkbox.checked = true;
-}
-
-$checkbox.addEventListener('change', function () {
-    $html.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', $html.classList.contains('dark-mode'));
+$checkbox.addEventListener('change', () => {
+    root.dataset.theme = $checkbox.checked ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch {}
 });
 
 // ── Language Toggle ───────────────────────────────────────────────────────────

@@ -44,7 +44,7 @@
     --toggle-ball: #ffffff;
 }
 
-.dark-mode {
+[data-theme="light"] {
     --body-bg: #f5f5f7;
     --body-bg-alt: #ececf2;
     --text-color-p: rgba(0, 0, 0, 0.75);
@@ -109,7 +109,7 @@ body::after {
     opacity: 0.6;
 }
 
-.dark-mode body::after { background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px); }
+[data-theme="light"] body::after { background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px); }
 
 p { cursor: default; color: var(--text-color-p); }
 h1, h2, h3, h4 { cursor: default; }
@@ -363,14 +363,14 @@ header .dark-button .label .ball {
 }
 
 /* light mode overrides */
-.dark-mode header nav.menu-desktop ul li a {
+[data-theme="light"] header nav.menu-desktop ul li a {
     color: #111; -webkit-text-fill-color: #111;
 }
-.dark-mode header nav.menu-desktop ul li a:hover {
+[data-theme="light"] header nav.menu-desktop ul li a:hover {
     background: rgba(0,0,0,0.08);
     color: #111; -webkit-text-fill-color: #111;
 }
-.dark-mode header .victor-contato .btn-pill {
+[data-theme="light"] header .victor-contato .btn-pill {
     background: linear-gradient(90deg, #111 0%, #333 100%);
     color: #fff; -webkit-text-fill-color: #fff;
 }
@@ -745,7 +745,7 @@ section.portfolio .flex {
 
 /* ícones sem cor própria ficam brancos no dark / cinza no light */
 .tech-icons i:not([class*="colored"]) { color: #ffffff; }
-.dark-mode .tech-icons i:not([class*="colored"]) { color: #444444; }
+[data-theme="light"] .tech-icons i:not([class*="colored"]) { color: #444444; }
 
 .tech-icons i:hover {
     transform: translateY(-5px) scale(1.2);
