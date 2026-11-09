@@ -479,23 +479,6 @@
         </section>
     </main>
 
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-    </script>
-    <script>
-        let btnMenu = document.getElementById('btn-abrir-menu');
-        let menuMobile = document.getElementById('menu-mobile');
-        let overlay = document.getElementById('overlay-menu-mobile');
-        btnMenu.addEventListener('click', () => { menuMobile.classList.add('abrir-menu'); btnMenu.setAttribute('aria-expanded', 'true'); });
-        menuMobile.addEventListener('click', () => { menuMobile.classList.remove('abrir-menu'); btnMenu.setAttribute('aria-expanded', 'false'); });
-        overlay.addEventListener('click', () => { menuMobile.classList.remove('abrir-menu'); btnMenu.setAttribute('aria-expanded', 'false'); });
-    </script>
-
     <footer id="footer">
         <div class="borda"></div>
         <div class="interface">

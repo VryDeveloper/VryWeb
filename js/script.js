@@ -74,3 +74,18 @@ document.querySelectorAll('section').forEach(section => {
 
 document.querySelectorAll('.habilidades-box').forEach(box => observer.observe(box));
 document.querySelectorAll('.projeto-card').forEach(card => observer.observe(card));
+
+// ── Mobile Menu ───────────────────────────────────────────────────────────────
+const btnMenu = document.getElementById('btn-abrir-menu');
+const menuMobile = document.getElementById('menu-mobile');
+
+function setMenu(open) {
+    menuMobile.classList.toggle('abrir-menu', open);
+    btnMenu.setAttribute('aria-expanded', String(open));
+}
+
+btnMenu.addEventListener('click', () => setMenu(true));
+document.getElementById('overlay-menu-mobile').addEventListener('click', () => setMenu(false));
+// close only on a link or the X button, not on any click inside the panel
+menuMobile.addEventListener('click', e => { if (e.target.closest('a, .btn-fechar')) setMenu(false); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') setMenu(false); });
