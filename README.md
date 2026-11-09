@@ -54,7 +54,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 ## 📞 Contato
 
 - LinkedIn: [Victor Augusto](https://www.linkedin.com/in/victor-augusto-79a5612b6/)
-- GitHub: [VryDeveloper](https://github.com/VictorVryDev)
+- GitHub: [VryDeveloper](https://github.com/VryDeveloper)
 - Instagram: [@victor_a.r.o](https://www.instagram.com/victor_a.r.o/)
 - WhatsApp: Disponível no botão flutuante do site
 
