@@ -306,10 +306,9 @@ header nav.menu-desktop ul li a:hover {
 
 header .victor-contato .btn-pill { padding: 8px 24px; font-size: 14px; margin: 0; }
 
-/* ── Dark / Lang buttons ── */
-header .dark-button, .lang-button { position: fixed; top: 20px; z-index: 1001; }
-header .dark-button { right: 20px; }
-.lang-button        { right: 80px; }
+/* ── Theme / language toggles (inside the nav pill) ── */
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+header .dark-button { position: relative; }
 
 header .dark-button .checkbox {
     opacity: 0; position: absolute;
@@ -341,7 +340,7 @@ header .dark-button .label .ball {
 
 .checkbox:checked + .label .ball { transform: translateX(-26px); }
 
-.lang-button button {
+.lang-button {
     background: var(--toggle-bg);
     backdrop-filter: blur(10px);
     border: 1px solid var(--toggle-border);
@@ -354,7 +353,7 @@ header .dark-button .label .ball {
     font-weight: 500;
 }
 
-.lang-button button:hover {
+.lang-button:hover {
     background: var(--grad-static);
     border-color: transparent;
     color: #fff; -webkit-text-fill-color: #fff;
@@ -378,11 +377,10 @@ header .dark-button .label .ball {
 /* ── Mobile Menu ── */
 .btn-abrir-menu {
     background: none; border: 0; padding: 0; margin: 0;
-    display: none; cursor: pointer;
-    position: fixed; top: 14px; right: 140px; z-index: 999;
+    display: none; cursor: pointer; line-height: 1;
 }
 
-.btn-abrir-menu i { color: #ffffff; font-size: 48px; }
+.btn-abrir-menu i { color: var(--text-color-h); font-size: 30px; }
 
 .menu-mobile {
     background: rgba(5, 5, 15, 0.97);
@@ -1109,7 +1107,6 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
     .flex { flex-direction: column; }
     .menu-desktop, header .victor-contato { display: none; }
     .btn-abrir-menu { display: block; }
-    header > .interface { width: calc(100% - 120px); left: 20px; transform: none; border-radius: 20px; }
     section.topo-do-site { padding: 20px 6%; }
     section.topo-do-site .flex { padding-top: 120px; gap: 40px; }
     .topo-do-site .txt-topo-site p { font-size: 16px; }
@@ -1138,8 +1135,4 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
     -webkit-background-clip: unset !important;
     background-clip: unset !important;
     -webkit-text-fill-color: unset !important;
-}
-
-@media (max-width: 480px) {
-    .lang-button { right: 72px; }
 }

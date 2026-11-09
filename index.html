@@ -51,14 +51,24 @@
                 </ul>
             </nav>
 
-            <div class="victor-contato" id="toggleBtn">
-                <a href="#footer" class="btn-pill" data-pt="Contato" data-en="Contact">Contact</a>
+            <div class="nav-actions">
+                <div class="victor-contato">
+                    <a href="#footer" class="btn-pill" data-pt="Contato" data-en="Contact">Contact</a>
+                </div>
+                <button class="lang-button" id="lang-toggle" onclick="toggleLang()" aria-label="Switch language">PT</button>
+                <div class="dark-button">
+                    <input type="checkbox" class="checkbox" id="chk" aria-label="Light theme"/>
+                    <label class="label" for="chk">
+                        <i class="bi bi-moon-fill"></i>
+                        <i class="bi bi-brightness-high-fill"></i>
+                        <div class="ball"></div>
+                    </label>
+                </div>
+                <button class="btn-abrir-menu" id="btn-abrir-menu" aria-label="Open menu" aria-expanded="false" aria-controls="menu-mobile">
+                    <i class="bi bi-list"></i>
+                </button>
             </div>
         </div>
-
-        <button class="btn-abrir-menu" id="btn-abrir-menu" aria-label="Open menu" aria-expanded="false" aria-controls="menu-mobile">
-            <i class="bi bi-list"></i>
-        </button>
 
         <div class="menu-mobile" id="menu-mobile">
             <button class="btn-fechar" aria-label="Close menu">
@@ -75,19 +85,6 @@
             </nav>
         </div>
         <div class="overlay-menu-mobile" id="overlay-menu-mobile"></div>
-
-        <div class="lang-button">
-            <button id="lang-toggle" onclick="toggleLang()">🇧🇷 PT</button>
-        </div>
-
-        <div class="dark-button">
-            <input type="checkbox" class="checkbox" id="chk"/>
-            <label class="label" for="chk">
-                <i class="bi bi-moon-fill"></i>
-                <i class="bi bi-brightness-high-fill"></i>
-                <div class="ball"></div>
-            </label>
-        </div>
     </header>
 
     <main>

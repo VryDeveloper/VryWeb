@@ -24,7 +24,7 @@ function applyLang(lang) {
         el.innerHTML = el.getAttribute(`data-${lang}`);
     });
     const btn = document.getElementById('lang-toggle');
-    if (btn) btn.textContent = lang === 'pt' ? '🇺🇸 EN' : '🇧🇷 PT';
+    if (btn) btn.textContent = lang === 'pt' ? 'EN' : 'PT';
     document.documentElement.lang = lang === 'pt' ? 'pt-br' : 'en';
     localStorage.setItem('lang', lang);
     currentLang = lang;
