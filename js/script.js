@@ -56,11 +56,14 @@ viewButtons.forEach(button => {
 });
 
 // ── Scroll Animations ─────────────────────────────────────────────────────────
-const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+// threshold 0: sections taller than 10x the viewport never reach 10% visibility
+const observerOptions = { rootMargin: '0px 0px -8% 0px', threshold: 0 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
     });
 }, observerOptions);
 
@@ -71,15 +74,3 @@ document.querySelectorAll('section').forEach(section => {
 
 document.querySelectorAll('.habilidades-box').forEach(box => observer.observe(box));
 document.querySelectorAll('.projeto-card').forEach(card => observer.observe(card));
-
-const checkVisibleElements = () => {
-    document.querySelectorAll('.fade-in, .habilidades-box, .projeto-card').forEach(element => {
-        const rect = element.getBoundingClientRect();
-        if (rect.top < window.innerHeight && rect.bottom > 0) {
-            element.classList.add('visible');
-        }
-    });
-};
-
-window.addEventListener('load', checkVisibleElements);
-window.addEventListener('scroll', checkVisibleElements);
