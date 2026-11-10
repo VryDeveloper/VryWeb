@@ -76,6 +76,13 @@ function buildItems() {
 
 // Subsequence match. Consecutive hits and word starts score higher; -1 means no match.
 function fuzzy(query, text) {
+    // an exact substring beats any scattered match; a whole word beats a fragment
+    const at = text.indexOf(query);
+    if (at !== -1) {
+        const wordStart = at === 0 || text[at - 1] === ' ';
+        const wordEnd = at + query.length === text.length || text[at + query.length] === ' ';
+        return 100 + (wordStart ? 20 : 0) + (wordEnd ? 20 : 0) - text.length * 0.01;
+    }
     let score = 0, ti = 0, streak = 0;
     for (const ch of query) {
         const found = text.indexOf(ch, ti);
