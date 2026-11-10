@@ -1,0 +1,105 @@
+/* ═══════════════════════════════════════════════════════════════
+   GLOBAL
+═══════════════════════════════════════════════════════════════ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { background: #0a0a0a; width: 6px; }
+::-webkit-scrollbar-thumb { background: var(--grad-static); border-radius: 30px; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    background-color: var(--body-bg);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* atmosphere: soft purple/blue glows + a faint dot grid for depth */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 20% 20%, rgba(139,0,255,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(0,11,255,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(250,0,255,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 0%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 0%, transparent 75%);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+}
+
+[data-theme="light"] body::after { background-image: radial-gradient(rgba(0,0,0,0.06) 1px, transparent 1px); }
+
+p { cursor: default; color: var(--text-color-p); }
+h1, h2, h3, h4 { cursor: default; }
+
+/* ── strong: gradiente só em h1/h2, cor sólida em p ── */
+strong { font-weight: 700; }
+
+h1 strong, h2 strong {
+    background: var(--grad-static);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.topo-do-site h1 strong,
+.sobre .txt-sobre h2 strong {
+    background: var(--grad);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: degrade 5s linear infinite alternate;
+}
+
+/* the hero name gets the most emphasis: faster sweep + a subtle breathing scale */
+.topo-do-site h1 strong {
+    display: inline-block;
+    background-size: 300%;
+    animation: degrade 3.5s linear infinite alternate, breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.015); }
+}
+
+/* tech/tool names read as "keywords" — same role as the keyword color in the hero code card */
+p strong {
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    color: var(--pal-2);
+    font-weight: 700;
+}
+
+/* ── span: só nos títulos, nunca global ── */
+h2.titulo span,
+.github-stats h2.titulo span {
+    font-size: 82px;
+    background: var(--grad-static);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.interface { max-width: 1280px; margin: 0 auto; }
+.flex { display: flex; }

@@ -1,0 +1,55 @@
+/* ═══════════════════════════════════════════════════════════════
+   MOTION
+═══════════════════════════════════════════════════════════════ */
+/* ── Keyframes ── */
+@keyframes degrade {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 400% 50%; }
+}
+@keyframes pulse-glow {
+    0%   { opacity: 0.4; transform: translateX(-50%) scale(1); }
+    100% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+@keyframes float {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-12px); }
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL ANIMATIONS
+═══════════════════════════════════════════════════════════════ */
+.fade-in {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+    will-change: transform, opacity;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════════════════════════════════════════════════════════
+   ACCESSIBILITY
+═══════════════════════════════════════════════════════════════ */
+:focus-visible { outline: 2px solid rgba(139,0,255,0.6); outline-offset: 3px; border-radius: 4px; }
+
+/* Only the auto-playing/looping decorative animations are muted for
+   reduced-motion users — hover/press feedback and scroll reveals stay,
+   since those are short, user-triggered and not the kind of motion
+   WCAG 2.3.3 is concerned with. */
+@media (prefers-reduced-motion: reduce) {
+    .topo-do-site h1::after,
+    .topo-do-site .kicker::before, .topo-do-site .kicker::after,
+    section.topo-do-site::before,
+    .topo-do-site h1 strong, .sobre .txt-sobre h2 strong,
+    section.formulario .interface a,
+    .pulse-dot,
+    .habilidades .habilidades-box > i,
+    .whatsapp-button::before,
+    .hero-code-cursor {
+        animation: none;
+    }
+    html { scroll-behavior: auto; }
+}

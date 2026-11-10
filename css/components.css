@@ -1,0 +1,72 @@
+/* ═══════════════════════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════════════════════ */
+.btn-pill {
+    display: inline-block;
+    padding: 12px 44px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    -webkit-text-fill-color: #fff;
+    background: var(--grad-static);
+    border: 0; text-decoration: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.btn-pill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: inherit;
+}
+
+.btn-pill:hover::after { opacity: 1; }
+button:hover, .btn-pill:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 30px var(--glow); }
+
+/* light sweep across gradient buttons on hover */
+.btn-pill::before,
+.projeto-links a::before {
+    content: '';
+    position: absolute; top: 0; left: -75%;
+    width: 40%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.5), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+
+.btn-pill:hover::before,
+.projeto-links a:hover::before { animation: shimmer-sweep 0.85s ease; }
+
+@keyframes shimmer-sweep {
+    from { left: -75%; }
+    to   { left: 125%; }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   LOADER
+═══════════════════════════════════════════════════════════════ */
+.loader {
+    position: fixed; inset: 0; background: var(--body-bg);
+    display: flex; justify-content: center; align-items: center;
+    z-index: 9999; transition: opacity 0.6s ease-out;
+}
+
+.loader.hidden { opacity: 0; pointer-events: none; }
+
+.loader-circle {
+    width: 48px; height: 48px;
+    border: 3px solid rgba(139,0,255,0.2);
+    border-top-color: rgba(139,0,255,1);
+    border-radius: 50%; animation: spin 0.8s linear infinite;
+    margin: 0 auto 16px; will-change: transform;
+}
+
+.loader-text { font-family: var(--font-mono); color: var(--text-color-p); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
