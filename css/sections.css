@@ -608,3 +608,7 @@ footer { padding: 0 4% 40px; }
     .footer-row { align-items: flex-start; }
     .footer-row a { margin-left: 0; display: block; }
 }
+
+/* the logo is white line art on black: flip it on the light theme */
+[data-theme="light"] .nav .logo img,
+[data-theme="light"] .footer-row img { filter: invert(1); }

@@ -438,3 +438,8 @@ dialog.case[open] { display: flex; flex-direction: column; animation: dialog-in 
     .chip { flex-shrink: 0; }
     .view-controls { display: none; }
 }
+
+@media (max-width: 680px) {
+    /* the single-column card is long enough without the highlights list */
+    .project-grid[data-bento] .projeto-card.featured:first-child .projeto-highlights { display: none; }
+}
