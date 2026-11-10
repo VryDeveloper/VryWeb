@@ -283,7 +283,7 @@ section.topo-do-site {
 
 /* syntax roles — the same 4 gradient colors, now meaning something:
    comment = meta, keyword = language, property = primary/brand, string = identity */
-.c-comment { color: var(--pal-4); opacity: 0.75; font-style: italic; }
+.c-comment { color: var(--pal-4); font-style: italic; }
 .c-key     { color: var(--pal-2); }
 .c-var     { color: var(--text-color-h); }
 .c-prop    { color: var(--accent-text); }

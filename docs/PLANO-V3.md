@@ -322,3 +322,17 @@ Abrir com um servidor estático (`npx serve .` ou `python -m http.server`; ES mo
 
 ### Ainda aberta (não bloqueia)
 7. Prints ou GIFs dos projetos sem imagem (principalmente o jogo e o VryHive).
+
+---
+
+## 9. Estado da implementação (2026-11-09)
+
+Fases 0 a 7 implementadas na branch `feat/portfolio-v3`. Diferenças em relação ao plano:
+
+- **CSS em 6 arquivos, não 5**: os estilos de projetos e do estudo de caso ficaram em `css/projects.css`.
+- **Sem vídeo no hover dos cards**: não havia `ffmpeg` na máquina para converter os GIFs de demo. As galerias usam imagens estáticas em WebP.
+- **Nome do hero sem animação letra a letra**: o gradiente animado usa `background-clip: text` num único elemento; dividir em letras quebraria a continuidade do gradiente.
+- **Kitsuy Store segue sem screenshot** (usa o placeholder com ícone). Vale tirar um print da loja no ar e salvar em `assets/projects/kitsuy-store/cover.webp`, depois apontar `cover` no `projects.js`.
+- **Sem prints**: VryHive, Bot WhatsApp SaaS, Kanban em Go, ESG Inteligentes e Figure Radar usam o placeholder com trecho de código.
+- **Hero**: os números são 19 projetos, 189 testes (51 + 124 + 14) e 4 projetos no ar, calculados de `projects.js`.
+- A seção de licença do README foi removida porque apontava para um arquivo `LICENSE` que não existe no repositório.

@@ -18,8 +18,8 @@ export function applyLang(next = lang, { silent = false } = {}) {
     document.querySelectorAll('[data-aria-pt]').forEach(el => {
         el.setAttribute('aria-label', el.getAttribute(`data-aria-${lang}`));
     });
-    const btn = document.getElementById('lang-toggle');
-    if (btn) btn.textContent = lang === 'pt' ? 'EN' : 'PT';
+    const code = document.getElementById('lang-code');
+    if (code) code.textContent = lang === 'pt' ? 'EN' : 'PT';
     document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
     try { localStorage.setItem('lang', lang); } catch {}
     document.title = TITLE[lang];
