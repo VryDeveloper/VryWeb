@@ -131,6 +131,8 @@ export const projects = [
         tier: 'featured',
         categories: ['fullstack'],
         status: 'production',
+        cover: 'assets/projects/kitsuy-store/cover.webp',
+        gallery: ['galeria', 'estoque', 'como-funciona'],
         icon: 'bi-bag-check-fill',
         stack: ['react', 'typescript', 'vite', 'firebase', 'zod', 'vitest', 'vercel'],
         summary: {
@@ -161,7 +163,7 @@ export const projects = [
         },
         links: {
             repo: 'https://github.com/VryDeveloper/kitsuy-store-realese',
-            demo: 'https://kitsuy-store-realese.vercel.app',
+            demo: 'https://kitsuystore.com.br',
         },
     },
     {
