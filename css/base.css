@@ -5,16 +5,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Space Grotesk', sans-serif;
 }
 
 /* ── Scrollbar ── */
-::-webkit-scrollbar { background: #0a0a0a; width: 6px; }
+::-webkit-scrollbar { background: transparent; width: 6px; height: 6px; }
 ::-webkit-scrollbar-thumb { background: var(--grad-static); border-radius: 30px; }
 
 html { scroll-behavior: smooth; }
 
 body {
+    font-family: var(--font-display);
+    color: var(--text-color-p);
     background-color: var(--body-bg);
     min-height: 100vh;
     overflow-x: hidden;
@@ -103,3 +104,22 @@ h2.titulo span,
 
 .interface { max-width: 1280px; margin: 0 auto; }
 .flex { display: flex; }
+
+/* form controls and code do not inherit fonts by default */
+button, input { font: inherit; color: inherit; }
+pre, code, kbd { font-family: var(--font-mono); }
+img { max-width: 100%; }
+
+.sr-only {
+    position: absolute; width: 1px; height: 1px; overflow: hidden;
+    clip-path: inset(50%); white-space: nowrap;
+}
+
+.skip-link {
+    position: fixed; top: 12px; left: 12px; z-index: 2000;
+    padding: 10px 18px; border-radius: 30px;
+    background: var(--body-bg-alt); color: var(--text-color-h);
+    border: 1px solid var(--accent); text-decoration: none;
+    transform: translateY(-200%);
+}
+.skip-link:focus { transform: none; }

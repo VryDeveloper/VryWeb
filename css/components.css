@@ -29,7 +29,7 @@
 }
 
 .btn-pill:hover::after { opacity: 1; }
-button:hover, .btn-pill:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 30px var(--glow); }
+.btn-pill:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 30px var(--glow); }
 
 /* light sweep across gradient buttons on hover */
 .btn-pill::before,
@@ -70,3 +70,10 @@ button:hover, .btn-pill:hover { transform: translateY(-3px) scale(1.03); box-sha
 }
 
 .loader-text { font-family: var(--font-mono); color: var(--text-color-p); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; }
+
+.btn-ghost {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-color-h); -webkit-text-fill-color: var(--text-color-h);
+}
+.btn-ghost:hover { border-color: rgba(139,0,255,0.5); }

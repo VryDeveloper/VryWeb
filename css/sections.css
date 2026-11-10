@@ -295,9 +295,8 @@ section.topo-do-site .flex {
     color: var(--text-color-p); margin: 0 auto; opacity: 0.7;
 }
 
-.hero-code-body, .hero-code-body * { font-family: var(--font-mono); }
-
 .hero-code-body {
+    font-family: var(--font-mono);
     padding: 24px 22px;
     font-size: 13.5px; line-height: 1.9;
     color: var(--text-color-p);
@@ -351,202 +350,6 @@ h2.titulo::after {
     background: var(--grad-static);
     border-radius: 3px; margin: 12px auto 0;
 }
-
-/* ═══════════════════════════════════════════════════════════════
-   PROJECTS
-═══════════════════════════════════════════════════════════════ */
-section.portfolio { padding: 80px 4%; margin-bottom: 60px; }
-
-section.portfolio .flex {
-    justify-content: center; margin-top: 60px;
-    gap: 32px; flex-wrap: wrap;
-}
-
-.categoria-titulo {
-    font-family: var(--font-mono);
-    font-size: 14px; font-weight: 500;
-    margin: 56px 0 8px; text-align: center;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: var(--text-color-p); opacity: 0.9;
-}
-
-.categoria-titulo.produto { margin-top: 0; }
-
-.projeto-card {
-    width: 340px; background: var(--glass-bg);
-    border: 1px solid var(--glass-border); border-radius: 20px;
-    overflow: hidden; position: relative;
-    opacity: 0; transform: translateY(40px);
-    transition: opacity 0.6s ease-out, transform 0.5s ease-out, box-shadow 0.3s, border-color 0.3s;
-    will-change: transform, opacity;
-}
-
-.projeto-card.visible { opacity: 1; transform: translateY(0); }
-
-.projeto-card::before {
-    content: ''; position: absolute; inset: 0;
-    border-radius: 20px; padding: 1px;
-    background: var(--grad-static);
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor; mask-composite: exclude;
-    opacity: 0; transition: opacity 0.3s; pointer-events: none;
-}
-
-.projeto-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35), 0 0 30px var(--glow);
-    border-color: rgba(139,0,255,0.3);
-}
-
-.projeto-card:hover::before { opacity: 1; }
-
-.img-port {
-    width: 100%; height: 190px;
-    background-size: cover; background-position: top;
-    position: relative; overflow: hidden;
-    transition: background-position 3s ease;
-}
-
-.img-port::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.6) 100%);
-}
-
-.img-port:hover { background-position: bottom; }
-.overlay { display: none; }
-
-/* ── Placeholder cover for projects without a screenshot yet ── */
-.img-port.placeholder {
-    display: flex; align-items: center; justify-content: center;
-    background:
-        repeating-linear-gradient(135deg, rgba(139,0,255,0.05) 0, rgba(139,0,255,0.05) 2px, transparent 2px, transparent 14px),
-        var(--body-bg-alt);
-}
-.img-port.placeholder::after { content: none; }
-.img-port.placeholder i { font-size: 46px; color: var(--accent); opacity: 0.4; }
-
-/* ── Featured project (Kitsuy Store) ── */
-.featured-wrap { display: flex; justify-content: center; margin-bottom: 8px; }
-
-.projeto-card.featured {
-    width: 100%; max-width: 940px;
-    display: flex; flex-direction: row;
-    border-color: rgba(139,0,255,0.3);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px var(--glow);
-}
-
-.projeto-card.featured .img-port { width: 42%; flex-shrink: 0; height: auto; min-height: 300px; }
-.projeto-card.featured .img-port.placeholder i { font-size: 64px; }
-
-.projeto-card.featured .projeto-info {
-    width: 58%; padding: 40px 44px;
-    display: flex; flex-direction: column; justify-content: center;
-}
-
-.projeto-card.featured .projeto-info h3 { font-size: 30px; }
-.projeto-card.featured .projeto-info p { font-size: 15.5px; }
-
-.projeto-badge, .projeto-badge span {
-    font-family: var(--font-mono);
-}
-
-.projeto-badge {
-    display: inline-flex; align-items: center; gap: 9px;
-    font-size: 11px; font-weight: 600;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--accent-2); margin-bottom: 16px; width: fit-content;
-}
-
-.pulse-dot {
-    width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2);
-    animation: pulse-dot-anim 2s infinite;
-}
-
-@keyframes pulse-dot-anim {
-    0%   { box-shadow: 0 0 0 0 rgba(91,140,255,0.5); }
-    70%  { box-shadow: 0 0 0 8px rgba(91,140,255,0); }
-    100% { box-shadow: 0 0 0 0 rgba(91,140,255,0); }
-}
-
-.tag-private {
-    font-family: var(--font-mono); font-size: 12px; font-weight: 500;
-    color: var(--text-color-p); opacity: 0.85;
-    border: 1px dashed var(--glass-border); border-radius: 30px;
-    padding: 7px 16px;
-}
-
-.projeto-info { padding: 20px 20px 24px; position: relative; z-index: 1; }
-.projeto-info h3 { font-size: 20px; font-weight: 700; margin-bottom: 8px; color: var(--text-color-h); }
-.projeto-info p {
-    font-size: 14px; line-height: 1.6;
-    margin-bottom: 16px; text-align: left;
-    color: var(--text-color-p);
-}
-
-/* ── Tech Icons (devicon) ── */
-.tech-icons {
-    display: flex; flex-wrap: wrap;
-    gap: 10px; margin-bottom: 16px; align-items: center;
-}
-
-.tech-icons i {
-    font-size: 28px;
-    transition: transform 0.25s ease, filter 0.25s ease;
-    cursor: default; will-change: transform;
-    /* reset any inherited background-clip */
-    background: none !important;
-    -webkit-background-clip: unset !important;
-    background-clip: unset !important;
-    -webkit-text-fill-color: unset !important;
-}
-
-/* ícones sem cor própria ficam brancos no dark / cinza no light */
-.tech-icons i:not([class*="colored"]) { color: var(--text-color-h); }
-
-.tech-icons i:hover {
-    transform: translateY(-5px) scale(1.2);
-    filter: drop-shadow(0 4px 10px rgba(139,0,255,0.5));
-}
-
-/* ── Project Links ── */
-.projeto-links { display: flex; gap: 10px; flex-wrap: wrap; }
-
-.projeto-links a {
-    color: #fff; -webkit-text-fill-color: #fff;
-    text-decoration: none; font-size: 13px; font-weight: 600;
-    font-family: var(--font-mono);
-    display: flex; align-items: center; gap: 6px;
-    padding: 7px 16px; border-radius: 30px;
-    background: var(--grad-static); cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative; overflow: hidden;
-    will-change: transform;
-}
-
-.projeto-links a:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px var(--glow);
-}
-
-/* ── View Controls ── */
-.view-controls { display: flex; justify-content: flex-end; gap: 8px; margin: 20px 0 0; }
-
-.view-btn {
-    background: var(--glass-bg); border: 1px solid var(--glass-border);
-    color: var(--text-color-h); width: 38px; height: 38px;
-    border-radius: 10px; cursor: pointer;
-    transition: background 0.2s, color 0.2s;
-    display: flex; align-items: center; justify-content: center;
-}
-
-.view-btn:hover, .view-btn.active {
-    background: var(--grad-static); border-color: transparent; color: #fff;
-}
-
-.portfolio-grid.list-view .flex { flex-direction: column; gap: 20px; max-width: 800px; margin: 20px auto 0; }
-.portfolio-grid.list-view .projeto-card { width: 100%; max-width: 800px; margin: 0 auto; }
-.portfolio-grid.list-view .img-port { height: 260px; }
 
 /* ═══════════════════════════════════════════════════════════════
    SKILLS
@@ -626,8 +429,6 @@ section.habilidades .flex { gap: 24px; flex-wrap: wrap; justify-content: center;
 .habilidades-box:nth-child(2) { transition-delay: 0.1s; }
 .habilidades-box:nth-child(3) { transition-delay: 0.2s; }
 .habilidades-box:nth-child(4) { transition-delay: 0.3s; }
-.projeto-card:nth-child(2)    { transition-delay: 0.1s; }
-.projeto-card:nth-child(3)    { transition-delay: 0.2s; }
 
 /* ═══════════════════════════════════════════════════════════════
    GITHUB — static terminal-style highlight card (no live API calls)
@@ -822,21 +623,6 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
     .sobre .txt-sobre p { font-size: 16px; }
     .sobre .txt-sobre .victor-social { justify-content: center; }
     section.portfolio { padding: 60px 6%; }
-    .projeto-card { width: 100%; max-width: 380px; margin: 0 auto; }
-    .projeto-card.featured { flex-direction: column; max-width: 380px; }
-    .projeto-card.featured .img-port { width: 100%; height: 200px; min-height: 0; }
-    .projeto-card.featured .projeto-info { width: 100%; padding: 24px 20px; }
-    .projeto-card.featured .projeto-info h3 { font-size: 22px; }
     section.formulario { padding: 40px 6%; }
     section.formulario .interface a { font-size: 24px; letter-spacing: 2px; padding: 16px 24px; }
-}
-
-/* Fix devicon — reset font-family e background nos pseudo-elementos */
-.tech-icons i[class^="devicon-"],
-.tech-icons i[class^="devicon-"]::before {
-    font-family: 'devicon' !important;
-    background: none !important;
-    -webkit-background-clip: unset !important;
-    background-clip: unset !important;
-    -webkit-text-fill-color: unset !important;
 }

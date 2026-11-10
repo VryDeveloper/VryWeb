@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/components.css">
     <link rel="stylesheet" href="./css/sections.css">
+    <link rel="stylesheet" href="./css/projects.css">
     <link rel="stylesheet" href="./css/motion.css">
     <script type="module" src="./js/main.js"></script>
 </head>
@@ -142,11 +143,22 @@
         <section class="portfolio" id="projetos">
             <div class="interface">
                 <h2 class="titulo" data-path="// ~/projects" data-pt="Projetos" data-en="Projects">Projects</h2>
-                <div class="view-controls">
-                    <button class="view-btn active" data-view="grid"><i class="bi bi-grid"></i></button>
-                    <button class="view-btn" data-view="list"><i class="bi bi-list"></i></button>
+                <div class="project-toolbar">
+                    <div class="chips" id="project-filters" role="group" data-aria-pt="Filtrar projetos" data-aria-en="Filter projects" aria-label="Filter projects"></div>
+                    <div class="view-controls">
+                        <button class="view-btn active" data-view="grid" data-aria-pt="Ver em grade" data-aria-en="Grid view" aria-label="Grid view"><i class="bi bi-grid"></i></button>
+                        <button class="view-btn" data-view="list" data-aria-pt="Ver em lista" data-aria-en="List view" aria-label="List view"><i class="bi bi-list"></i></button>
+                    </div>
                 </div>
-                <div class="portfolio-grid"></div>
+                <p class="sr-only" id="project-count" aria-live="polite"></p>
+                <div class="project-grid" id="project-grid"></div>
+                <div class="archive" id="project-archive" hidden>
+                    <button class="archive-toggle" aria-expanded="false" aria-controls="archive-list">
+                        <span id="archive-label"></span>
+                        <i class="bi bi-chevron-down"></i>
+                    </button>
+                    <div class="archive-body"><div class="archive-inner" id="archive-list" inert></div></div>
+                </div>
                 <noscript><p>Projects are listed on <a href="https://github.com/VryDeveloper">GitHub</a>.</p></noscript>
             </div>
         </section>
@@ -275,6 +287,8 @@
             </div>
         </div>
     </footer>
+
+    <dialog class="case" id="case-study" aria-labelledby="case-title"></dialog>
 
     <a href="https://wa.me/5531996588742" class="whatsapp-button" target="_blank" aria-label="WhatsApp">
         <i class="bi bi-whatsapp"></i>
