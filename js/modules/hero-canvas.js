@@ -5,10 +5,10 @@ const DOWNSCALE = 10;
 
 // the palette's four accents (tokens.css --pal-*), as rgb
 const ORBS = [
-    { rgb: '250,0,255',  x: 0.72, y: 0.30, r: 0.34, follow: 0.035, pull: 0.55, speed: 0.00021, phase: 0.0 },
-    { rgb: '91,140,255', x: 0.30, y: 0.62, r: 0.40, follow: 0.020, pull: 0.30, speed: 0.00016, phase: 2.1 },
-    { rgb: '139,0,255',  x: 0.55, y: 0.50, r: 0.46, follow: 0.012, pull: 0.18, speed: 0.00012, phase: 4.2 },
-    { rgb: '217,70,239', x: 0.86, y: 0.72, r: 0.26, follow: 0.050, pull: 0.70, speed: 0.00026, phase: 1.3 },
+    { rgb: '250,0,255',  x: 0.72, y: 0.30, r: 0.34, follow: 0.07, pull: 0.55, speed: 0.00021, phase: 0.0 },
+    { rgb: '91,140,255', x: 0.30, y: 0.62, r: 0.40, follow: 0.04, pull: 0.30, speed: 0.00016, phase: 2.1 },
+    { rgb: '139,0,255',  x: 0.55, y: 0.50, r: 0.46, follow: 0.024, pull: 0.18, speed: 0.00012, phase: 4.2 },
+    { rgb: '217,70,239', x: 0.86, y: 0.72, r: 0.26, follow: 0.10, pull: 0.70, speed: 0.00026, phase: 1.3 },
 ];
 
 export function initHeroCanvas() {
@@ -49,8 +49,10 @@ export function initHeroCanvas() {
         }
     }
 
+    // slow, blurry light does not need 60fps: draw every other frame
+    let skip = false;
     function loop(time) {
-        draw(time);
+        if (!(skip = !skip)) draw(time);
         raf = requestAnimationFrame(loop);
     }
 
