@@ -7,6 +7,7 @@ import { initProjects } from './modules/projects.js';
 import { initCaseStudy } from './modules/case-study.js';
 import { initSkills } from './modules/skills.js';
 import { initGithub } from './modules/github.js';
+import { initPalette, copyEmail } from './modules/palette.js';
 import { initHeroCanvas } from './modules/hero-canvas.js';
 import { initTypewriter } from './modules/typewriter.js';
 import { initFx, initCountUp } from './modules/fx.js';
@@ -30,6 +31,7 @@ tick();
 setInterval(tick, 30_000);
 document.addEventListener('langchange', tick);
 
+document.getElementById('copy-email').addEventListener('click', copyEmail);
 
 initI18n();
 initTheme();
@@ -39,6 +41,7 @@ initSkills();
 initReveal();
 initCaseStudy();
 initGithub();
+initPalette();
 initHeroCanvas();
 initTypewriter();
 initFx();
