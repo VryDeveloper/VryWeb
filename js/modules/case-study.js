@@ -60,7 +60,9 @@ function show(p) {
         dialog.querySelector('.case-scroll').scrollTop = 0;
     };
     // the card's cover morphs into the modal's first image
-    const cover = !dialog.open && document.querySelector(`.projeto-card[data-id="${p.id}"] .img-port`);
+    // only when a click opened it: a deep link on page load should not wait for a transition frame
+    const cover = fromClick && !dialog.open && document.querySelector(`.projeto-card[data-id="${p.id}"] .img-port`);
+    fromClick = false;
     if (!cover || !document.startViewTransition || reducedMotion()) return apply();
     cover.style.viewTransitionName = 'case-cover';
     document.startViewTransition(() => { cover.style.viewTransitionName = ''; apply(); });
@@ -71,6 +73,8 @@ function sync() {
     if (p) show(p);
     else if (dialog.open) dialog.close();
 }
+
+let fromClick = false;
 
 export const openProject = id => { location.hash = `/p/${id}`; };
 
@@ -84,7 +88,7 @@ function step(delta) {
 export function initCaseStudy() {
     document.addEventListener('click', e => {
         const opener = e.target.closest('[data-open]');
-        if (opener) openProject(opener.dataset.open);
+        if (opener) { fromClick = true; openProject(opener.dataset.open); }
     });
 
     dialog.addEventListener('click', e => {
