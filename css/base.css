@@ -63,7 +63,7 @@ h1 strong, h2 strong {
 }
 
 .topo-do-site h1 strong,
-.sobre .txt-sobre h2 strong {
+.contact-card h2 strong {
     background: var(--grad);
     background-size: 400%;
     -webkit-background-clip: text;
@@ -90,16 +90,6 @@ p strong {
     -webkit-text-fill-color: currentColor;
     color: var(--pal-2);
     font-weight: 700;
-}
-
-/* ── span: só nos títulos, nunca global ── */
-h2.titulo span,
-.github-stats h2.titulo span {
-    font-size: 82px;
-    background: var(--grad-static);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
 }
 
 .interface { max-width: 1280px; margin: 0 auto; }

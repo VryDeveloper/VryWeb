@@ -64,7 +64,24 @@ export function initCountUp(scope = document) {
     scope.querySelectorAll('[data-count]').forEach(el => io.observe(el));
 }
 
+// The hero code card leans toward the pointer anywhere over the hero.
+function initHeroTilt() {
+    const hero = document.getElementById('inicio');
+    const card = document.getElementById('hero-code');
+    hero.addEventListener('pointermove', e => {
+        if (!enabled()) return;
+        const r = hero.getBoundingClientRect();
+        card.style.setProperty('--ry', `${((e.clientX - r.left) / r.width - 0.5) * 14}deg`);
+        card.style.setProperty('--rx', `${(0.5 - (e.clientY - r.top) / r.height) * 10}deg`);
+    }, { passive: true });
+    hero.addEventListener('pointerleave', () => {
+        card.style.removeProperty('--ry');
+        card.style.removeProperty('--rx');
+    });
+}
+
 export function initFx() {
     initCards(document.getElementById('project-grid'), '.projeto-card', 5);
+    initHeroTilt();
     initMagnetic();
 }

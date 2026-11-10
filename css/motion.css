@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
-   MOTION
+   MOTION — shared keyframes, scroll reveals, theme transition
 ═══════════════════════════════════════════════════════════════ */
-/* ── Keyframes ── */
 @keyframes degrade {
     0%   { background-position: 0% 50%; }
     100% { background-position: 400% 50%; }
@@ -12,44 +11,67 @@
 }
 @keyframes blink {
     0%, 100% { opacity: 1; }
-    50%       { opacity: 0; }
+    50%      { opacity: 0; }
 }
-@keyframes float {
-    0%   { transform: translateY(0); }
-    100% { transform: translateY(-12px); }
-}
-@keyframes spin { to { transform: rotate(360deg); } }
 
-/* ═══════════════════════════════════════════════════════════════
-   SCROLL ANIMATIONS
-═══════════════════════════════════════════════════════════════ */
-.fade-in {
-    opacity: 0; transform: translateY(30px);
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
-    will-change: transform, opacity;
+/* ── Scroll reveals: reveal.js adds .visible once, through one IntersectionObserver.
+      `translate` keeps `transform` free for hover and tilt effects. ── */
+[data-reveal] {
+    opacity: 0; translate: 0 28px;
+    transition:
+        opacity 0.7s var(--ease-out) var(--delay, 0ms),
+        translate 0.7s var(--ease-out) var(--delay, 0ms);
 }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
+[data-reveal].visible { opacity: 1; translate: 0 0; }
+
+/* cover images drift a little as their card crosses the viewport */
+@supports (animation-timeline: view()) {
+    .project-grid:not(.list-view) .img-port img {
+        animation: cover-drift linear both;
+        animation-timeline: view();
+    }
+    @keyframes cover-drift {
+        from { scale: 1.08; translate: 0 -2%; }
+        to   { scale: 1.08; translate: 0 2%; }
+    }
+}
+
+/* ── Theme switch: the new theme opens as a circle from the toggle.
+      theme.js sets --tx / --ty and the .theme-vt class for the duration. ── */
+.theme-vt::view-transition-old(root),
+.theme-vt::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+
+.theme-vt::view-transition-new(root) { animation: theme-reveal 0.7s var(--ease-out); }
+
+@keyframes theme-reveal {
+    from { clip-path: circle(0 at var(--tx, 50%) var(--ty, 0%)); }
+    to   { clip-path: circle(150vmax at var(--tx, 50%) var(--ty, 0%)); }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    ACCESSIBILITY
 ═══════════════════════════════════════════════════════════════ */
-:focus-visible { outline: 2px solid rgba(139,0,255,0.6); outline-offset: 3px; border-radius: 4px; }
+:focus-visible { outline: 2px solid rgba(139,0,255,0.7); outline-offset: 3px; border-radius: 4px; }
 
-/* Only the auto-playing/looping decorative animations are muted for
-   reduced-motion users — hover/press feedback and scroll reveals stay,
-   since those are short, user-triggered and not the kind of motion
-   WCAG 2.3.3 is concerned with. */
+/* Looping, pointer-following and scroll-linked motion is switched off for
+   reduced-motion users; reveals become a plain fade. The canvas, typewriter,
+   tilt and magnetic effects check the same media query in JS. */
 @media (prefers-reduced-motion: reduce) {
-    .topo-do-site h1::after,
-    .topo-do-site .kicker::before, .topo-do-site .kicker::after,
-    section.topo-do-site::before,
-    .topo-do-site h1 strong, .sobre .txt-sobre h2 strong,
-    section.formulario .interface a,
-    .pulse-dot,
-    .habilidades .habilidades-box > i,
-    .whatsapp-button::before,
-    .hero-code-cursor {
-        animation: none;
-    }
     html { scroll-behavior: auto; }
+
+    .topo-do-site .kicker, .topo-do-site h1, .hero-lead, .hero-cta, .hero-stats, .hero-code,
+    .topo-do-site .kicker::before, .topo-do-site h1 strong, .contact-card h2 strong,
+    .contact-card::before, .pulse-dot, .whatsapp-button::before, .hero-code-cursor,
+    .marquee-track, .timeline::after, .img-port img, .toast,
+    dialog[open], dialog::backdrop {
+        animation: none !important;
+    }
+
+    .marquee-track { flex-wrap: wrap; justify-content: center; width: auto; gap: 16px 32px; }
+    .marquee-track [data-dup] { display: none; }
+
+    [data-reveal], .projeto-card { translate: none; transform: none !important; transition: opacity 0.4s; }
+    .hero-code { transform: none; }
+
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }

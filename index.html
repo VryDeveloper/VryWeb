@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <head>
     <meta charset="UTF-8">
     <script>
@@ -10,16 +10,44 @@
                 || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
         } catch { document.documentElement.dataset.theme = 'dark'; }
     </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Augusto — Full Stack Developer</title>
+    <meta name="description" content="Victor Augusto (VryDeveloper), full stack developer in Salvador, Brazil. Web products built end to end with TypeScript, React, Next.js, Node.js and PostgreSQL, backed by automated tests.">
+    <meta name="author" content="Victor Augusto">
+    <meta name="theme-color" content="#030105">
+    <link rel="canonical" href="https://vrydeveloper.github.io/VryWeb/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vrydeveloper.github.io/VryWeb/">
+    <meta property="og:title" content="Victor Augusto — Full Stack Developer">
+    <meta property="og:description" content="Web products built end to end, backed by automated tests. Projects, case studies and contact.">
+    <meta property="og:image" content="https://vrydeveloper.github.io/VryWeb/assets/og.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Victor Augusto",
+        "alternateName": "VryDeveloper",
+        "jobTitle": "Full Stack Developer",
+        "url": "https://vrydeveloper.github.io/VryWeb/",
+        "address": { "@type": "PostalAddress", "addressLocality": "Salvador", "addressRegion": "BA", "addressCountry": "BR" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "FIAP" },
+        "sameAs": [
+            "https://github.com/VryDeveloper",
+            "https://www.linkedin.com/in/victor-augusto-79a5612b6/"
+        ]
+    }
+    </script>
+
+    <link rel="icon" href="./assets/iconvictor.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Professional portfolio of a full stack web and mobile developer - Projects, skills and experience">
-    <meta name="keywords" content="full stack developer, web developer, programmer, portfolio, web projects">
-    <meta name="author" content="VryDeveloper">
-    <meta name="theme-color" content="#100e0c">
-    <title>VryDeveloper - Full Stack Developer</title>
-    <link rel="shortcut icon" href="./assets/iconvictor.png" type="image/png">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
     <link rel="stylesheet" href="./css/tokens.css">
@@ -32,117 +60,117 @@
 </head>
 
 <body>
-    <div class="loader">
-        <div class="loader-content">
-            <div class="loader-circle"></div>
-            <div class="loader-text" data-pt="Carregando..." data-en="Loading...">Loading...</div>
-        </div>
-    </div>
+    <a class="skip-link" href="#conteudo" data-pt="Pular para o conteúdo" data-en="Skip to content">Skip to content</a>
+    <div id="top-sentinel" aria-hidden="true"></div>
 
     <header>
-        <div class="interface">
-            <div class="logo">
-                <a href="#" aria-label="VryDeveloper — back to top">
-                    <img src="assets/iconvictor.png" width="64" height="64" alt="VryDeveloper logo">
-                </a>
-            </div>
-            
-            <nav class="menu-desktop" id="menu">
-                <ul>
-                    <li><a href="#inicio" data-pt="Início" data-en="Home">Home</a></li>
-                    <li><a href="#habilidades" data-pt="Habilidades" data-en="Skills">Skills</a></li>
-                    <li><a href="#sobre" data-pt="Sobre" data-en="About">About</a></li>
-                    <li><a href="#projetos" data-pt="Projetos" data-en="Projects">Projects</a></li>
-                </ul>
-            </nav>
+        <nav class="nav" id="nav" aria-label="Main">
+            <a class="logo" href="#inicio" data-aria-pt="VryDeveloper, voltar ao topo" data-aria-en="VryDeveloper, back to top" aria-label="VryDeveloper, back to top">
+                <img src="assets/iconvictor.png" width="44" height="44" alt="">
+            </a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#inicio" data-pt="Início" data-en="Home">Home</a></li>
+                <li><a href="#projetos" data-pt="Projetos" data-en="Projects">Projects</a></li>
+                <li><a href="#habilidades" data-pt="Habilidades" data-en="Skills">Skills</a></li>
+                <li><a href="#sobre" data-pt="Sobre" data-en="About">About</a></li>
+                <li class="nav-indicator" aria-hidden="true"></li>
+            </ul>
 
             <div class="nav-actions">
-                <div class="victor-contato">
-                    <a href="#footer" class="btn-pill" data-pt="Contato" data-en="Contact">Contact</a>
-                </div>
-                <button class="lang-button" id="lang-toggle" aria-label="Switch language">PT</button>
+                <button class="nav-kbd" id="palette-open" data-aria-pt="Abrir paleta de comandos" data-aria-en="Open command palette" aria-label="Open command palette">
+                    <i class="bi bi-search"></i><kbd>Ctrl K</kbd>
+                </button>
+                <button class="lang-button" id="lang-toggle" data-aria-pt="Mudar para inglês" data-aria-en="Switch to Portuguese" aria-label="Switch to Portuguese">PT</button>
                 <div class="dark-button">
-                    <input type="checkbox" class="checkbox" id="chk" aria-label="Light theme"/>
+                    <input type="checkbox" class="checkbox" id="chk" data-aria-pt="Tema claro" data-aria-en="Light theme" aria-label="Light theme">
                     <label class="label" for="chk">
                         <i class="bi bi-moon-fill"></i>
                         <i class="bi bi-brightness-high-fill"></i>
-                        <div class="ball"></div>
+                        <span class="ball"></span>
                     </label>
                 </div>
-                <button class="btn-abrir-menu" id="btn-abrir-menu" aria-label="Open menu" aria-expanded="false" aria-controls="menu-mobile">
+                <a href="#contato" class="btn-pill nav-contact" data-pt="Contato" data-en="Contact">Contact</a>
+                <button class="btn-abrir-menu" id="btn-abrir-menu" data-aria-pt="Abrir menu" data-aria-en="Open menu" aria-label="Open menu" aria-expanded="false" aria-controls="menu-mobile">
                     <i class="bi bi-list"></i>
                 </button>
             </div>
-        </div>
+            <span class="nav-progress" aria-hidden="true"></span>
+        </nav>
 
         <div class="menu-mobile" id="menu-mobile">
-            <button class="btn-fechar" aria-label="Close menu">
+            <button class="btn-fechar" data-aria-pt="Fechar menu" data-aria-en="Close menu" aria-label="Close menu">
                 <i class="bi bi-x-lg"></i>
             </button>
-            <nav id="menu-mobile-nav">
+            <nav aria-label="Mobile">
                 <ul>
                     <li><a href="#inicio" data-pt="Início" data-en="Home">Home</a></li>
+                    <li><a href="#projetos" data-pt="Projetos" data-en="Projects">Projects</a></li>
                     <li><a href="#habilidades" data-pt="Habilidades" data-en="Skills">Skills</a></li>
                     <li><a href="#sobre" data-pt="Sobre" data-en="About">About</a></li>
-                    <li><a href="#projetos" data-pt="Projetos" data-en="Projects">Projects</a></li>
-                    <li><a href="#footer" data-pt="Contrate-me!" data-en="Hire me!">Hire me!</a></li>
+                    <li><a href="#contato" data-pt="Contato" data-en="Contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
         <div class="overlay-menu-mobile" id="overlay-menu-mobile"></div>
     </header>
 
-    <main>
+    <main id="conteudo">
         <section class="topo-do-site" id="inicio">
+            <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
             <div class="interface">
-                <div class="flex">
+                <div class="hero-grid">
                     <div class="txt-topo-site">
-                        <span class="kicker" data-pt="$ whoami" data-en="$ whoami">$ whoami</span>
-                        <h1 data-pt="Olá 👋, eu sou o <strong>Victor Augusto.</strong>"
-                            data-en="Hi 👋, I'm <strong>Victor Augusto.</strong>">
-                            Hi 👋, I'm <strong>Victor Augusto.</strong>
+                        <span class="kicker" data-pt="Disponível para novas oportunidades" data-en="Available for new opportunities">Available for new opportunities</span>
+                        <h1 data-pt="Olá, eu sou o <strong>Victor Augusto.</strong>"
+                            data-en="Hi, I'm <strong>Victor Augusto.</strong>">
+                            Hi, I'm <strong>Victor Augusto.</strong>
                         </h1>
 
-                        <p data-pt="Desenvolvedor Full Stack focado em construir soluções eficientes, escaláveis e bem estruturadas, com forte base em desenvolvimento web, back-end e mobile."
-                           data-en="Full Stack Developer focused on building efficient, scalable and well-structured solutions, with a strong foundation in web, back-end and mobile development.">
-                            Full Stack Developer focused on building efficient, scalable and well-structured solutions, with a strong foundation in web, back-end and mobile development.
+                        <p class="hero-lead"
+                           data-pt="Desenvolvedor full stack em Salvador, BA. Construo produtos web de ponta a ponta, do banco de dados à interface, e provo que funcionam com <strong>testes automatizados</strong> e <strong>CI</strong>."
+                           data-en="Full stack developer in Salvador, Brazil. I build web products end to end, from the database to the interface, and prove they work with <strong>automated tests</strong> and <strong>CI</strong>.">
+                            Full stack developer in Salvador, Brazil. I build web products end to end, from the database to the interface, and prove they work with <strong>automated tests</strong> and <strong>CI</strong>.
                         </p>
 
-                        <p data-pt="Trabalho com <strong>JavaScript, TypeScript, Python, Java, C#, Kotlin, SQL, HTML e CSS</strong>, além de ferramentas modernas como <strong>React.js, Node.js, Docker e APIs REST</strong>. Experiência com <strong>Git/GitHub, Firebase, bancos de dados relacionais e NoSQL</strong>, seguindo boas práticas de código limpo."
-                           data-en="I work with <strong>JavaScript, TypeScript, Python, Java, C#, Kotlin, SQL, HTML and CSS</strong>, alongside modern tools like <strong>React.js, Node.js, Docker and REST APIs</strong>. Experienced with <strong>Git/GitHub, Firebase, relational and NoSQL databases</strong>, following clean code best practices.">
-                            I work with <strong>JavaScript, TypeScript, Python, Java, C#, Kotlin, SQL, HTML and CSS</strong>, alongside modern tools like <strong>React.js, Node.js, Docker and REST APIs</strong>. Experienced with <strong>Git/GitHub, Firebase, relational and NoSQL databases</strong>, following clean code best practices.
-                        </p>
-
-                        <p data-pt="Fique à vontade para explorar meus projetos abaixo ou entrar em contato — estou aberto a novas oportunidades."
-                           data-en="Feel free to explore my projects below or get in touch — I'm open to new opportunities.">
-                            Feel free to explore my projects below or get in touch — I'm open to new opportunities.
-                        </p>
-
-                        <div class="victor-contato">
-                            <a href="assets/curriculo.pdf" download="Victor A.R.O - CV.pdf" class="btn-pill" data-pt="BAIXAR CV" data-en="DOWNLOAD CV">DOWNLOAD CV</a>
+                        <div class="hero-cta">
+                            <a href="#projetos" class="btn-pill" data-magnetic data-pt="Ver projetos" data-en="See projects">See projects</a>
+                            <a href="assets/curriculo.pdf" download="Victor Augusto - CV.pdf" class="btn-pill btn-ghost" data-magnetic>
+                                <i class="bi bi-download"></i> <span data-pt="Baixar CV" data-en="Download CV">Download CV</span>
+                            </a>
                         </div>
+
+                        <ul class="hero-stats">
+                            <li><b data-stat="projects">0</b><span data-pt="projetos construídos" data-en="projects built">projects built</span></li>
+                            <li><b data-stat="tests">0</b><span data-pt="testes automatizados" data-en="automated tests">automated tests</span></li>
+                            <li><b data-stat="live">0</b><span data-pt="projetos no ar" data-en="projects live">projects live</span></li>
+                        </ul>
                     </div>
-                    <div class="hero-code" aria-hidden="true">
+
+                    <div class="hero-code" id="hero-code" aria-hidden="true">
                         <div class="hero-code-bar">
                             <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
                             <span class="hero-code-tab">profile.ts</span>
                         </div>
-                        <pre class="hero-code-body"><code><span class="c-comment">// full-stack developer</span>
+                        <pre class="hero-code-body"><code id="hero-code-text"><span class="c-comment">// full stack developer</span>
 <span class="c-key">const</span> <span class="c-var">developer</span> = {
   <span class="c-prop">name</span>: <span class="c-str">"Victor Augusto"</span>,
-  <span class="c-prop">role</span>: <span class="c-str">"Full Stack Developer"</span>,
-  <span class="c-prop">stack</span>: [<span class="c-str">"TypeScript"</span>, <span class="c-str">"React"</span>, <span class="c-str">"C#"</span>, <span class="c-str">"Python"</span>],
-  <span class="c-prop">focus</span>: <span class="c-str">"clean, scalable code"</span>,
+  <span class="c-prop">based</span>: <span class="c-str">"Salvador, BR"</span>,
+  <span class="c-prop">stack</span>: [<span class="c-str">"TypeScript"</span>, <span class="c-str">"React"</span>, <span class="c-str" data-rotate="Node.js,Next.js,Go,C#,Python,Kotlin">"Node.js"</span>],
+  <span class="c-prop">data</span>: [<span class="c-str">"PostgreSQL"</span>, <span class="c-str">"Prisma"</span>],
+  <span class="c-prop">tested</span>: <span class="c-key">true</span>,
   <span class="c-prop">openTo</span>: <span class="c-str">"new opportunities"</span>,
-};<span class="hero-code-cursor"></span></code></pre>
+};</code><span class="hero-code-cursor"></span></pre>
                     </div>
                 </div>
             </div>
         </section>
 
+        <div class="marquee" aria-hidden="true"><div class="marquee-track" id="tech-marquee"></div></div>
+
         <section class="portfolio" id="projetos">
             <div class="interface">
-                <h2 class="titulo" data-path="// ~/projects" data-pt="Projetos" data-en="Projects">Projects</h2>
+                <h2 class="titulo" data-path="// ~/projects"><span data-pt="Projetos" data-en="Projects">Projects</span></h2>
                 <div class="project-toolbar">
                     <div class="chips" id="project-filters" role="group" data-aria-pt="Filtrar projetos" data-aria-en="Filter projects" aria-label="Filter projects"></div>
                     <div class="view-controls">
@@ -165,71 +193,34 @@
 
         <section class="habilidades" id="habilidades">
             <div class="interface">
-                <h2 class="titulo" data-path="// ~/skills" data-pt="Habilidades<span>.</span>" data-en="Skills<span>.</span>">Skills<span>.</span></h2>
-                <div class="flex">
-                    <div class="habilidades-box tecnologias">
-                        <i class="bi bi-code-square"></i>
-                        <h3>Front-End</h3>
-                        <div class="tech-grid">
-                            <div class="tech-item"><i class="bi bi-filetype-html"></i><span>HTML5</span></div>
-                            <div class="tech-item"><i class="bi bi-filetype-css"></i><span>CSS3</span></div>
-                            <div class="tech-item"><i class="bi bi-filetype-js"></i><span>JavaScript</span></div>
-                            <div class="tech-item"><i class="bi bi-filetype-jsx"></i><span>React</span></div>
-                        </div>
-                    </div>
-
-                    <div class="habilidades-box tecnologias">
-                        <i class="bi bi-server"></i>
-                        <h3>Back-End</h3>
-                        <div class="tech-grid">
-                            <div class="tech-item"><i class="bi bi-filetype-java"></i><span>Java</span></div>
-                            <div class="tech-item"><i class="bi bi-filetype-py"></i><span>Python</span></div>
-                            <div class="tech-item"><i class="bi bi-filetype-js"></i><span>Node.js</span></div>
-                            <div class="tech-item"><i class="bi bi-database"></i><span>SQL</span></div>
-                        </div>
-                    </div>
-
-                    <div class="habilidades-box tecnologias">
-                        <i class="bi bi-tools"></i>
-                        <h3 data-pt="Ferramentas" data-en="Tools">Tools</h3>
-                        <div class="tech-grid">
-                            <div class="tech-item"><i class="bi bi-git"></i><span>Git</span></div>
-                            <div class="tech-item"><i class="bi bi-github"></i><span>GitHub</span></div>
-                            <div class="tech-item"><i class="bi bi-box"></i><span>Docker</span></div>
-                            <div class="tech-item"><i class="bi bi-palette"></i><span>Figma</span></div>
-                        </div>
-                    </div>
-
-                    <div class="habilidades-box tecnologias">
-                        <i class="bi bi-grid"></i>
-                        <h3>Frameworks</h3>
-                        <div class="tech-grid">
-                            <div class="tech-item"><i class="bi bi-filetype-jsx"></i><span>Next.js</span></div>
-                            <div class="tech-item"><i class="bi bi-filetype-jsx"></i><span>React Native</span></div>
-                            <div class="tech-item"><i class="bi bi-filetype-java"></i><span>Spring Boot</span></div>
-                            <div class="tech-item"><i class="bi bi-filetype-tsx"></i><span>TypeScript</span></div>
-                        </div>
-                    </div>
-                </div>
+                <h2 class="titulo" data-path="// ~/skills"><span data-pt="Habilidades" data-en="Skills">Skills</span></h2>
+                <p class="section-lead"
+                   data-pt="Cada tecnologia mostra em quantos projetos desta página ela foi usada. Clique para ver quais."
+                   data-en="Each technology shows how many projects on this page use it. Click one to see which.">
+                    Each technology shows how many projects on this page use it. Click one to see which.
+                </p>
+                <div class="skills-grid" id="skills-grid"></div>
             </div>
         </section>
 
-        <section class="github-stats" id="github">
+        <section class="github-stats" id="github" data-nav="habilidades">
             <div class="interface">
-                <h2 class="titulo" data-path="// ~/github">GitHub<span>.</span></h2>
+                <h2 class="titulo" data-path="// ~/github"><span>GitHub</span></h2>
                 <div class="github-container">
                     <div class="terminal-card">
                         <div class="terminal-bar">
                             <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
                             <span class="terminal-title">victor@github ~ %</span>
                         </div>
-                        <div class="terminal-body">
-                            <p class="term-line"><span class="prompt">$</span>gh profile view VryDeveloper</p>
-                            <p class="term-line result"><span class="arrow">→</span><span data-pt="Stack: TypeScript, C#/.NET, Python, Kotlin, SQL" data-en="Stack: TypeScript, C#/.NET, Python, Kotlin, SQL">Stack: TypeScript, C#/.NET, Python, Kotlin, SQL</span></p>
-                            <p class="term-line result"><span class="arrow">→</span><span data-pt="Em produção: Kitsuy Store, Kitsuy Storage" data-en="In production: Kitsuy Store, Kitsuy Storage">In production: Kitsuy Store, Kitsuy Storage</span></p>
-                            <p class="term-line result"><span class="arrow">→</span><span data-pt="Foco: arquitetura limpa, testes automatizados, CI/CD" data-en="Focus: clean architecture, automated testing, CI/CD">Focus: clean architecture, automated testing, CI/CD</span></p>
+                        <div class="terminal-body" id="gh-terminal">
+                            <p class="term-line"><span class="prompt">$</span><span id="gh-command">gh profile view VryDeveloper</span></p>
+                            <div id="gh-output">
+                                <p class="term-line result"><span class="arrow">→</span>Stack: TypeScript, C#/.NET, Python, Kotlin, Go, SQL</p>
+                                <p class="term-line result"><span class="arrow">→</span><span data-pt="Em produção: Kitsuy Store, Kitsuy Storage, Copec" data-en="In production: Kitsuy Store, Kitsuy Storage, Copec">In production: Kitsuy Store, Kitsuy Storage, Copec</span></p>
+                                <p class="term-line result"><span class="arrow">→</span><span data-pt="Foco: testes automatizados, CI/CD, código limpo" data-en="Focus: automated testing, CI/CD, clean code">Focus: automated testing, CI/CD, clean code</span></p>
+                            </div>
                         </div>
-                        <a href="https://github.com/VryDeveloper" target="_blank" class="terminal-cta">
+                        <a href="https://github.com/VryDeveloper" target="_blank" rel="noopener noreferrer" class="terminal-cta">
                             <i class="bi bi-github"></i>
                             <span data-pt="Ver perfil completo no GitHub" data-en="View full profile on GitHub">View full profile on GitHub</span>
                         </a>
@@ -240,57 +231,113 @@
 
         <section class="sobre" id="sobre">
             <div class="interface">
-                <div class="flex">
+                <h2 class="titulo" data-path="// ~/about"><span data-pt="Sobre" data-en="About">About</span></h2>
+                <div class="about-grid">
                     <div class="txt-sobre">
-                        <h2 data-pt="OBRIGADO POR VISITAR MEU <strong>PORTFÓLIO!</strong>"
-                            data-en="THANKS FOR VISITING MY <strong>PORTFOLIO!</strong>">
-                            THANKS FOR VISITING MY <strong>PORTFOLIO!</strong>
-                        </h2>
-                        <p data-pt="Foi um prazer compartilhar minha jornada e projetos com você. Espero que tenha gostado de conhecer um pouco mais sobre meu trabalho e minhas habilidades como desenvolvedor."
-                           data-en="It was a pleasure sharing my journey and projects with you. I hope you enjoyed learning a bit more about my work and skills as a developer.">
-                            It was a pleasure sharing my journey and projects with you. I hope you enjoyed learning a bit more about my work and skills as a developer.
+                        <p data-pt="Sou desenvolvedor full stack em <strong>Salvador, Bahia</strong>, formado em <strong>Análise e Desenvolvimento de Sistemas pela FIAP</strong>. Comecei a programar em 2023 e desde então venho construindo coisas que pessoas de verdade usam: o site de um cliente, uma loja com pagamento real, sistemas com testes que provam o que prometem."
+                           data-en="I'm a full stack developer in <strong>Salvador, Brazil</strong>, with a degree in <strong>Systems Analysis and Development from FIAP</strong>. I started programming in 2023 and have been building things real people use ever since: a client's website, a store taking real payments, systems with tests that prove what they promise.">
+                            I'm a full stack developer in <strong>Salvador, Brazil</strong>, with a degree in <strong>Systems Analysis and Development from FIAP</strong>. I started programming in 2023 and have been building things real people use ever since: a client's website, a store taking real payments, systems with tests that prove what they promise.
                         </p>
-                        <p data-pt="Se você se interessou pelo meu perfil, não hesite em entrar em contato! Estou sempre aberto a novas oportunidades e parcerias."
-                           data-en="If you're interested in my profile, don't hesitate to reach out! I'm always open to new opportunities and partnerships.">
-                            If you're interested in my profile, don't hesitate to reach out! I'm always open to new opportunities and partnerships.
+                        <p data-pt="Gosto do problema inteiro: modelar o banco, escrever a API, cuidar da interface e deixar o deploy e o CI funcionando. Procuro uma vaga em que eu possa fazer isso com um time, presencial em Salvador ou remoto."
+                           data-en="I like the whole problem: modeling the database, writing the API, caring for the interface and getting deploy and CI working. I'm looking for a role where I can do that with a team, on site in Salvador or remote.">
+                            I like the whole problem: modeling the database, writing the API, caring for the interface and getting deploy and CI working. I'm looking for a role where I can do that with a team, on site in Salvador or remote.
                         </p>
                         <div class="victor-social">
-                            <a href="https://github.com/VryDeveloper" target="_blank" aria-label="GitHub"><i class="bi bi-github"></i></a>
-                            <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-                            <a href="https://www.instagram.com/victor_a.r.o/" target="_blank" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="https://github.com/VryDeveloper" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bi bi-github"></i></a>
+                            <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                            <a href="https://www.instagram.com/victor_a.r.o/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
                         </div>
                     </div>
+
+                    <ol class="timeline">
+                        <li>
+                            <span class="timeline-year">2023</span>
+                            <h3 data-pt="Primeiras linhas de código" data-en="First lines of code">First lines of code</h3>
+                            <p data-pt="Começo a programar por conta própria." data-en="I start programming on my own.">I start programming on my own.</p>
+                        </li>
+                        <li>
+                            <span class="timeline-year">2024</span>
+                            <h3 data-pt="FIAP · Análise e Desenvolvimento de Sistemas" data-en="FIAP · Systems Analysis and Development">FIAP · Systems Analysis and Development</h3>
+                            <p data-pt="Início da graduação. Primeiros projetos em Java, Python e web." data-en="The degree begins. First projects in Java, Python and web.">The degree begins. First projects in Java, Python and web.</p>
+                        </li>
+                        <li>
+                            <span class="timeline-year">2025</span>
+                            <h3 data-pt="Primeiro cliente" data-en="First client">First client</h3>
+                            <p data-pt="Site institucional da Copec no ar, meu primeiro trabalho como freelancer. Desde então também faço freelas de automação." data-en="Copec's company website goes live, my first freelance job. Since then I also take on automation freelance work.">Copec's company website goes live, my first freelance job. Since then I also take on automation freelance work.</p>
+                        </li>
+                        <li>
+                            <span class="timeline-year">2025</span>
+                            <h3 data-pt="Kitsuy Store em produção" data-en="Kitsuy Store in production">Kitsuy Store in production</h3>
+                            <p data-pt="Meu primeiro e-commerce com pagamentos reais." data-en="My first e-commerce taking real payments.">My first e-commerce taking real payments.</p>
+                        </li>
+                        <li>
+                            <span class="timeline-year">2026</span>
+                            <h3 data-pt="Formatura, testes e CI" data-en="Graduation, tests and CI">Graduation, tests and CI</h3>
+                            <p data-pt="Concluo a FIAP. Salão Jade, VryGraphic e LinkPulse saem com testes automatizados e pipeline de CI." data-en="I finish FIAP. Salão Jade, VryGraphic and LinkPulse ship with automated tests and a CI pipeline.">I finish FIAP. Salão Jade, VryGraphic and LinkPulse ship with automated tests and a CI pipeline.</p>
+                        </li>
+                    </ol>
                 </div>
             </div>
         </section>
 
-        <section class="formulario">
+        <section class="contato" id="contato">
             <div class="interface">
-                <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank"
-                   data-pt="➤ Vamos Trabalhar Juntos!"
-                   data-en="➤ Let's Work Together!">➤ Let's Work Together!</a>
+                <div class="contact-card">
+                    <span class="contact-eyebrow">// ~/contact</span>
+                    <h2 data-pt="Vamos <strong>trabalhar juntos?</strong>" data-en="Let's <strong>work together.</strong>">Let's <strong>work together.</strong></h2>
+                    <p data-pt="Estou aberto a vagas de desenvolvedor full stack, front-end ou back-end. A forma mais rápida de falar comigo é por e-mail ou LinkedIn."
+                       data-en="I'm open to full stack, front-end or back-end developer roles. The fastest way to reach me is by email or LinkedIn.">
+                        I'm open to full stack, front-end or back-end developer roles. The fastest way to reach me is by email or LinkedIn.
+                    </p>
+
+                    <div class="contact-email">
+                        <a href="mailto:victor.092.augusto@gmail.com">victor.092.augusto@gmail.com</a>
+                        <button class="icon-btn" id="copy-email" data-copy="victor.092.augusto@gmail.com" data-aria-pt="Copiar e-mail" data-aria-en="Copy email" aria-label="Copy email"><i class="bi bi-copy"></i></button>
+                    </div>
+
+                    <div class="contact-links">
+                        <a class="btn-pill" data-magnetic href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                        <a class="btn-pill btn-ghost" href="https://github.com/VryDeveloper" target="_blank" rel="noopener noreferrer"><i class="bi bi-github"></i> GitHub</a>
+                        <a class="btn-pill btn-ghost" href="https://wa.me/5531996588742" target="_blank" rel="noopener noreferrer"><i class="bi bi-whatsapp"></i> WhatsApp</a>
+                        <a class="btn-pill btn-ghost" href="assets/curriculo.pdf" download="Victor Augusto - CV.pdf"><i class="bi bi-download"></i> CV</a>
+                    </div>
+
+                    <p class="contact-meta">
+                        <i class="bi bi-geo-alt"></i> Salvador, BA · <span id="local-time">--:--</span> ·
+                        <span data-pt="aberto a remoto" data-en="open to remote">open to remote</span>
+                    </p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer id="footer">
         <div class="borda"></div>
-        <div class="interface">
-            <div class="flex">
-                <div class="logo-footer">
-                    <img src="assets/iconvictor.png" alt="VryDeveloper logo">
-                </div>
-                <div class="line-footer">
-                    <p><i class="bi bi-envelope"></i> <a href="mailto:victor.092.augusto@gmail.com" target="_blank">victor.092.augusto@gmail.com</a></p>
-                    <p><i class="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/victor-augusto-79a5612b6/" target="_blank">LinkedIn</a></p>
-                </div>
-            </div>
+        <div class="interface footer-row">
+            <img src="assets/iconvictor.png" width="40" height="40" alt="" loading="lazy">
+            <p>
+                <span data-pt="Feito com HTML, CSS e JavaScript puros. Sem framework, sem build." data-en="Built with plain HTML, CSS and JavaScript. No framework, no build step.">Built with plain HTML, CSS and JavaScript. No framework, no build step.</span>
+                <a href="https://github.com/VryDeveloper/VryWeb" target="_blank" rel="noopener noreferrer" data-pt="Ver o código" data-en="View source">View source</a>
+            </p>
         </div>
     </footer>
 
     <dialog class="case" id="case-study" aria-labelledby="case-title"></dialog>
 
-    <a href="https://wa.me/5531996588742" class="whatsapp-button" target="_blank" aria-label="WhatsApp">
+    <dialog class="palette" id="palette" data-aria-pt="Paleta de comandos" data-aria-en="Command palette" aria-label="Command palette">
+        <div class="palette-input">
+            <i class="bi bi-search" aria-hidden="true"></i>
+            <input type="text" id="palette-query" autocomplete="off" spellcheck="false"
+                   role="combobox" aria-expanded="true" aria-controls="palette-list" aria-autocomplete="list">
+            <kbd>Esc</kbd>
+        </div>
+        <ul class="palette-list" id="palette-list" role="listbox"></ul>
+        <p class="palette-hint"><kbd>↑</kbd><kbd>↓</kbd> <span data-pt="navegar" data-en="navigate">navigate</span> <kbd>Enter</kbd> <span data-pt="abrir" data-en="open">open</span></p>
+    </dialog>
+
+    <div class="toast-region" id="toasts" popover="manual" role="status" aria-live="polite"></div>
+
+    <a href="https://wa.me/5531996588742" class="whatsapp-button" id="whatsapp-fab" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
         <i class="bi bi-whatsapp"></i>
     </a>
 </body>
