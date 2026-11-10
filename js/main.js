@@ -5,6 +5,8 @@ import { initNav } from './modules/nav.js';
 import { initReveal } from './modules/reveal.js';
 import { initProjects } from './modules/projects.js';
 import { initCaseStudy } from './modules/case-study.js';
+import { initHeroCanvas } from './modules/hero-canvas.js';
+import { initTypewriter } from './modules/typewriter.js';
 import { initFx, initCountUp } from './modules/fx.js';
 
 // hero numbers come from the data, never typed by hand
@@ -33,5 +35,7 @@ initNav();
 initProjects();
 initReveal();
 initCaseStudy();
+initHeroCanvas();
+initTypewriter();
 initFx();
 initCountUp();
