@@ -123,7 +123,7 @@ function renderGrid() {
 }
 
 function setArchive(open) {
-    archive.toggleAttribute('data-open', open);
+    archive.toggleAttribute('data-expanded', open);
     archiveToggle.setAttribute('aria-expanded', String(open));
     archiveList.inert = !open;
 }
@@ -158,7 +158,7 @@ export function initProjects() {
         setFilter(chip.hasAttribute('data-clear-tech') ? {} : { cat: chip.dataset.cat });
     });
 
-    archiveToggle.addEventListener('click', () => setArchive(!archive.hasAttribute('data-open')));
+    archiveToggle.addEventListener('click', () => setArchive(!archive.hasAttribute('data-expanded')));
 
     document.querySelectorAll('.view-btn').forEach(button => {
         button.addEventListener('click', () => {

@@ -267,7 +267,7 @@ section.portfolio { padding: 80px 4%; margin-bottom: 60px; }
 
 /* height animates through grid rows, no JS measuring */
 .archive-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.45s var(--ease-out); }
-.archive[data-open] .archive-body { grid-template-rows: 1fr; }
+.archive[data-expanded] .archive-body { grid-template-rows: 1fr; }
 .archive-inner { overflow: hidden; min-height: 0; }
 
 .archive-item {
