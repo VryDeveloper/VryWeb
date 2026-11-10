@@ -502,8 +502,7 @@ section.portfolio .flex {
 }
 
 /* ícones sem cor própria ficam brancos no dark / cinza no light */
-.tech-icons i:not([class*="colored"]) { color: #ffffff; }
-[data-theme="light"] .tech-icons i:not([class*="colored"]) { color: #444444; }
+.tech-icons i:not([class*="colored"]) { color: var(--text-color-h); }
 
 .tech-icons i:hover {
     transform: translateY(-5px) scale(1.2);
@@ -833,8 +832,8 @@ footer .line-footer p a:hover { color: #fff; -webkit-text-fill-color: #fff; }
 }
 
 /* Fix devicon — reset font-family e background nos pseudo-elementos */
-.tech-icons i,
-.tech-icons i::before {
+.tech-icons i[class^="devicon-"],
+.tech-icons i[class^="devicon-"]::before {
     font-family: 'devicon' !important;
     background: none !important;
     -webkit-background-clip: unset !important;

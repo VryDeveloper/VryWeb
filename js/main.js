@@ -2,11 +2,13 @@ import { initI18n } from './modules/i18n.js';
 import { initTheme } from './modules/theme.js';
 import { initNav } from './modules/nav.js';
 import { initReveal } from './modules/reveal.js';
+import { initProjects } from './modules/projects.js';
 
 initTheme();
 initNav();
-initI18n();
 initReveal();
+initProjects();
+initI18n();
 
 // view toggle (grid / list)
 const grid = document.querySelector('.portfolio-grid');
