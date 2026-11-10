@@ -336,3 +336,14 @@ Fases 0 a 7 implementadas na branch `feat/portfolio-v3`. Diferenças em relaçã
 - **Sem prints**: VryHive, Bot WhatsApp SaaS, Kanban em Go, ESG Inteligentes e Figure Radar usam o placeholder com trecho de código.
 - **Hero**: os números são 19 projetos, 189 testes (51 + 124 + 14) e 4 projetos no ar, calculados de `projects.js`.
 - A seção de licença do README foi removida porque apontava para um arquivo `LICENSE` que não existe no repositório.
+
+### Lighthouse (mobile, medido em 2026-11-09 contra o servidor local)
+
+| Categoria | Nota |
+|---|---|
+| Acessibilidade | 100 |
+| Boas práticas | 100 |
+| SEO | 100 |
+| Performance | 54 a 74, variando entre execuções |
+
+A meta de 95 em performance **não foi atingida** no laboratório. Sem a limitação artificial de rede e CPU, os tempos observados foram FCP ≈ 1,0 s, LCP ≈ 1,1 s e CLS 0. A nota cai porque o Lighthouse simula uma CPU 4x mais lenta e o Chrome headless não usa GPU, e nesse cenário o custo de estilo e layout por frame das animações do hero domina (≈ 4 s de "Style & Layout"). A causa exata não foi isolada: desligar o canvas, isolar o typewriter e o contador com `contain` e usar `content-visibility` não reduziram esse número. A medição também foi feita num servidor sem gzip; vale medir de novo no GitHub Pages depois do deploy.

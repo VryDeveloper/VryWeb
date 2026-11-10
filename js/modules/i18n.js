@@ -12,7 +12,7 @@ const TITLE = { pt: 'Victor Augusto — Desenvolvedor Full Stack', en: 'Victor A
 
 export function applyLang(next = lang, { silent = false } = {}) {
     lang = next;
-    document.querySelectorAll('[data-pt][data-en]').forEach(el => {
+    if (!(silent && lang === 'en')) document.querySelectorAll('[data-pt][data-en]').forEach(el => {
         el.innerHTML = el.getAttribute(`data-${lang}`);
     });
     document.querySelectorAll('[data-aria-pt]').forEach(el => {
