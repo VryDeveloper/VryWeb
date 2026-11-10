@@ -1,0 +1,71 @@
+/* ═══════════════════════════════════════════════════════════════
+   TOKENS — palette, fonts, glass. Light theme overrides below.
+═══════════════════════════════════════════════════════════════ */
+:root {
+    /* ── Original purple/blue/magenta theme, kept — only typography changed ── */
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+    --ease-out: cubic-bezier(.22, 1, .36, 1);
+    --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+    --dur-1: 150ms;
+    --dur-2: 300ms;
+    --dur-3: 600ms;
+
+    --body-bg: #030105;
+    --body-bg-alt: #0b0714;
+    --text-color-p: rgba(255, 255, 255, 0.85);
+    --text-color-h: #ffffff;
+    --text-contact-bg: #ffffff;
+    --text-contact-hover: #000000;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --accent: #8b00ff;
+    --accent-text: #b388ff;
+    --accent-2: #5b8cff;
+    --glow: rgba(139, 0, 255, 0.3);
+    --grad: linear-gradient(133deg, rgba(250,0,255,1) 0%, rgba(0,11,255,1) 32%, rgba(139,0,255,1) 68%, rgba(178,0,182,1) 100%);
+    --grad-static: linear-gradient(133deg, rgba(250,0,255,1) 0%, rgba(0,11,255,1) 32%, rgba(139,0,255,1) 68%, rgba(178,0,182,1) 100%);
+    /* the 4 gradient stops as flat, contrast-safe colors — a syntax-highlighting
+       logic: string/identity (1), keyword/interactive (2), primary/property (3),
+       comment/meta (4). Used for icon variety and for the hero code card. */
+    --pal-1: #fa00ff;
+    --pal-2: #5b8cff;
+    --pal-3: #b388ff;
+    --pal-4: #d946ef;
+    --nav-bg: rgba(10, 10, 20, 0.6);
+    --nav-link: #ffffff;
+    --nav-hover-bg: rgba(255, 255, 255, 0.1);
+    --nav-hover-color: #ffffff;
+    --toggle-bg: rgba(255, 255, 255, 0.15);
+    --toggle-border: rgba(255, 255, 255, 0.2);
+    --toggle-icon: #ffffff;
+    --toggle-ball: #ffffff;
+}
+
+[data-theme="light"] {
+    --body-bg: #f5f5f7;
+    --body-bg-alt: #ececf2;
+    --text-color-p: rgba(0, 0, 0, 0.75);
+    --text-color-h: #0a0a0a;
+    --text-contact-bg: #000000;
+    --text-contact-hover: #ffffff;
+    --glass-bg: rgba(0, 0, 0, 0.04);
+    --glass-border: rgba(0, 0, 0, 0.1);
+    --accent: #6d28d9;
+    --accent-text: #6d28d9;
+    --accent-2: #1d4ed8;
+    --glow: rgba(139, 0, 255, 0.15);
+    --pal-1: #a3007a;
+    --pal-2: #1d4ed8;
+    --pal-3: #6d28d9;
+    --pal-4: #86198f;
+    --nav-bg: rgba(240, 240, 240, 0.75);
+    --nav-link: #ffffff;
+    --nav-hover-bg: rgba(0, 0, 0, 0.08);
+    --nav-hover-color: #111111;
+    --toggle-bg: rgba(0, 0, 0, 0.15);
+    --toggle-border: rgba(0, 0, 0, 0.25);
+    --toggle-icon: #111111;
+    --toggle-ball: #111111;
+}

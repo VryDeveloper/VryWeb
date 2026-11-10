@@ -1,0 +1,134 @@
+/* ═══════════════════════════════════════════════════════════════
+   BUTTONS
+═══════════════════════════════════════════════════════════════ */
+.btn-pill {
+    display: inline-block;
+    padding: 12px 44px;
+    font-size: 16px; font-weight: 600;
+    color: #fff;
+    background: var(--grad-static);
+    border: 0; text-decoration: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform var(--dur-2) var(--ease-out), box-shadow var(--dur-2);
+    position: relative; overflow: hidden;
+}
+
+.btn-pill:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 8px 30px var(--glow); }
+/* magnetic buttons are moved by fx.js; the hover lift would fight it */
+.btn-pill[data-magnetic]:hover { transform: none; }
+.btn-pill[data-magnetic] { transition: transform 0.25s var(--ease-out), box-shadow var(--dur-2); }
+
+/* light sweep across buttons on hover */
+.btn-pill::before,
+.projeto-links a::before {
+    content: '';
+    position: absolute; top: 0; left: -75%;
+    width: 40%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+
+.btn-pill:hover::before,
+.projeto-links a:hover::before { animation: shimmer-sweep 0.85s ease; }
+
+@keyframes shimmer-sweep {
+    from { left: -75%; }
+    to   { left: 125%; }
+}
+
+.btn-ghost {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-color-h);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+}
+.btn-ghost:hover { border-color: rgba(139,0,255,0.5); }
+
+kbd {
+    font-size: 11px; padding: 3px 7px; border-radius: 6px;
+    border: 1px solid var(--glass-border); background: var(--glass-bg);
+    color: var(--text-color-h);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   COMMAND PALETTE
+═══════════════════════════════════════════════════════════════ */
+dialog.palette {
+    width: min(620px, calc(100vw - 24px));
+    margin-top: 14vh;
+    background: var(--body-bg-alt);
+    border: 1px solid var(--glass-border); border-radius: 16px;
+    box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 60px var(--glow);
+    overflow: hidden;
+}
+
+dialog.palette[open] { animation: dialog-in 0.25s var(--ease-out); }
+
+.palette-input {
+    display: flex; align-items: center; gap: 12px;
+    padding: 16px 18px; border-bottom: 1px solid var(--glass-border);
+}
+.palette-input > i { color: var(--accent-text); }
+.palette-input input {
+    flex: 1; min-width: 0; background: none; border: 0; outline: 0;
+    font-size: 16px; color: var(--text-color-h);
+}
+.palette-input input::placeholder { color: var(--text-color-p); opacity: 0.6; }
+
+.palette-list {
+    list-style: none; padding: 8px;
+    max-height: min(52vh, 420px); overflow-y: auto; overscroll-behavior: contain;
+}
+
+.palette-group {
+    font-family: var(--font-mono); font-size: 11px;
+    letter-spacing: 1px; text-transform: uppercase;
+    opacity: 0.6; padding: 10px 12px 6px;
+}
+
+.palette-item {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 10px;
+    font-size: 14.5px; color: var(--text-color-h); cursor: pointer;
+}
+.palette-item > i { width: 20px; text-align: center; font-size: 16px; color: var(--accent-text); }
+.palette-item small { margin-left: auto; font-family: var(--font-mono); font-size: 11px; opacity: 0.6; white-space: nowrap; }
+
+.palette-item[aria-selected="true"] {
+    background: rgba(139,0,255,0.16);
+    box-shadow: inset 2px 0 0 var(--accent);
+}
+
+.palette-empty { padding: 28px 12px; text-align: center; font-family: var(--font-mono); font-size: 13px; }
+
+.palette-hint {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 16px; border-top: 1px solid var(--glass-border);
+    font-size: 12px;
+}
+.palette-hint span { margin-right: 10px; }
+
+/* ═══════════════════════════════════════════════════════════════
+   TOAST — a manual popover, so it sits above open dialogs
+═══════════════════════════════════════════════════════════════ */
+.toast-region {
+    position: fixed; inset: auto auto 28px 50%; transform: translateX(-50%);
+    margin: 0; padding: 0; border: 0; background: none; overflow: visible;
+    display: flex; flex-direction: column; gap: 8px; align-items: center;
+    pointer-events: none;
+}
+.toast-region:not(:popover-open) { display: none; }
+
+.toast {
+    padding: 10px 18px; border-radius: 30px;
+    background: var(--body-bg-alt); color: var(--text-color-h);
+    border: 1px solid rgba(139,0,255,0.45);
+    font-family: var(--font-mono); font-size: 13px; white-space: nowrap;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4), 0 0 24px var(--glow);
+    animation: toast-in 0.4s var(--ease-spring), toast-out 0.3s ease-in 2.4s forwards;
+}
+
+@keyframes toast-in  { from { opacity: 0; translate: 0 16px; scale: 0.9; } }
+@keyframes toast-out { to   { opacity: 0; translate: 0 8px; } }

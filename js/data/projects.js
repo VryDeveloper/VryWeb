@@ -1,0 +1,640 @@
+// Single source of truth for projects and technologies.
+// Cards, case studies, skills, the command palette and the hero counters all read from here.
+
+// icon: a devicon class (add " colored" for the brand color) or a bootstrap-icons class.
+// group: lang | front | back | quality | ai | platform
+export const techs = {
+    typescript:    { name: 'TypeScript',     icon: 'devicon-typescript-plain colored',    group: 'lang' },
+    javascript:    { name: 'JavaScript',     icon: 'devicon-javascript-plain colored',    group: 'lang' },
+    python:        { name: 'Python',         icon: 'devicon-python-plain colored',        group: 'lang' },
+    csharp:        { name: 'C#',             icon: 'devicon-csharp-plain colored',        group: 'lang' },
+    go:            { name: 'Go',             icon: 'devicon-go-plain colored',            group: 'lang' },
+    kotlin:        { name: 'Kotlin',         icon: 'devicon-kotlin-plain colored',        group: 'lang' },
+    java:          { name: 'Java',           icon: 'devicon-java-plain colored',          group: 'lang' },
+    html:          { name: 'HTML5',          icon: 'devicon-html5-plain colored',         group: 'lang' },
+    css:           { name: 'CSS3',           icon: 'devicon-css3-plain colored',          group: 'lang' },
+
+    react:         { name: 'React',          icon: 'devicon-react-original colored',      group: 'front' },
+    nextjs:        { name: 'Next.js',        icon: 'devicon-nextjs-plain',                group: 'front' },
+    vite:          { name: 'Vite',           icon: 'devicon-vitejs-plain colored',        group: 'front' },
+    tailwind:      { name: 'Tailwind CSS',   icon: 'devicon-tailwindcss-plain colored',   group: 'front' },
+    leaflet:       { name: 'Leaflet',        icon: 'bi bi-geo-alt-fill',                  group: 'front' },
+
+    nodejs:        { name: 'Node.js',        icon: 'devicon-nodejs-plain colored',        group: 'back' },
+    express:       { name: 'Express',        icon: 'devicon-express-original',            group: 'back' },
+    dotnet:        { name: '.NET / EF Core', icon: 'devicon-dotnetcore-plain colored',    group: 'back' },
+    postgresql:    { name: 'PostgreSQL',     icon: 'devicon-postgresql-plain colored',    group: 'back' },
+    prisma:        { name: 'Prisma',         icon: 'devicon-prisma-original',             group: 'back' },
+    sqlite:        { name: 'SQLite',         icon: 'devicon-sqlite-plain colored',        group: 'back' },
+    firebase:      { name: 'Firebase',       icon: 'devicon-firebase-plain colored',      group: 'back' },
+    supabase:      { name: 'Supabase',       icon: 'devicon-supabase-plain colored',      group: 'back' },
+    oracle:        { name: 'Oracle DB',      icon: 'devicon-oracle-original colored',     group: 'back' },
+    zod:           { name: 'Zod',            icon: 'bi bi-shield-check',                  group: 'back' },
+
+    docker:        { name: 'Docker',         icon: 'devicon-docker-plain colored',        group: 'quality' },
+    githubactions: { name: 'GitHub Actions', icon: 'devicon-githubactions-plain colored', group: 'quality' },
+    vitest:        { name: 'Vitest',         icon: 'devicon-vitest-plain colored',        group: 'quality' },
+    playwright:    { name: 'Playwright',     icon: 'devicon-playwright-plain colored',    group: 'quality' },
+    xunit:         { name: 'xUnit',          icon: 'bi bi-check2-square',                 group: 'quality' },
+    vercel:        { name: 'Vercel',         icon: 'devicon-vercel-original',             group: 'quality' },
+
+    claude:        { name: 'Claude API',     icon: 'bi bi-stars',                         group: 'ai' },
+    gemini:        { name: 'Gemini API',     icon: 'devicon-google-plain colored',        group: 'ai' },
+    llmrouting:    { name: 'LLM routing',    icon: 'bi bi-diagram-3-fill',                group: 'ai' },
+
+    android:       { name: 'Android',        icon: 'devicon-android-plain colored',       group: 'platform' },
+    unity:         { name: 'Unity',          icon: 'devicon-unity-plain',                 group: 'platform' },
+    discord:       { name: 'Discord',        icon: 'devicon-discordjs-plain colored',     group: 'platform' },
+    whatsapp:      { name: 'WhatsApp Cloud API', icon: 'bi bi-whatsapp',                  group: 'platform' },
+};
+
+export const techGroups = {
+    lang:     { pt: 'Linguagens',          en: 'Languages' },
+    front:    { pt: 'Front-end',           en: 'Front-end' },
+    back:     { pt: 'Back-end & Dados',    en: 'Back-end & Data' },
+    quality:  { pt: 'DevOps & Qualidade',  en: 'DevOps & Quality' },
+    ai:       { pt: 'IA',                  en: 'AI' },
+    platform: { pt: 'Plataformas',         en: 'Platforms' },
+};
+
+export const categories = {
+    fullstack: { pt: 'Full-stack',       en: 'Full-stack' },
+    backend:   { pt: 'Back-end',         en: 'Back-end' },
+    ai:        { pt: 'IA & Automação',   en: 'AI & Automation' },
+    mobile:    { pt: 'Mobile',           en: 'Mobile' },
+    games:     { pt: 'Games',            en: 'Games' },
+    web:       { pt: 'Web',              en: 'Web' },
+};
+
+// status: production (real users) | live (public demo) | wip | done
+export const statuses = {
+    production: { pt: 'EM PRODUÇÃO',        en: 'IN PRODUCTION' },
+    live:       { pt: 'DEMO NO AR',         en: 'LIVE DEMO' },
+    wip:        { pt: 'EM DESENVOLVIMENTO', en: 'IN DEVELOPMENT' },
+};
+
+// tier: featured | main | archive
+export const projects = [
+    {
+        id: 'salao-jade',
+        title: 'Salão Jade',
+        year: 2026,
+        tier: 'featured',
+        categories: ['fullstack'],
+        status: 'live',
+        cover: 'assets/projects/salao-jade/cover.webp',
+        gallery: ['reservas', 'admin', 'entrar', 'mobile'],
+        tests: 51,
+        metrics: [
+            { value: '51', label: { pt: 'testes', en: 'tests' } },
+            { value: '10 → 4', label: { pt: 'pedidos simultâneos → reservas', en: 'concurrent requests → bookings' } },
+        ],
+        stack: ['nextjs', 'react', 'typescript', 'postgresql', 'prisma', 'tailwind', 'zod', 'vitest', 'playwright', 'githubactions', 'vercel'],
+        summary: {
+            pt: 'Sistema de reservas full-stack para uma casa de chá. Duas pessoas nunca ficam com a mesma sala, nem clicando no mesmo milissegundo, e isso é provado por teste.',
+            en: 'Full-stack booking system for a tea house. Two people never get the same room, not even clicking in the same millisecond, and a test proves it.',
+        },
+        problem: {
+            pt: 'São 4 salas e muita gente querendo o mesmo horário. Checar a disponibilidade e depois gravar deixa uma janela em que dois pedidos passam na checagem e a mesma sala é vendida duas vezes.',
+            en: 'There are 4 rooms and many people wanting the same slot. Checking availability and then writing leaves a window where two requests pass the check and the same room is sold twice.',
+        },
+        solution: {
+            pt: 'A reserva roda dentro de uma transação com trava no Postgres, então os pedidos concorrentes entram em fila no banco. O teste dispara 10 pedidos ao mesmo tempo para o mesmo horário e exige exatamente 4 reservas, uma por sala.',
+            en: 'Booking runs inside a transaction with a Postgres lock, so concurrent requests queue up in the database. The test fires 10 requests at once for the same slot and requires exactly 4 bookings, one per room.',
+        },
+        highlights: {
+            pt: [
+                'Autenticação feita à mão: argon2id, sessão com hash, cookie seguro, limite de tentativas e proteção contra enumeração de contas',
+                '47 testes unitários e de banco + 4 testes ponta a ponta com Playwright, CI a cada push',
+                'Next.js 16 com Server Components, Server Actions e streaming',
+                'View Transitions e um fluido em WebGL2, com movimento reduzido respeitado',
+                'Cerca de 3.900 linhas de TypeScript estrito, sem biblioteca de UI ou de autenticação',
+            ],
+            en: [
+                'Hand-written auth: argon2id, hashed sessions, secure cookie, attempt limiting and account-enumeration protection',
+                '47 unit and database tests + 4 end-to-end Playwright tests, CI on every push',
+                'Next.js 16 with Server Components, Server Actions and streaming',
+                'View Transitions and a WebGL2 fluid, with reduced motion respected',
+                'About 3,900 lines of strict TypeScript, no UI or auth library',
+            ],
+        },
+        demoLogin: { pt: 'Entre como demo@salaojade.dev / chaverde123', en: 'Sign in as demo@salaojade.dev / chaverde123' },
+        links: {
+            repo: 'https://github.com/VryDeveloper/salao-jade',
+            demo: 'https://salao-jade.vercel.app',
+        },
+    },
+    {
+        id: 'kitsuy-store',
+        title: 'Kitsuy Store',
+        year: 2025,
+        tier: 'featured',
+        categories: ['fullstack'],
+        status: 'production',
+        cover: 'assets/projects/kitsuy-store/cover.webp',
+        gallery: ['galeria', 'estoque', 'como-funciona'],
+        icon: 'bi-bag-check-fill',
+        stack: ['react', 'typescript', 'vite', 'firebase', 'zod', 'vitest', 'vercel'],
+        summary: {
+            pt: 'E-commerce em produção com pagamentos reais via MercadoPago e um endurecimento de segurança próprio: estoque que não vende duas vezes, pedidos que expiram sozinhos e API protegida contra abuso.',
+            en: 'E-commerce in production with real payments through MercadoPago and its own security hardening: stock that never sells twice, orders that expire on their own and an API protected against abuse.',
+        },
+        problem: {
+            pt: 'Uma loja de verdade recebe dinheiro de verdade. Dois clientes não podem comprar a última unidade ao mesmo tempo, um pedido abandonado não pode prender estoque para sempre e nenhuma entrada do usuário pode ser confiada.',
+            en: 'A real store takes real money. Two customers cannot buy the last unit at the same time, an abandoned order cannot hold stock forever, and no user input can be trusted.',
+        },
+        solution: {
+            pt: 'Transações atômicas no Firestore decidem quem fica com o estoque. Um Cron Job na Vercel expira pedidos pendentes e devolve os itens. Toda entrada passa por Zod e as rotas têm limite de requisições com Upstash.',
+            en: 'Atomic Firestore transactions decide who gets the stock. A Vercel Cron Job expires pending orders and returns the items. Every input goes through Zod and the routes are rate limited with Upstash.',
+        },
+        highlights: {
+            pt: [
+                'Transações atômicas no Firestore contra overselling',
+                'Expiração automática de pedidos pendentes via Vercel Cron Jobs',
+                'Validação de entrada com Zod e rate limiting com Upstash',
+                'Checkout com MercadoPago',
+            ],
+            en: [
+                'Atomic Firestore transactions against overselling',
+                'Automatic expiration of pending orders via Vercel Cron Jobs',
+                'Input validation with Zod and rate limiting with Upstash',
+                'Checkout with MercadoPago',
+            ],
+        },
+        links: {
+            repo: 'https://github.com/VryDeveloper/kitsuy-store-realese',
+            demo: 'https://kitsuystore.com.br',
+        },
+    },
+    {
+        id: 'vrygraphic',
+        title: 'VryGraphic',
+        year: 2026,
+        tier: 'featured',
+        categories: ['fullstack', 'ai'],
+        cover: 'assets/projects/vrygraphic/cover.webp',
+        gallery: ['transacoes', 'plano', 'agente', 'modo-dev', 'mobile'],
+        tests: 124,
+        metrics: [
+            { value: '124', label: { pt: 'testes de integração', en: 'integration tests' } },
+            { value: '11', label: { pt: 'ferramentas do agente de IA', en: 'AI agent tools' } },
+        ],
+        stack: ['typescript', 'react', 'vite', 'nodejs', 'express', 'postgresql', 'prisma', 'zod', 'vitest', 'docker', 'githubactions', 'claude'],
+        summary: {
+            pt: 'Controle financeiro pessoal com cara de terminal. Cada lançamento vira saldo diário, alocação do salário, alertas de orçamento e projeção de metas, tudo calculado no PostgreSQL.',
+            en: 'A personal finance tracker that reads like a terminal. Every entry becomes a daily balance, a salary breakdown, budget alerts and goal forecasts, all computed in PostgreSQL.',
+        },
+        problem: {
+            pt: 'Dinheiro não tolera erro de arredondamento, e painéis financeiros calculados no front-end ficam lentos e inconsistentes. Além disso, um assistente de IA com acesso de escrita aos seus dados é um risco.',
+            en: 'Money does not tolerate rounding errors, and finance dashboards computed in the front-end get slow and inconsistent. On top of that, an AI assistant with write access to your data is a risk.',
+        },
+        solution: {
+            pt: 'Valores são centavos inteiros de ponta a ponta. Os painéis saem de SQL com window functions. O agente roda na API do Claude com ferramentas próprias: leitura é livre, mas toda gravação para e pede confirmação mostrando o que vai ser salvo.',
+            en: 'Amounts are integer cents end to end. The dashboards come from SQL with window functions. The agent runs on the Claude API with its own tools: reads are free, but every write stops and asks for confirmation, showing exactly what will be saved.',
+        },
+        highlights: {
+            pt: [
+                'SQL além do SELECT *: window functions, LAG, RANK, PERCENTILE_CONT, FILTER e generate_series',
+                'JWT com refresh token rotativo em cookie httpOnly e detecção de reuso',
+                'Barra de comando: "notebook 2.400 tecnologia 10x" vira 10 parcelas; o mesmo parser roda no navegador e no servidor',
+                '124 testes contra um banco de verdade, sem mocks, com CI',
+                'Jobs em segundo plano idempotentes, seguros mesmo rodando duas vezes ao mesmo tempo',
+                'Monorepo com imagem Docker e blueprint de deploy',
+            ],
+            en: [
+                'SQL beyond SELECT *: window functions, LAG, RANK, PERCENTILE_CONT, FILTER and generate_series',
+                'JWT with a rotating refresh token in an httpOnly cookie and reuse detection',
+                'Command bar: "notebook 2.400 tecnologia 10x" becomes 10 installments; the same parser runs in the browser and on the server',
+                '124 tests against a real database, no mocks, with CI',
+                'Idempotent background jobs, safe even when run twice at the same time',
+                'Monorepo with a Docker image and a deploy blueprint',
+            ],
+        },
+        links: { repo: 'https://github.com/VryDeveloper/VryGraphic' },
+    },
+    {
+        id: 'linkpulse',
+        title: 'LinkPulse',
+        year: 2026,
+        tier: 'main',
+        categories: ['fullstack'],
+        cover: 'assets/projects/linkpulse/cover.webp',
+        gallery: ['grafico', 'gps'],
+        stack: ['nextjs', 'typescript', 'postgresql', 'prisma', 'tailwind', 'zod', 'vitest', 'leaflet'],
+        summary: {
+            pt: 'Encurtador de links com analytics geográfico: cada clique registra quando, de onde e em qual dispositivo, sem atrasar o redirect.',
+            en: 'Link shortener with geographic analytics: every click records when, where from and on which device, without slowing the redirect.',
+        },
+        problem: {
+            pt: 'Geolocalizar cada clique depende de APIs externas que podem ser lentas ou cair. Quem clica não pode esperar por isso, e um clique não pode ser perdido porque a geo falhou.',
+            en: 'Geolocating every click depends on external APIs that can be slow or go down. The person clicking cannot wait for that, and a click cannot be lost because geo failed.',
+        },
+        solution: {
+            pt: 'O redirect responde na hora e a geolocalização roda depois da resposta, com after() do Next.js. A localização vem de uma cadeia de provedores: headers da edge primeiro, API de fallback com timeout curto, e se tudo falhar o clique é salvo sem geo.',
+            en: 'The redirect answers immediately and geolocation runs after the response, with Next.js after(). Location comes from a provider chain: edge headers first, a fallback API with a short timeout, and if everything fails the click is saved without geo.',
+        },
+        highlights: {
+            pt: [
+                'GPS opcional por link, com página de consentimento e taxa de aceite no dashboard',
+                'Filtro de bots e de pré-carregamento: previews de WhatsApp/Telegram e crawlers ficam fora das métricas',
+                'Visitantes únicos por sha256(salt + ip), sem guardar o IP como identificador',
+                'Mapa com Leaflet, cliques por dia, países, cidades, referrers e dispositivos',
+                'Roda local sem instalar Postgres nem Docker (Postgres embutido do Prisma)',
+            ],
+            en: [
+                'Optional per-link GPS, with a consent page and acceptance rate on the dashboard',
+                'Bot and prefetch filtering: WhatsApp/Telegram previews and crawlers stay out of the metrics',
+                'Unique visitors by sha256(salt + ip), without keeping the IP as an identifier',
+                'Leaflet map, clicks per day, countries, cities, referrers and devices',
+                'Runs locally without installing Postgres or Docker (Prisma embedded Postgres)',
+            ],
+        },
+        links: { repo: 'https://github.com/VryDeveloper/linkpulse' },
+    },
+    {
+        id: 'vryhive',
+        title: 'VryHive',
+        year: 2026,
+        tier: 'main',
+        categories: ['ai', 'fullstack'],
+        status: 'wip',
+        private: true,
+        icon: 'bi-hexagon-fill',
+        code: 'plan(task) → waves[] → integrate()',
+        stack: ['typescript', 'react', 'vite', 'tailwind', 'nodejs', 'express', 'zod', 'vitest', 'llmrouting'],
+        summary: {
+            pt: 'Orquestrador de agentes de IA: um planejador quebra a tarefa em subtarefas, escala o modelo certo para cada papel, roda em paralelo e um integrador junta o resultado.',
+            en: 'AI agent orchestrator: a planner breaks the task into subtasks, picks the right model for each role, runs them in parallel and an integrator merges the result.',
+        },
+        problem: {
+            pt: 'Um único modelo fazendo tudo é caro para tarefas simples e fraco para as difíceis. E modelos gratuitos falham o tempo todo com limite de uso.',
+            en: 'A single model doing everything is expensive for simple tasks and weak for hard ones. And free models fail all the time on rate limits.',
+        },
+        solution: {
+            pt: 'Cada subtarefa recebe um papel (pesquisador, arquiteto, programador, testador, revisor…) e um esforço. Uma tabela de roteamento papel × esforço define a lista de modelos, com failover automático em erro 429 ou 5xx. As subtarefas sem dependência entre si rodam em ondas paralelas.',
+            en: 'Each subtask gets a role (researcher, architect, coder, tester, reviewer…) and an effort level. A role × effort routing table defines the model list, with automatic failover on 429 or 5xx errors. Subtasks with no dependency on each other run in parallel waves.',
+        },
+        highlights: {
+            pt: [
+                'Planejador gera JSON com subtarefas, papéis, esforço e dependências; IDs de modelo inválidos são descartados',
+                'Crítica no esforço alto: um segundo modelo avalia a saída e o agente refaz uma vez',
+                'Entrega projetos rodáveis: junta os arquivos, corrige imports e cria package.json e README',
+                'Opcionalmente roda npm test no projeto gerado e devolve o log para correção',
+                'Publica no GitHub usando o GitHub CLI já logado, sem guardar token',
+            ],
+            en: [
+                'The planner emits JSON with subtasks, roles, effort and dependencies; invalid model IDs are dropped',
+                'Critique at high effort: a second model reviews the output and the agent retries once',
+                'Delivers runnable projects: merges files, fixes imports and creates package.json and README',
+                'Optionally runs npm test on the generated project and feeds the log back for a fix',
+                'Publishes to GitHub through the already logged-in GitHub CLI, storing no token',
+            ],
+        },
+    },
+    {
+        id: 'whatsapp-saas',
+        title: { pt: 'Bot WhatsApp SaaS', en: 'WhatsApp SaaS Bot' },
+        year: 2026,
+        tier: 'main',
+        categories: ['ai', 'backend'],
+        private: true,
+        icon: 'bi-whatsapp',
+        code: 'POST /webhook → tenant → claude.reply()',
+        tests: 14,
+        metrics: [{ value: '14', label: { pt: 'testes automatizados', en: 'automated tests' } }],
+        stack: ['nodejs', 'express', 'sqlite', 'claude', 'whatsapp'],
+        summary: {
+            pt: 'Plataforma multi-tenant de bot para WhatsApp na API oficial da Meta com Claude: cada empresa cliente tem seu número e seu próprio comportamento.',
+            en: 'Multi-tenant WhatsApp bot platform on Meta\'s official Cloud API with Claude: each client company has its own number and its own behavior.',
+        },
+        problem: {
+            pt: 'Atender várias empresas com um só servidor exige isolar número, prompt e histórico de cada uma, e saber quanto cada cliente usou para poder cobrar.',
+            en: 'Serving several companies from one server requires isolating each one\'s number, prompt and history, and knowing how much each client used in order to bill.',
+        },
+        solution: {
+            pt: 'O webhook identifica o tenant pelo número que recebeu a mensagem e responde com o prompt daquela empresa. Tudo fica em SQLite: tenants, histórico de conversa e contagem de uso por mês.',
+            en: 'The webhook identifies the tenant by the number that received the message and answers with that company\'s prompt. Everything lives in SQLite: tenants, conversation history and monthly usage counts.',
+        },
+        highlights: {
+            pt: [
+                'API de administração protegida por chave para cadastrar, listar e desativar clientes',
+                'Histórico de conversa persistido, sobrevive a reinício do servidor',
+                'Endpoint de uso por cliente, base para cobrança por mensagem',
+                '14 testes automatizados cobrindo banco, API admin e webhook',
+            ],
+            en: [
+                'Key-protected admin API to register, list and deactivate clients',
+                'Persisted conversation history that survives server restarts',
+                'Per-client usage endpoint, the basis for per-message billing',
+                '14 automated tests covering database, admin API and webhook',
+            ],
+        },
+    },
+    {
+        id: 'vryauth',
+        title: 'VryAuth',
+        year: 2026,
+        tier: 'main',
+        categories: ['backend'],
+        cover: 'assets/projects/vryauth/cover.webp',
+        gallery: ['tela-2', 'tela-3'],
+        stack: ['nodejs', 'express', 'typescript', 'postgresql', 'prisma', 'docker'],
+        summary: {
+            pt: 'API REST de autenticação com JWT, com access token curto e refresh token, mais uma interface web para login, cadastro e perfil.',
+            en: 'JWT authentication REST API, with a short-lived access token and a refresh token, plus a web interface for login, sign-up and profile.',
+        },
+        highlights: {
+            pt: [
+                'Access token de 15 minutos + refresh token de 7 dias',
+                'Senhas com hash (bcrypt) e migrations com Prisma',
+                'PostgreSQL e Docker prontos para subir',
+                'Interface em HTML, CSS e JavaScript puros',
+            ],
+            en: [
+                '15-minute access token + 7-day refresh token',
+                'Hashed passwords (bcrypt) and Prisma migrations',
+                'PostgreSQL and Docker ready to run',
+                'Interface in plain HTML, CSS and JavaScript',
+            ],
+        },
+        links: { repo: 'https://github.com/VryDeveloper/JWT-API' },
+    },
+    {
+        id: 'kitsuy-storage',
+        title: 'Kitsuy Storage',
+        year: 2026,
+        tier: 'main',
+        categories: ['fullstack'],
+        status: 'production',
+        icon: 'bi-hdd-stack-fill',
+        stack: ['react', 'typescript', 'vite', 'supabase'],
+        summary: {
+            pt: 'Painel administrativo interno da Kitsuy para gestão de pedidos e precificação, com upload de imagens e calculadora de preço com taxa de conversão.',
+            en: 'Kitsuy\'s internal admin panel for order management and pricing, with image uploads and a price calculator with exchange rate.',
+        },
+        problem: {
+            pt: 'A operação da loja dependia de planilhas: pedidos, custo de importação e preço final eram calculados à mão.',
+            en: 'The store ran on spreadsheets: orders, import cost and final price were all calculated by hand.',
+        },
+        solution: {
+            pt: 'Um painel próprio em React com Supabase. O acesso é controlado por Row-Level Security no banco, então a regra de quem vê o quê não depende do front-end.',
+            en: 'A dedicated React panel on Supabase. Access is enforced by Row-Level Security in the database, so who sees what does not depend on the front-end.',
+        },
+        highlights: {
+            pt: [
+                'Autenticação com Row-Level Security (RLS) no Supabase',
+                'Upload de imagens via Supabase Storage',
+                'Calculadora de precificação com taxa de conversão (Wise)',
+                'Modo escuro',
+            ],
+            en: [
+                'Authentication with Row-Level Security (RLS) on Supabase',
+                'Image uploads via Supabase Storage',
+                'Pricing calculator with a Wise exchange-rate field',
+                'Dark mode',
+            ],
+        },
+        links: { repo: 'https://github.com/VryDeveloper/Kitsuy-Storage' },
+    },
+    {
+        id: 'kanban-go',
+        title: { pt: 'Kanban em Go', en: 'Kanban in Go' },
+        year: 2026,
+        tier: 'main',
+        categories: ['backend', 'fullstack'],
+        icon: 'bi-kanban-fill',
+        code: 'http.HandleFunc("/tasks", handleTasks)',
+        gallery: ['fluxo'],
+        stack: ['go', 'react', 'vite', 'javascript'],
+        summary: {
+            pt: 'Quadro Kanban full-stack com back-end em Go usando só a biblioteca padrão e drag and drop nativo do HTML5, feito a partir de um desafio técnico.',
+            en: 'Full-stack Kanban board with a Go back-end using only the standard library and native HTML5 drag and drop, built from a technical challenge.',
+        },
+        highlights: {
+            pt: [
+                'Go só com net/http e encoding/json, sem framework nem roteador externo',
+                'Drag and drop com a API nativa do HTML5, sem biblioteca',
+                'Persistência em memória + arquivo JSON',
+                'React com Vite e CSS simples, sem UI kit',
+            ],
+            en: [
+                'Go with only net/http and encoding/json, no framework or external router',
+                'Drag and drop with the native HTML5 API, no library',
+                'In-memory persistence + JSON file',
+                'React with Vite and plain CSS, no UI kit',
+            ],
+        },
+        links: { repo: 'https://github.com/VryDeveloper/crud-go-TaskManager' },
+    },
+    {
+        id: 'copec',
+        title: 'Copec',
+        year: 2025,
+        tier: 'main',
+        categories: ['web'],
+        status: 'production',
+        cover: 'assets/projects/copec/cover.webp',
+        stack: ['nextjs', 'react', 'typescript', 'tailwind'],
+        summary: {
+            pt: 'Site institucional no ar para a Copec, feito como freelance: apresentação da empresa, catálogo de produtos e serviços, com mapa integrado.',
+            en: 'Live company website for Copec, built as a freelance job: company presentation, product and service catalog, with an integrated map.',
+        },
+        highlights: {
+            pt: ['Primeiro cliente como freelancer', 'Next.js com Tailwind CSS', 'Integração com a Google Maps API'],
+            en: ['First freelance client', 'Next.js with Tailwind CSS', 'Google Maps API integration'],
+        },
+        links: { demo: 'https://acoscopec.com' },
+    },
+    {
+        id: 'esg-inteligentes',
+        title: 'ESG Inteligentes',
+        year: 2025,
+        tier: 'main',
+        categories: ['backend'],
+        icon: 'bi-lightning-charge-fill',
+        code: 'app.MapGet("/api/consumo", …)',
+        stack: ['csharp', 'dotnet', 'postgresql', 'docker', 'githubactions', 'xunit'],
+        summary: {
+            pt: 'API REST para monitoramento de consumo energético com métricas ESG, com testes automatizados, Docker e pipeline de CI/CD.',
+            en: 'REST API for energy consumption monitoring with ESG metrics, with automated tests, Docker and a CI/CD pipeline.',
+        },
+        highlights: {
+            pt: [
+                'Persistência com Entity Framework Core e PostgreSQL',
+                'Testes automatizados com xUnit',
+                'Pipeline de CI/CD no GitHub Actions',
+                'Containerização com Docker e documentação via Swagger',
+            ],
+            en: [
+                'Persistence with Entity Framework Core and PostgreSQL',
+                'Automated tests with xUnit',
+                'CI/CD pipeline on GitHub Actions',
+                'Docker containerization and Swagger documentation',
+            ],
+        },
+        links: { repo: 'https://github.com/VryDeveloper/ESGInteligentes' },
+    },
+    {
+        id: 'jogo-sobrevivencia',
+        title: { pt: 'Jogo de Sobrevivência', en: 'Survival Game' },
+        year: 2026,
+        tier: 'main',
+        categories: ['games'],
+        status: 'wip',
+        private: true,
+        cover: 'assets/projects/jogo-sobrevivencia/cover.webp',
+        pixelated: true,
+        gallery: ['sprites'],
+        metrics: [{ value: '36', label: { pt: 'etapas entregues', en: 'milestones shipped' } }],
+        stack: ['unity', 'csharp', 'nodejs'],
+        summary: {
+            pt: 'Jogo de sobrevivência 2.5D em Unity com clima místico: coleta, crafting, biomas, chefes e uma vila com NPCs, num mundo gerado proceduralmente.',
+            en: 'A 2.5D survival game in Unity with a mystic mood: gathering, crafting, biomes, bosses and a village with NPCs, in a procedurally generated world.',
+        },
+        problem: {
+            pt: 'Fazer um jogo sozinho sem saber desenhar nem compor: toda arte e todo som precisavam vir de algum lugar, e manter um estilo consistente.',
+            en: 'Making a game alone without being able to draw or compose: every piece of art and sound had to come from somewhere, and keep a consistent style.',
+        },
+        solution: {
+            pt: 'A arte é gerada por código: scripts em Node desenham os sprites a partir de formas geométricas e sintetizam os sons. Mudar o estilo é editar o gerador e rodar de novo.',
+            en: 'The art is generated by code: Node scripts draw the sprites from geometric shapes and synthesize the sounds. Changing the style means editing the generator and running it again.',
+        },
+        highlights: {
+            pt: [
+                'Unity 6 com URP: mundo 3D e personagens em sprites billboard virados para a câmera',
+                'Mapa procedural de 260 × 260 gerado a partir de uma semente salva',
+                'Biomas com mecânicas próprias (frio, veneno, corrupção) e chefes com fases',
+                'Vila com NPCs, pedidos, trocas e progressão de ferramentas',
+                'Sprites e sons gerados por scripts, sem assets de terceiros',
+            ],
+            en: [
+                'Unity 6 with URP: a 3D world with billboard sprite characters facing the camera',
+                'A 260 × 260 procedural map generated from a saved seed',
+                'Biomes with their own mechanics (cold, poison, corruption) and multi-phase bosses',
+                'A village with NPCs, requests, trading and tool progression',
+                'Sprites and sounds generated by scripts, no third-party assets',
+            ],
+        },
+    },
+    {
+        id: 'figure-radar',
+        title: 'Figure Radar',
+        year: 2026,
+        tier: 'main',
+        categories: ['ai', 'web'],
+        private: true,
+        icon: 'bi-bullseye',
+        code: 'feeds.map(parse).filter(isFigure)',
+        stack: ['nodejs', 'express', 'javascript', 'gemini'],
+        summary: {
+            pt: 'Agrega lançamentos de figures de anime dos sites oficiais japoneses num lugar só e gera a legenda do post com os créditos certos.',
+            en: 'Aggregates anime figure releases from the official Japanese sites in one place and generates the post caption with the right credits.',
+        },
+        highlights: {
+            pt: [
+                'Lê calendários de pré-venda e lançamento direto das fabricantes, um produto por vez para não sobrecarregar os sites',
+                'Filtros por loja, fabricante, linha, anime, faixa de preço e status de pré-venda',
+                'Preenchimento com IA: lê a notícia original, até em japonês, e devolve os campos em português',
+                'Indicador de saúde por fonte e atualização automática a cada 30 minutos',
+            ],
+            en: [
+                'Reads pre-order and release calendars straight from the manufacturers, one product at a time so the sites are not overloaded',
+                'Filters by store, manufacturer, line, anime, price range and pre-order status',
+                'AI fill-in: reads the original news, even in Japanese, and returns the fields in Portuguese',
+                'Per-source health indicator and automatic refresh every 30 minutes',
+            ],
+        },
+    },
+    {
+        id: 'vrybot',
+        title: 'VryBot',
+        year: 2024,
+        tier: 'main',
+        categories: ['ai'],
+        cover: 'assets/projects/vrybot/cover.webp',
+        stack: ['python', 'gemini', 'discord'],
+        summary: {
+            pt: 'Bot para Discord com IA, integrado à API do Gemini para responder em tempo real dentro do servidor.',
+            en: 'AI-powered Discord bot, integrated with the Gemini API to answer in real time inside the server.',
+        },
+        links: { repo: 'https://github.com/VryDeveloper/VryBot' },
+    },
+    {
+        id: 'rock-paper-scissors',
+        title: 'Rock Paper Scissors',
+        year: 2025,
+        tier: 'archive',
+        categories: ['web', 'games'],
+        cover: 'assets/projects/rock-paper-scissors/cover.webp',
+        stack: ['html', 'css', 'javascript'],
+        summary: {
+            pt: 'Pedra, papel e tesoura com interface temática de Minecraft e mecânicas de clicker game.',
+            en: 'Rock Paper Scissors with a Minecraft-themed interface and clicker game mechanics.',
+        },
+        links: {
+            repo: 'https://github.com/VryDeveloper/Rock-Paper-Scissors',
+            demo: 'https://vrydeveloper.github.io/Rock-Paper-Scissors/',
+        },
+    },
+    {
+        id: 'cmeter',
+        title: 'CMeter',
+        year: 2025,
+        tier: 'archive',
+        categories: ['mobile'],
+        cover: 'assets/projects/cmeter/cover.webp',
+        stack: ['kotlin', 'android', 'firebase'],
+        summary: {
+            pt: 'App Android que calcula a pegada de carbono a partir do consumo de energia e das distâncias percorridas.',
+            en: 'Android app that calculates a carbon footprint from energy consumption and distances traveled.',
+        },
+        links: { repo: 'https://github.com/VryDeveloper/CMeter' },
+    },
+    {
+        id: 'calculadora-imc',
+        title: { pt: 'Calculadora de IMC', en: 'BMI Calculator' },
+        year: 2025,
+        tier: 'archive',
+        categories: ['mobile'],
+        cover: 'assets/projects/calculadora-imc/cover.webp',
+        stack: ['kotlin', 'android'],
+        summary: {
+            pt: 'App Android que calcula o IMC a partir do peso e da altura.',
+            en: 'Android app that calculates BMI from weight and height.',
+        },
+        links: { repo: 'https://github.com/VryDeveloper/Calculadora-IMC' },
+    },
+    {
+        id: 'calculadora-juros',
+        title: { pt: 'Calculadora de Juros', en: 'Interest Calculator' },
+        year: 2025,
+        tier: 'archive',
+        categories: ['mobile'],
+        cover: 'assets/projects/calculadora-juros/cover.webp',
+        stack: ['kotlin', 'android'],
+        summary: {
+            pt: 'App Android que calcula juros a partir do valor, da taxa e do tempo.',
+            en: 'Android app that calculates interest from principal, rate and time.',
+        },
+        links: { repo: 'https://github.com/VryDeveloper/Calculadora-de-Juros' },
+    },
+    {
+        id: 'fintech-java',
+        title: 'Fintech Java',
+        year: 2024,
+        tier: 'archive',
+        categories: ['backend'],
+        cover: 'assets/projects/fintech-java/cover.webp',
+        stack: ['java', 'oracle'],
+        summary: {
+            pt: 'Projeto de estudo de POO em Java com autenticação, DAOs e banco de dados Oracle.',
+            en: 'OOP study project in Java with authentication, DAOs and an Oracle database.',
+        },
+        links: { repo: 'https://github.com/VryDeveloper/Classes-Fintech---JAVA' },
+    },
+];
+
+export const techIcon = key => {
+    const tech = techs[key];
+    return `<i class="${tech.icon}" title="${tech.name}" aria-label="${tech.name}" role="img"></i>`;
+};
