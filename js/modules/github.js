@@ -1,6 +1,6 @@
-// The terminal card "runs" a command and prints live data from GitHub's public API.
+// Live data from GitHub's public API for the terminal's `gh` command.
 // Unauthenticated calls are limited to 60/hour per IP, so the result is cached for
-// 6 hours, and any failure leaves the static lines from the HTML in place.
+// 6 hours; on failure the command prints a static summary instead.
 import { t, getLang } from './i18n.js';
 import { esc } from './projects.js';
 
@@ -9,7 +9,7 @@ const CACHE_KEY = 'gh-cache-v1';
 const TTL = 6 * 60 * 60 * 1000;
 const COLORS = ['var(--pal-1)', 'var(--pal-2)', 'var(--pal-3)', 'var(--pal-4)', 'var(--text-color-p)'];
 
-async function load() {
+export async function loadGitHub() {
     try {
         const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
         if (cached && Date.now() - cached.at < TTL) return cached;
@@ -42,7 +42,8 @@ function relative(iso) {
     return rtf.format(Math.round(days / 30), 'month');
 }
 
-function html(data) {
+// every API string goes through esc() before it reaches innerHTML
+export function githubHTML(data) {
     const line = body => `<p class="term-line result"><span class="arrow">→</span>${body}</p>`;
     const [latest] = data.repos;
 
@@ -60,35 +61,4 @@ function html(data) {
         `<div class="lang-bar" aria-hidden="true">${langs.map(([, n], i) => `<span style="--n:${n};--c:${COLORS[i]}"></span>`).join('')}</div>`,
         `<p class="lang-legend">${langs.map(([name, n], i) => `<span style="--c:${COLORS[i]}">${esc(name)} ${n}</span>`).join('')}</p>`,
     ].join('');
-}
-
-export function initGithub() {
-    const terminal = document.getElementById('gh-terminal');
-    const command = document.getElementById('gh-command');
-    const output = document.getElementById('gh-output');
-    let data = null;
-
-    // start only when the terminal scrolls into view: no request for visitors who never get here
-    new IntersectionObserver(async ([entry], io) => {
-        if (!entry.isIntersecting) return;
-        io.disconnect();
-
-        const request = load().catch(() => null);
-        const text = `gh api users/${USER} --jq .`;
-        if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            command.classList.add('typing');
-            for (let i = 0; i <= text.length; i++) {
-                command.textContent = text.slice(0, i);
-                await new Promise(resolve => setTimeout(resolve, 28));
-            }
-            command.classList.remove('typing');
-        }
-
-        data = await request;
-        if (!data) return;             // offline or rate limited: keep the static lines
-        command.textContent = text;
-        output.innerHTML = html(data);
-    }, { threshold: 0.4 }).observe(terminal);
-
-    document.addEventListener('langchange', () => { if (data) output.innerHTML = html(data); });
 }

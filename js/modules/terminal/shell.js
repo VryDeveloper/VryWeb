@@ -104,6 +104,8 @@ function renderPrompt() {
 const io = {
     print,
     span,
+    // a whole element (lists, bars) appended as-is
+    block(el) { log.append(el); scrollDown(); return el; },
     store,
     get signal() { return controller?.signal; },
     sleep: ms => sleep(ms, controller?.signal),
@@ -340,4 +342,12 @@ export async function start() {
     print(t({ pt: 'VryWeb OS 3.0 (tty1) — último login: hoje, de Salvador, BA', en: 'VryWeb OS 3.0 (tty1) — last login: today, from Salvador, BA' }), 'dim');
     print(t({ pt: 'Digite /help para ver os comandos.', en: 'Type /help to see the commands.' }), 'dim');
     print('');
+
+    // the intro types `gh` once the terminal is actually on screen, unless the visitor got there first
+    new IntersectionObserver(([entry], observer) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+        if (!input.value && !busy && !history.length) type('gh profile view VryDeveloper', { delay: 28 });
+        else if (!input.value && !busy) execute('gh profile view VryDeveloper');
+    }, { threshold: 0.4 }).observe(card);
 }
