@@ -101,3 +101,5 @@ dialog.term-dialog .terminal-cta { display: none; }
     .term-field:focus-within .term-cursor { animation: none; }
 }
 .term-line .ok-text { color: var(--term-ok); }
+.term-line.para { padding-left: 2ch; }
+.term-line .h { color: var(--pal-1); font-weight: 600; }

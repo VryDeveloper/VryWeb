@@ -2,7 +2,7 @@
 import { t, getLang } from '../i18n.js';
 import { commandName } from './lib.js';
 import { loadGitHub, githubHTML } from '../github.js';
-import { CV, EMAIL, downloadCV, copyEmail } from '../actions.js';
+import { CV, EMAIL, LINKEDIN, downloadCV, copyEmail } from '../actions.js';
 import { projects } from '../../data/projects.js';
 
 const LOGO = String.raw`
@@ -113,6 +113,28 @@ export const commands = [
             }
             io.print('');
             io.print(t({ pt: 'Dica: /resume baixa o currículo · /git commit fala comigo', en: 'Tip: /resume downloads the résumé · /git commit talks to me' }), 'dim');
+        },
+    },
+    {
+        name: 'linkedin',
+        aliases: ['bio', 'sobre', 'about'],
+        desc: { pt: 'quem eu sou + LinkedIn', en: 'who I am + LinkedIn' },
+        async run(args, io) {
+            io.print(t({ pt: 'Abrindo perfil...', en: 'Opening profile...' }), 'dim');
+            await io.sleep(250);
+            io.print('');
+            await io.lines([
+                [io.span(t({ pt: 'Victor Augusto · Desenvolvedor Full Stack', en: 'Victor Augusto · Full Stack Developer' }), 'h')],
+                [t({ pt: 'Salvador, BA · ADS pela FIAP', en: 'Salvador, Brazil · Systems Analysis & Dev., FIAP' })],
+                [''],
+                [t({
+                    pt: 'Construo sistemas de ponta a ponta: banco, API, interface, deploy e CI. Já entreguei o site de um cliente (Copec), uma loja com pagamento real (Kitsuy Store) e projetos com suíte de testes que prova o que promete.',
+                    en: 'I build systems end to end: database, API, interface, deploy and CI. I have shipped a client website (Copec), a store taking real payments (Kitsuy Store) and projects with test suites that prove what they promise.',
+                })],
+                [''],
+            ], { delay: 60, cls: 'para' });
+            // no automatic window.open: browsers block it and visitors hate it
+            io.print(['→ linkedin.com/in/victor-augusto-79a5612b6  ', io.link(t({ pt: '[abrir]', en: '[open]' }), LINKEDIN)], 'para');
         },
     },
     {
