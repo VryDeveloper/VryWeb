@@ -20,10 +20,14 @@ export const ACHIEVEMENTS = [
     { id: 'lang',     icon: 'bi-translate',       name: { pt: 'Poliglota', en: 'Polyglot' },                        hint: { pt: 'troque o idioma', en: 'switch the language' } },
     { id: 'palette',  icon: 'bi-command',         name: { pt: 'Power user', en: 'Power user' },                     hint: { pt: 'abra a paleta com Ctrl+K', en: 'open the palette with Ctrl+K' } },
     { id: 'hacker',   icon: 'bi-incognito',       name: { pt: 'Hacker', en: 'Hacker' },                             hint: { pt: 'ache 3 comandos escondidos no terminal', en: 'find 3 hidden terminal commands' } },
+    { id: 'architect', icon: 'bi-bricks',         name: { pt: 'Arquiteto de stack', en: 'Stack architect' },        hint: { pt: 'complete o desafio "monte a stack" em Habilidades', en: 'finish a "build the stack" challenge in Skills' } },
+    { id: 'throw',    icon: 'bi-wind',            name: { pt: 'Arremesso', en: 'Yeet' },                            hint: { pt: 'arremesse uma habilidade com força', en: 'throw a skill really hard' } },
 ];
 
 // terminal commands that unlock something by name
 const BY_COMMAND = { help: 'rtfm', resume: 'resume', info: 'info', linkedin: 'linkedin' };
+// other vw:event types that unlock something directly
+const BY_EVENT = { commit: 'commit', push: 'push', palette: 'palette', stack: 'architect', throw: 'throw' };
 const KONAMI = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'];
 
 function read() {
@@ -62,8 +66,8 @@ function onEvent({ detail }) {
         unlock('hello');
         if (BY_COMMAND[detail.name]) unlock(BY_COMMAND[detail.name]);
         if (detail.hidden) collect(state.eggs, detail.name, 3, 'hacker');
-    } else if (['commit', 'push', 'palette'].includes(detail.type)) {
-        unlock(detail.type);
+    } else if (BY_EVENT[detail.type]) {
+        unlock(BY_EVENT[detail.type]);
     }
 }
 

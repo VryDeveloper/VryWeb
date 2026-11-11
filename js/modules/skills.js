@@ -43,6 +43,7 @@ function initPlayground(grid) {
     function setMode(list) {
         grid.hidden = !list;
         play.hidden = list;
+        document.getElementById('skills-shake').hidden = list;
         mode.querySelector('i').className = `bi ${list ? 'bi-joystick' : 'bi-list-ul'}`;
         const label = list ? { pt: 'Modo física', en: 'Physics mode' } : { pt: 'Ver como lista', en: 'View as list' };
         const span = mode.querySelector('span');
@@ -57,12 +58,16 @@ function initPlayground(grid) {
         observer.disconnect();
         play.hidden = false;                 // laid out before the pills are measured
         try {
-            const { startPhysics } = await import('./skills-physics.js');
+            const [{ startPhysics }, { initChallenge }] = await Promise.all([import('./skills-physics.js'), import('./skills-challenge.js')]);
+            let challenge = null;
             physics = await startPhysics({
                 play,
                 items: used.map(key => ({ key, name: techs[key].name, icon: techs[key].icon, group: techs[key].group, n: usage(key), title: title(key) })),
                 onPick: pick,
+                onDrop: (...args) => challenge?.onDrop(...args),
             });
+            challenge = initChallenge(play, physics);
+            document.getElementById('skills-shake').addEventListener('click', () => physics.shake());
             grid.hidden = true;
             toolbar.hidden = false;
         } catch (err) {
