@@ -2,6 +2,7 @@
 import { t } from '../i18n.js';
 import { commandName } from './lib.js';
 import { loadGitHub, githubHTML } from '../github.js';
+import { CV, downloadCV } from '../actions.js';
 
 export const commands = [
     {
@@ -26,6 +27,28 @@ export const commands = [
             }
             io.print('');
             io.print(t({ pt: 'Dica: Tab completa, ↑ repete, help <comando> explica.', en: 'Tip: Tab completes, ↑ repeats, help <command> explains.' }), 'dim');
+        },
+    },
+    {
+        name: 'resume',
+        aliases: ['cv', 'curriculo'],
+        desc: { pt: 'baixar meu currículo (PDF)', en: 'download my résumé (PDF)' },
+        async run(args, io) {
+            const size = fetch(CV, { method: 'HEAD' })
+                .then(r => Number(r.headers.get('content-length')))
+                .then(bytes => (bytes ? `${Math.round(bytes / 1024)} KB · PDF` : 'PDF'))
+                .catch(() => 'PDF');
+            io.print(t({ pt: 'Preparando curriculo.pdf...', en: 'Preparing resume.pdf...' }));
+            // the bar is decoration: the file is small and starts downloading right after
+            const bar = io.print('');
+            for (let i = 0; i <= 20; i++) {
+                bar.textContent = `[${'█'.repeat(i)}${'░'.repeat(20 - i)}] ${String(i * 5).padStart(3)}%`;
+                await io.sleep(30);
+            }
+            bar.textContent += `  ·  ${await size}`;
+            downloadCV();
+            io.print(`✔ ${t({ pt: 'Download iniciado', en: 'Download started' })}: Victor Augusto - CV.pdf`, 'ok');
+            io.print([`  ${t({ pt: 'Não começou?', en: "Didn't start?" })} → `, io.link(t({ pt: 'abrir o PDF no navegador', en: 'open the PDF in the browser' }), CV)], 'dim');
         },
     },
     {

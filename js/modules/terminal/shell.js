@@ -123,7 +123,7 @@ const io = {
         a.textContent = label;
         a.href = href;
         if (download) a.download = download;
-        else if (/^https?:/.test(href)) Object.assign(a, { target: '_blank', rel: 'noopener noreferrer' });
+        else Object.assign(a, { target: '_blank', rel: 'noopener noreferrer' });   // never navigate away from the site
         return a;
     },
 
