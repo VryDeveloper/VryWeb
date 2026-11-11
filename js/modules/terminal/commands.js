@@ -4,6 +4,7 @@ import { commandName } from './lib.js';
 import { loadGitHub, githubHTML } from '../github.js';
 import { CV, EMAIL, LINKEDIN, downloadCV, copyEmail } from '../actions.js';
 import { projects } from '../../data/projects.js';
+import { gitCommand } from './git.js';
 
 const LOGO = String.raw`
 __      __
@@ -137,6 +138,7 @@ export const commands = [
             io.print(['→ linkedin.com/in/victor-augusto-79a5612b6  ', io.link(t({ pt: '[abrir]', en: '[open]' }), LINKEDIN)], 'para');
         },
     },
+    gitCommand,
     {
         name: 'gh',
         aliases: ['github'],

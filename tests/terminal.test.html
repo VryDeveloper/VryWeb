@@ -5,6 +5,8 @@
 <pre id="out"></pre>
 <script type="module">
 import { tokenize, commandName, levenshtein, suggest, commonPrefix, shortHash, slug } from '../js/modules/terminal/lib.js';
+import { whatsappText, parseMessageFlag } from '../js/modules/terminal/git.js';
+import { whatsappURL } from '../js/modules/actions.js';
 
 const results = [];
 const eq = (name, got, want) => {
@@ -31,6 +33,15 @@ eq('shortHash length', shortHash('qualquer texto').length, 7);
 eq('shortHash differs', shortHash('a') !== shortHash('b'), true);
 eq('slug accents', slug('Ana Souza Ção'), 'ana-souza-cao');
 eq('slug empty', slug('!!!'), 'mensagem');
+eq('-m flag', parseMessageFlag(['-m', 'oi tudo bem']), 'oi tudo bem');
+eq('--message flag', parseMessageFlag(['--message', 'x']), 'x');
+eq('no flag', parseMessageFlag([]), null);
+eq('-m without value', parseMessageFlag(['-m']), '');
+const msg = { name: 'Ana', company: 'Acme', subject: 'Vaga', message: 'Oi & tchau?', hash: 'abc1234' };
+eq('whatsapp text pt', whatsappText(msg, 'pt').split('\n').slice(0, 3), ['Olá, Victor! Vim pelo seu portfólio.', 'Nome: Ana · Empresa: Acme', 'Assunto: Vaga']);
+eq('whatsapp text without company', whatsappText({ ...msg, company: '' }, 'en').split('\n')[1], 'Name: Ana');
+eq('whatsapp url encodes', decodeURIComponent(whatsappURL('a & b?').split('text=')[1]), 'a & b?');
+eq('whatsapp url number', whatsappURL('x').startsWith('https://wa.me/5531996588742?text='), true);
 
 const failed = results.filter(r => r.startsWith('FAIL')).length;
 document.getElementById('out').textContent = `${results.join('\n')}\n\n${failed ? `${failed} FAILED` : `all ${results.length} passed`}`;
