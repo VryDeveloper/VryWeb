@@ -346,4 +346,10 @@ Fases 0 a 7 implementadas na branch `feat/portfolio-v3`. Diferenças em relaçã
 | SEO | 100 |
 | Performance | 54 a 74, variando entre execuções |
 
-A meta de 95 em performance **não foi atingida** no laboratório. Sem a limitação artificial de rede e CPU, os tempos observados foram FCP ≈ 1,0 s, LCP ≈ 1,1 s e CLS 0. A nota cai porque o Lighthouse simula uma CPU 4x mais lenta e o Chrome headless não usa GPU, e nesse cenário o custo de estilo e layout por frame das animações do hero domina (≈ 4 s de "Style & Layout"). A causa exata não foi isolada: desligar o canvas, isolar o typewriter e o contador com `contain` e usar `content-visibility` não reduziram esse número. A medição também foi feita num servidor sem gzip; vale medir de novo no GitHub Pages depois do deploy.
+**Atualização 2026-11-11 (branch `perf/lighthouse`):** performance mobile **97** em 3 de 3 execuções, com servidor local usando gzip (como o GitHub Pages). Sem gzip, a nota fica entre 88 e 92. A medição de 09/11 abaixo mediu errado a causa. O peso estava em duas outras coisas:
+- **Fontes de ícones inteiras:** o devicon era um TTF de 578 KB e o Bootstrap Icons um woff2 de 131 KB, baixados antes do LCP. Agora são subconjuntos de 13 KB, gerados por `tools/subset-icons.py`.
+- **Folha de estilo do Google Fonts:** bloqueava a renderização. As fontes agora são hospedadas no próprio site, com preload, e o favicon caiu de 55 KB para 2 KB.
+
+FCP 1,5 s, LCP 2,2 s, TBT ≈ 140 ms. Acessibilidade, Boas práticas e SEO continuam em 100.
+
+Medição antiga (09/11): a meta de 95 em performance **não foi atingida** no laboratório. Sem a limitação artificial de rede e CPU, os tempos observados foram FCP ≈ 1,0 s, LCP ≈ 1,1 s e CLS 0. A nota cai porque o Lighthouse simula uma CPU 4x mais lenta e o Chrome headless não usa GPU, e nesse cenário o custo de estilo e layout por frame das animações do hero domina (≈ 4 s de "Style & Layout"). A causa exata não foi isolada: desligar o canvas, isolar o typewriter e o contador com `contain` e usar `content-visibility` não reduziram esse número. A medição também foi feita num servidor sem gzip; vale medir de novo no GitHub Pages depois do deploy.
