@@ -6,29 +6,14 @@ import { toggleTheme } from './theme.js';
 import { setFilter, esc } from './projects.js';
 import { openProject } from './case-study.js';
 import { toast } from './toast.js';
+import { copyEmail, downloadCV, openURL, LINKEDIN, GITHUB } from './actions.js';
 
-const EMAIL = 'victor.092.augusto@gmail.com';
 const dialog = document.getElementById('palette');
 const input = document.getElementById('palette-query');
 const list = document.getElementById('palette-list');
 let results = [], selected = 0;
 
 const go = id => document.getElementById(id).scrollIntoView();
-const openURL = url => window.open(url, '_blank', 'noopener');
-
-export async function copyEmail() {
-    try {
-        await navigator.clipboard.writeText(EMAIL);
-        toast(t({ pt: 'E-mail copiado', en: 'Email copied' }));
-    } catch {
-        toast(EMAIL);
-    }
-}
-
-function downloadCV() {
-    const a = Object.assign(document.createElement('a'), { href: 'assets/curriculo.pdf', download: 'Victor Augusto - CV.pdf' });
-    a.click();
-}
 
 // rebuilt on every open, so labels follow the current language
 function buildItems() {
@@ -51,8 +36,8 @@ function buildItems() {
         { group: group.action, icon: 'bi-translate', label: t({ pt: 'Switch to English', en: 'Mudar para português' }), run: toggleLang },
         { group: group.action, icon: 'bi-copy', label: t({ pt: 'Copiar e-mail', en: 'Copy email' }), run: copyEmail },
         { group: group.action, icon: 'bi-download', label: t({ pt: 'Baixar CV', en: 'Download CV' }), run: downloadCV },
-        { group: group.action, icon: 'bi-linkedin', label: t({ pt: 'Abrir LinkedIn', en: 'Open LinkedIn' }), run: () => openURL('https://www.linkedin.com/in/victor-augusto-79a5612b6/') },
-        { group: group.action, icon: 'bi-github', label: t({ pt: 'Abrir perfil no GitHub', en: 'Open GitHub profile' }), run: () => openURL('https://github.com/VryDeveloper') },
+        { group: group.action, icon: 'bi-linkedin', label: t({ pt: 'Abrir LinkedIn', en: 'Open LinkedIn' }), run: () => openURL(LINKEDIN) },
+        { group: group.action, icon: 'bi-github', label: t({ pt: 'Abrir perfil no GitHub', en: 'Open GitHub profile' }), run: () => openURL(GITHUB) },
 
         ...projects.map(p => ({
             group: group.project, icon: 'bi-folder2-open', label: t(p.title),
