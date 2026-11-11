@@ -1,0 +1,21 @@
+# Refreshes data/contributions.json (the snake game's grid) every Monday.
+name: contributions
+on:
+  schedule: [{ cron: '0 6 * * 1' }]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: sh tools/contributions.sh
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - run: |
+          git diff --quiet data/contributions.json && exit 0
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git commit -am "data: refresh GitHub contributions"
+          git push
