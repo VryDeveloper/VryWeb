@@ -5,6 +5,9 @@ import { t, toggleLang, getLang } from '../i18n.js';
 import { toggleTheme } from '../theme.js';
 import { openProject } from '../case-study.js';
 import { projects, statuses } from '../../data/projects.js';
+import { ACHIEVEMENTS, isUnlocked, progress, openAchievements } from '../achievements.js';
+
+const SITE = 'https://vrydeveloper.github.io/VryWeb/';
 
 const ids = () => projects.map(p => p.id);
 
@@ -69,6 +72,53 @@ export const extras = [
             const want = (args[0] ?? '').toLowerCase();
             if (want !== getLang()) toggleLang();
             io.print(t({ pt: 'idioma: português', en: 'language: English' }), 'ok');
+        },
+    },
+    {
+        name: 'achievements',
+        aliases: ['conquistas', 'trophies'],
+        desc: { pt: 'suas conquistas no site', en: 'your achievements on the site' },
+        async run(args, io) {
+            const { done, total } = progress();
+            const filled = Math.round((done / total) * 20);
+            io.print([t({ pt: 'Conquistas  ', en: 'Achievements  ' }), io.span(`${done}/${total}`, 'k'), `  [${'█'.repeat(filled)}${'░'.repeat(20 - filled)}]`]);
+            io.print('');
+            for (const a of ACHIEVEMENTS) {
+                io.print(isUnlocked(a.id)
+                    ? [io.span('  ✔ ', 'ok-text'), t(a.name)]
+                    : [io.span('  · ??? ', 'dim'), io.span(`— ${t(a.hint)}`, 'dim')]);
+                await io.sleep(25);
+            }
+            io.print('');
+            if (done < total) {
+                io.print([t({ pt: 'Faltam ', en: 'Only ' }), String(total - done), t({ pt: '. ', en: ' to go. ' }), io.button(t({ pt: '[ver painel]', en: '[open panel]' }), openAchievements)], 'dim');
+                return;
+            }
+            // 100%: a certificate in a box, every row padded to the same width
+            const date = new Intl.DateTimeFormat(getLang() === 'pt' ? 'pt-BR' : 'en').format(new Date());
+            const rows = [
+                t({ pt: 'CERTIFICADO DE EXPLORAÇÃO · VryWeb', en: 'CERTIFICATE OF EXPLORATION · VryWeb' }),
+                '',
+                t({ pt: `${io.user} desbloqueou ${total}/${total} conquistas`, en: `${io.user} unlocked ${total}/${total} achievements` }),
+                t({ pt: `em ${date}`, en: `on ${date}` }),
+                '',
+                t({ pt: 'Assinado: victor (o dev deste portfólio)', en: 'Signed: victor (the dev behind this portfolio)' }),
+            ];
+            const width = Math.max(...rows.map(r => r.length)) + 4;
+            const cert = [
+                `╔${'═'.repeat(width)}╗`,
+                ...rows.map(r => `║  ${r.padEnd(width - 2)}║`),
+                `╚${'═'.repeat(width)}╝`,
+            ].join('\n');
+            const pre = document.createElement('pre');
+            pre.className = 'term-cert';
+            pre.textContent = cert;
+            io.block(pre);
+            io.print([
+                io.link(t({ pt: '[compartilhar no LinkedIn]', en: '[share on LinkedIn]' }), `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(SITE)}`),
+                '  ',
+                io.button(t({ pt: '[ver painel]', en: '[open panel]' }), openAchievements),
+            ]);
         },
     },
     {

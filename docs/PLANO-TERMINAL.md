@@ -360,3 +360,30 @@ Fases 1 e 2 prontas na branch `feat/terminal` (itens 1–11, um commit cada).
 - Lighthouse depois da mudança. O terminal carrega sob demanda, então não deveria afetar a carga inicial, mas não medi.
 - `git push` abrindo o WhatsApp num celular de verdade
 - tecla crase num teclado ABNT2 de verdade. O código trata a tecla morta, mas só testei com evento sintético.
+
+## 10. Fases 3 e 4 (2026-11-11)
+
+Prontas na branch `feat/terminal-extras`.
+
+**Comandos extras:**
+- `/projects`, `open`/`cat <projeto>`, `/theme`, `/lang` e `achievements` aparecem no `/help`.
+- `ls`, `cd`, `pwd`, `whoami`, `date`, `exit` e `history` são `quiet`: ficam fora da lista principal do `/help`, mas aparecem na linha "também" e o Tab completa.
+
+**Comandos escondidos:** ficam em `fun.js`, marcados `hidden`. O Tab não completa e a correção de digitação não sugere. São eles:
+- `sudo hire victor`, com o prompt de senha mascarado
+- `rm -rf`, com a tremida
+- `vim` (só sai com `:q`)
+- `make coffee`
+- `matrix`
+
+**Conquistas:**
+- `achievements.js` ouve `vw:event`. A shell, o `git` e a paleta emitem esse evento.
+- Tema, idioma, estudos de caso e Konami são observados sem tocar nos módulos.
+- O troféu na nav só aparece na primeira conquista. Essa era a decisão aberta 4; escolhi a surpresa e para não lotar a nav no celular.
+- O painel é um `<dialog>`. O comando `achievements` mostra a lista e, em 12/12, o certificado com o botão de compartilhar no LinkedIn.
+- O `gh` automático da intro não conta: só ações do visitante desbloqueiam.
+
+**Não testado:**
+- o compartilhamento real no LinkedIn
+- a sequência Konami digitada num teclado de verdade (testei com eventos sintéticos)
+- `prefers-reduced-motion` ligado no sistema

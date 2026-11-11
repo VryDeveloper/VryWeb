@@ -116,3 +116,4 @@ dialog.term-dialog .terminal-cta { display: none; }
     20%, 60% { translate: -6px 0; }
     40%, 80% { translate: 6px 0; }
 }
+.term-cert { color: var(--pal-4); line-height: 1.35; margin: 6px 0; overflow-x: auto; font-size: 12.5px; }
