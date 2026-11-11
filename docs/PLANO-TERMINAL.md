@@ -335,3 +335,28 @@ css/terminal.css
 3. **Número do WhatsApp:** o site usa `5531996588742` (DDD 31, MG). Continua esse?
 4. **Conquistas:** quer o troféu visível na nav, ou prefere que as conquistas sejam totalmente escondidas até a primeira aparecer?
 5. **Escopo:** fazer só as fases 1–2 (os seus comandos) primeiro e publicar, ou tudo de uma vez?
+
+## 9. Estado da implementação (2026-11-11)
+
+Fases 1 e 2 prontas na branch `feat/terminal` (itens 1–11, um commit cada).
+
+**Testado no navegador:**
+- desktop e 375 px, temas escuro e claro, PT e EN, console sem erros
+- typo com sugestão, histórico, Ctrl+C, Tab, tela cheia, Esc devolve o card à página
+- `/resume` (o download começa e o tamanho real aparece)
+- `/info` e `/linkedin`
+- `git commit` completo, nome vazio recusado, rascunho mantido após Ctrl+C, `git status`, `git log`, `git commit -m`
+- `git push` monta a URL `wa.me` certa (testado com `window.open` interceptado, sem abrir o WhatsApp)
+- `tests/terminal.test.html`: 27 testes passando
+
+**Diferenças em relação ao plano:**
+- **`/linkedin` não move o foco para o link `[abrir]`.** Tirar o foco do input atrapalharia quem continua digitando. O link fica visível e clicável.
+- **Fonte no celular:** a saída do terminal usa 12px para a linha do e-mail do `/info` caber em 375 px. A linha do prompt fica em 16px, porque o Safari do iPhone dá zoom em inputs menores que isso.
+- **`git log` sem commits:** mostra os 5 marcos da linha do tempo do "Sobre" como commits.
+
+**Não testado:**
+- `prefers-reduced-motion` ligado no sistema
+- leitor de tela
+- Lighthouse depois da mudança. O terminal carrega sob demanda, então não deveria afetar a carga inicial, mas não medi.
+- `git push` abrindo o WhatsApp num celular de verdade
+- tecla crase num teclado ABNT2 de verdade. O código trata a tecla morta, mas só testei com evento sintético.

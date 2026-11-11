@@ -95,6 +95,10 @@ dialog.term-dialog .terminal-cta { display: none; }
 @media (max-width: 600px) {
     .terminal-body.live { height: 320px; }
     .terminal-body { padding: 18px 14px; }
+    /* 12px fits a 42-column /info line (label + e-mail) on a 375px phone */
+    .term-log .term-line { font-size: 12px; }
+    /* iOS Safari zooms into inputs under 16px, so the prompt line stays at 16 */
+    .term-form { font-size: 16px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

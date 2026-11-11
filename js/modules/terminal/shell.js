@@ -342,7 +342,7 @@ export async function start() {
     fullButton.hidden = false;
     fullButton.addEventListener('click', () => (dialog.open ? closeFull() : openFull()));
     renderPrompt();
-    input.placeholder = t({ pt: 'digite /help ou toque num comando ↓', en: 'type /help or tap a command ↓' });
+    input.placeholder = t({ pt: 'digite /help ou toque ↓', en: 'type /help or tap ↓' });
 
     form.addEventListener('submit', e => {
         e.preventDefault();
@@ -368,7 +368,7 @@ export async function start() {
 
     document.addEventListener('langchange', () => {
         renderPrompt();
-        if (input.placeholder) input.placeholder = t({ pt: 'digite /help ou toque num comando ↓', en: 'type /help or tap a command ↓' });
+        if (input.placeholder) input.placeholder = t({ pt: 'digite /help ou toque ↓', en: 'type /help or tap ↓' });
     });
 
     log.replaceChildren();
