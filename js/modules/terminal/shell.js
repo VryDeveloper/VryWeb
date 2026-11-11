@@ -2,7 +2,7 @@
 // Everything printed goes through textContent or DOM nodes: visitors type here, and
 // the recruiter's name and message must never reach innerHTML.
 import { t } from '../i18n.js';
-import { tokenize, commandName, suggest } from './lib.js';
+import { tokenize, commandName, suggest, commonPrefix } from './lib.js';
 import { commands, findCommand } from './commands.js';
 
 const card = document.getElementById('terminal');
@@ -243,6 +243,39 @@ export async function type(text, { delay = 40 } = {}) {
     await execute(text);
 }
 
+// Tab: complete the command name, or the argument when the command offers candidates.
+// One match fills it in; several extend to their common prefix, then list on a second Tab.
+function complete() {
+    const value = input.value;
+    const words = value.split(/\s+/);
+    const partial = words.at(-1);
+    let candidates;
+    if (words.length === 1) {
+        const slash = partial.startsWith('/') ? '/' : '';
+        const name = commandName(partial);
+        candidates = commands.filter(c => !c.hidden).flatMap(c => [c.name, ...(c.aliases ?? [])])
+            .filter(n => n.startsWith(name)).map(n => slash + n);
+    } else {
+        const command = findCommand(commandName(words[0]));
+        candidates = (command?.complete?.(words.slice(1, -1)) ?? []).filter(c => c.startsWith(partial));
+    }
+    candidates = [...new Set(candidates)].sort();
+    if (!candidates.length) return;
+
+    const head = value.slice(0, value.length - partial.length);
+    if (candidates.length === 1) {
+        input.value = `${head}${candidates[0]} `;
+    } else {
+        const prefix = commonPrefix(candidates);
+        if (prefix.length > partial.length) input.value = head + prefix;
+        else {
+            echo(value);
+            print(candidates.join('   '), 'dim');
+        }
+    }
+    updateCursor();
+}
+
 function onKeydown(e) {
     const key = e.key.toLowerCase();
     if (e.ctrlKey && key === 'c' && !input.value.slice(input.selectionStart, input.selectionEnd)) {
@@ -251,6 +284,10 @@ function onKeydown(e) {
     } else if (e.ctrlKey && key === 'l') {
         e.preventDefault();
         io.clear();
+    } else if (e.key === 'Tab' && input.value.trim() && !ask && !e.shiftKey) {
+        // with an empty prompt Tab keeps moving focus, so links in the output stay reachable
+        e.preventDefault();
+        complete();
     } else if (e.key === 'ArrowUp' && !ask) {
         e.preventDefault();
         recall(-1);
