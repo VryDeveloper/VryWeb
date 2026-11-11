@@ -116,7 +116,7 @@ function renderGrid() {
     if (filtered && old.length) setArchive(true);
 
     document.getElementById('project-count').textContent =
-        t({ pt: `${list.length} projetos`, en: `${list.length} projects` });
+        t({ pt: `${list.length} projeto${list.length === 1 ? '' : 's'}`, en: `${list.length} project${list.length === 1 ? '' : 's'}` });
 
     observeReveals(grid);
     rendered = true;
