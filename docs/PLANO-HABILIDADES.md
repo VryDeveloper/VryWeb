@@ -42,3 +42,22 @@ Troquei as caixas por categoria da proposta original por este desafio. São 6 ca
 2. espaço com física: queda, arrastar, arremessar, clique filtra, alternar com a lista
 3. desafio "monte a stack" + botão chacoalhar + conquistas
 4. ajustes de verificação (celular, tema claro, movimento reduzido)
+
+## Status (2026-11-11)
+
+Commits 1 a 3 feitos. Os ajustes de verificação (commit 4) entraram no commit 3: a altura do espaço no celular passou para 700px, para a pilha não cobrir a faixa do desafio.
+
+Verificado no navegador:
+- **Desktop:**
+  - as pílulas caem, dá para arrastar e o clique filtra os projetos;
+  - pílula certa entra na faixa (1/7), pílula errada volta com a mensagem;
+  - completar a Kitsuy Store desbloqueia "Arquiteto de stack", e "Próximo desafio" passa para a Copec;
+  - "Chacoalhar" funciona;
+  - um arremesso forte desbloqueia "Arremesso".
+- **Tema claro:** legível.
+- **Celular (375px):** sem rolagem horizontal, e a faixa fica livre.
+
+Não verificado:
+- `prefers-reduced-motion`, que não dá para emular aqui (nesse caso o código mostra a lista);
+- arrastar num celular de verdade;
+- Lighthouse.
