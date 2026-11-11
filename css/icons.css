@@ -14,6 +14,7 @@
 .bi-chevron-down::before{content:"\f282"}
 .bi-circle-half::before{content:"\f288"}
 .bi-command::before{content:"\f2cf"}
+.bi-controller::before{content:"\f2d4"}
 .bi-cpu::before{content:"\f2d6"}
 .bi-diagram-3-fill::before{content:"\f2ed"}
 .bi-download::before{content:"\f30a"}
@@ -25,6 +26,7 @@
 .bi-geo-alt-fill::before{content:"\f3e7"}
 .bi-geo-alt::before{content:"\f3e8"}
 .bi-github::before{content:"\f3ed"}
+.bi-grid-3x3-gap-fill::before{content:"\f3f8"}
 .bi-grid::before{content:"\f3fc"}
 .bi-hdd-stack-fill::before{content:"\f410"}
 .bi-hexagon-fill::before{content:"\f41b"}
@@ -39,6 +41,7 @@
 .bi-list::before{content:"\f479"}
 .bi-lock-fill::before{content:"\f47a"}
 .bi-moon-fill::before{content:"\f494"}
+.bi-pause-fill::before{content:"\f4c3"}
 .bi-person::before{content:"\f4e1"}
 .bi-search::before{content:"\f52a"}
 .bi-shield-check::before{content:"\f52f"}

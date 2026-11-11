@@ -79,7 +79,7 @@
                 <button class="nav-kbd" id="palette-open">
                     <i class="bi bi-search" aria-hidden="true"></i><span class="sr-only" data-pt="Abrir paleta de comandos" data-en="Open command palette">Open command palette</span><kbd>Ctrl K</kbd>
                 </button>
-                <button class="nav-kbd nav-trophy" id="trophy" type="button" hidden><i class="bi bi-trophy-fill" aria-hidden="true"></i><span id="trophy-count">0/14</span></button>
+                <button class="nav-kbd nav-trophy" id="trophy" type="button" hidden><i class="bi bi-trophy-fill" aria-hidden="true"></i><span id="trophy-count">0/15</span></button>
                 <button class="lang-button" id="lang-toggle"><span class="sr-only" data-pt="Mudar idioma para" data-en="Switch language to">Switch language to</span><span id="lang-code">PT</span></button>
                 <div class="dark-button">
                     <input type="checkbox" class="checkbox" id="chk" data-aria-pt="Tema claro" data-aria-en="Light theme" aria-label="Light theme">
@@ -248,6 +248,17 @@
                             <i class="bi bi-github"></i>
                             <span data-pt="Ver perfil completo no GitHub" data-en="View full profile on GitHub">View full profile on GitHub</span>
                         </a>
+                    </div>
+                    <div class="snake" id="snake">
+                        <div class="snake-head">
+                            <p class="snake-title"><b class="snake-total"></b> <span data-pt="contribuições no último ano" data-en="contributions in the last year">contributions in the last year</span><span class="snake-range"></span></p>
+                            <p class="snake-score" aria-live="polite"></p>
+                        </div>
+                        <div class="snake-board" role="img"></div>
+                        <div class="snake-foot">
+                            <button type="button" class="btn-ghost snake-play"><i class="bi bi-controller" aria-hidden="true"></i><span>Play snake</span></button>
+                            <span class="snake-hint" data-pt="setas ou WASD · deslize no celular · espaço pausa" data-en="arrows or WASD · swipe on a phone · space pauses">arrows or WASD · swipe on a phone · space pauses</span>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -22,12 +22,13 @@ export const ACHIEVEMENTS = [
     { id: 'hacker',   icon: 'bi-incognito',       name: { pt: 'Hacker', en: 'Hacker' },                             hint: { pt: 'ache 3 comandos escondidos no terminal', en: 'find 3 hidden terminal commands' } },
     { id: 'architect', icon: 'bi-bricks',         name: { pt: 'Arquiteto de stack', en: 'Stack architect' },        hint: { pt: 'complete o desafio "monte a stack" em Habilidades', en: 'finish a "build the stack" challenge in Skills' } },
     { id: 'throw',    icon: 'bi-wind',            name: { pt: 'Arremesso', en: 'Yeet' },                            hint: { pt: 'arremesse uma habilidade com força', en: 'throw a skill really hard' } },
+    { id: 'snake',    icon: 'bi-grid-3x3-gap-fill', name: { pt: 'Cobrinha', en: 'Snake' },                       hint: { pt: 'coma 10 dias de commits no jogo da cobrinha', en: 'eat 10 days of commits in the snake game' } },
 ];
 
 // terminal commands that unlock something by name
 const BY_COMMAND = { help: 'rtfm', resume: 'resume', info: 'info', linkedin: 'linkedin' };
 // other vw:event types that unlock something directly
-const BY_EVENT = { commit: 'commit', push: 'push', palette: 'palette', stack: 'architect', throw: 'throw' };
+const BY_EVENT = { commit: 'commit', push: 'push', palette: 'palette', stack: 'architect', throw: 'throw', snake: 'snake' };
 const KONAMI = ['arrowup', 'arrowup', 'arrowdown', 'arrowdown', 'arrowleft', 'arrowright', 'arrowleft', 'arrowright', 'b', 'a'];
 
 function read() {
