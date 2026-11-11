@@ -89,8 +89,10 @@ dialog.term-dialog .terminal-cta { display: none; }
 /* /info: ASCII logo beside the facts, like neofetch */
 .term-fetch { display: flex; gap: 24px; align-items: flex-start; }
 .term-fetch .logo { color: var(--pal-1); line-height: 1.15; margin: 0; }
+/* hanging indent: wrapped values line up after the 14-column label */
+.term-fetch .term-line { padding-left: 14ch; text-indent: -14ch; }
+@media (max-width: 760px) { .term-fetch .logo { display: none; } }
 @media (max-width: 600px) {
-    .term-fetch .logo { display: none; }
     .terminal-body.live { height: 320px; }
     .terminal-body { padding: 18px 14px; }
 }
@@ -98,3 +100,4 @@ dialog.term-dialog .terminal-cta { display: none; }
 @media (prefers-reduced-motion: reduce) {
     .term-field:focus-within .term-cursor { animation: none; }
 }
+.term-line .ok-text { color: var(--term-ok); }

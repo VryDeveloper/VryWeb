@@ -1,8 +1,28 @@
 // Command registry. Each entry: { name, aliases?, hidden?, desc: {pt,en}, usage?, complete?(args), run(args, io, line) }.
-import { t } from '../i18n.js';
+import { t, getLang } from '../i18n.js';
 import { commandName } from './lib.js';
 import { loadGitHub, githubHTML } from '../github.js';
-import { CV, downloadCV } from '../actions.js';
+import { CV, EMAIL, downloadCV, copyEmail } from '../actions.js';
+import { projects } from '../../data/projects.js';
+
+const LOGO = String.raw`
+__      __
+\ \    / /
+ \ \  / /
+  \ \/ /
+   \  /
+    \/`.slice(1);
+
+// the same numbers as the hero, computed from the data
+const stats = () => ({
+    projects: projects.length,
+    tests: projects.reduce((sum, p) => sum + (p.tests ?? 0), 0),
+    live: projects.filter(p => p.status === 'production' || p.status === 'live').length,
+});
+
+const salvadorTime = () => new Intl.DateTimeFormat(getLang() === 'pt' ? 'pt-BR' : 'en', {
+    hour: '2-digit', minute: '2-digit', timeZone: 'America/Bahia',
+}).format(new Date());
 
 export const commands = [
     {
@@ -49,6 +69,50 @@ export const commands = [
             downloadCV();
             io.print(`✔ ${t({ pt: 'Download iniciado', en: 'Download started' })}: Victor Augusto - CV.pdf`, 'ok');
             io.print([`  ${t({ pt: 'Não começou?', en: "Didn't start?" })} → `, io.link(t({ pt: 'abrir o PDF no navegador', en: 'open the PDF in the browser' }), CV)], 'dim');
+        },
+    },
+    {
+        name: 'info',
+        aliases: ['whois', 'neofetch'],
+        desc: { pt: 'ficha rápida para recrutadores', en: 'quick sheet for recruiters' },
+        async run(args, io) {
+            const n = stats();
+            const facts = [
+                [{ pt: 'Nome', en: 'Name' }, 'Victor Augusto'],
+                [{ pt: 'Cargo', en: 'Role' }, { pt: 'Desenvolvedor Full Stack', en: 'Full Stack Developer' }],
+                [{ pt: 'Local', en: 'Location' }, `Salvador, BA (UTC−3) · ${salvadorTime()} ${t({ pt: 'agora', en: 'now' })}`],
+                [{ pt: 'Formação', en: 'Education' }, { pt: 'ADS — FIAP (2024–2026)', en: 'Systems Analysis & Dev. — FIAP (2024–2026)' }],
+                [{ pt: 'Programando', en: 'Coding' }, { pt: 'desde 2023', en: 'since 2023' }],
+                ['Stack', 'TypeScript, React, C#/.NET, Python, Go, SQL'],
+                [{ pt: 'Projetos', en: 'Projects' }, t({ pt: `${n.projects} · ${n.tests} testes · ${n.live} em produção`, en: `${n.projects} · ${n.tests} tests · ${n.live} in production` })],
+                [{ pt: 'Modelo', en: 'Work mode' }, { pt: 'presencial em Salvador ou remoto', en: 'on site in Salvador or remote' }],
+                ['Status', io.span(t({ pt: '● disponível para vagas', en: '● open to roles' }), 'ok-text')],
+                ['E-mail', [EMAIL, '   ', io.button(t({ pt: '[copiar]', en: '[copy]' }), copyEmail)]],
+            ];
+
+            const wrap = document.createElement('div');
+            wrap.className = 'term-fetch';
+            const logo = document.createElement('pre');
+            logo.className = 'logo';
+            logo.setAttribute('aria-hidden', 'true');
+            logo.textContent = LOGO;
+            const list = document.createElement('div');
+            const line = (parts, cls) => {
+                const p = document.createElement('p');
+                p.className = `term-line ${cls ?? ''}`.trim();
+                p.append(...[].concat(parts).map(part => (part instanceof Node ? part : document.createTextNode(part))));
+                list.append(p);
+            };
+            line(io.span('victor@vryweb', 'h'));
+            line('-------------', 'dim');
+            wrap.append(logo, list);
+            io.block(wrap);
+            for (const [label, value] of facts) {
+                line([io.span(`${t(label)}:`.padEnd(14), 'k'), ...[].concat(t(value))]);
+                await io.sleep(35);
+            }
+            io.print('');
+            io.print(t({ pt: 'Dica: /resume baixa o currículo · /git commit fala comigo', en: 'Tip: /resume downloads the résumé · /git commit talks to me' }), 'dim');
         },
     },
     {
