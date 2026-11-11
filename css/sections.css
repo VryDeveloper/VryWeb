@@ -612,3 +612,57 @@ footer { padding: 0 4% 40px; }
 /* the logo is white line art on black: flip it on the light theme */
 [data-theme="light"] .nav .logo img,
 [data-theme="light"] .footer-row img { filter: invert(1); }
+
+/* ── Skills playground: pills moved by Matter.js ── */
+.skills-toolbar {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    margin-top: 36px;
+}
+.skills-toolbar[hidden], .skills-play[hidden], .skills-grid[hidden] { display: none; }
+.skills-hint { font-family: var(--font-mono); font-size: 13px; color: var(--text-color-p); opacity: 0.8; }
+.skills-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.skills-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-family: var(--font-mono); font-size: 12.5px;
+    padding: 8px 14px; border-radius: 999px; cursor: pointer;
+}
+
+.skills-play {
+    position: relative; overflow: hidden;
+    height: clamp(460px, 60vh, 560px); margin-top: 16px;
+    border-radius: 20px; border: 1px solid var(--glass-border);
+    background:
+        radial-gradient(ellipse at 50% 120%, rgba(139,0,255,0.14), transparent 60%),
+        var(--glass-bg);
+    contain: layout paint;
+}
+
+.pill {
+    position: absolute; left: 0; top: 0;
+    display: inline-flex; align-items: center; gap: 0.5em;
+    padding: 0.5em 0.95em; border-radius: 999px;
+    font-family: var(--font-mono); white-space: nowrap; line-height: 1;
+    color: var(--text-color-h); background: var(--body-bg-alt);
+    border: 1px solid color-mix(in srgb, var(--c, var(--accent)) 60%, transparent);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none;
+    will-change: transform;
+}
+.pill i { font-size: 1.3em; width: 1.15em; text-align: center; }
+.pill b { font-size: 0.75em; font-weight: 500; opacity: 0.6; }
+.pill:hover { border-color: var(--c, var(--accent)); }
+.pill.grabbed { cursor: grabbing; box-shadow: 0 14px 34px rgba(0,0,0,0.35), 0 0 0 2px var(--c, var(--accent)); z-index: 2; }
+.pill[data-group="lang"]     { --c: var(--pal-1); }
+.pill[data-group="front"]    { --c: var(--pal-2); }
+.pill[data-group="back"]     { --c: var(--pal-3); }
+.pill[data-group="quality"]  { --c: var(--pal-4); }
+.pill[data-group="ai"]       { --c: var(--pal-1); }
+.pill[data-group="platform"] { --c: var(--pal-2); }
+
+@media (max-width: 600px) {
+    .skills-play { height: 600px; }
+}
+/* touch screens: a vertical swipe on a pill still scrolls the page; taps and sideways throws are ours */
+@media (pointer: coarse) {
+    .pill { touch-action: pan-y; }
+}
