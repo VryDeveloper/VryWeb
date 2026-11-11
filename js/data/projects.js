@@ -76,6 +76,48 @@ export const statuses = {
 // tier: featured | main | archive
 export const projects = [
     {
+        id: 'kitsuy-store',
+        title: 'Kitsuy Store',
+        year: 2025,
+        tier: 'featured',
+        categories: ['fullstack'],
+        status: 'production',
+        cover: 'assets/projects/kitsuy-store/cover.webp',
+        gallery: ['galeria', 'estoque', 'como-funciona'],
+        icon: 'bi-bag-check-fill',
+        stack: ['react', 'typescript', 'vite', 'firebase', 'zod', 'vitest', 'vercel'],
+        summary: {
+            pt: 'E-commerce em produção com pagamentos reais via MercadoPago e um endurecimento de segurança próprio: estoque que não vende duas vezes, pedidos que expiram sozinhos e API protegida contra abuso.',
+            en: 'E-commerce in production with real payments through MercadoPago and its own security hardening: stock that never sells twice, orders that expire on their own and an API protected against abuse.',
+        },
+        problem: {
+            pt: 'Uma loja de verdade recebe dinheiro de verdade. Dois clientes não podem comprar a última unidade ao mesmo tempo, um pedido abandonado não pode prender estoque para sempre e nenhuma entrada do usuário pode ser confiada.',
+            en: 'A real store takes real money. Two customers cannot buy the last unit at the same time, an abandoned order cannot hold stock forever, and no user input can be trusted.',
+        },
+        solution: {
+            pt: 'Transações atômicas no Firestore decidem quem fica com o estoque. Um Cron Job na Vercel expira pedidos pendentes e devolve os itens. Toda entrada passa por Zod e as rotas têm limite de requisições com Upstash.',
+            en: 'Atomic Firestore transactions decide who gets the stock. A Vercel Cron Job expires pending orders and returns the items. Every input goes through Zod and the routes are rate limited with Upstash.',
+        },
+        highlights: {
+            pt: [
+                'Transações atômicas no Firestore contra overselling',
+                'Expiração automática de pedidos pendentes via Vercel Cron Jobs',
+                'Validação de entrada com Zod e rate limiting com Upstash',
+                'Checkout com MercadoPago',
+            ],
+            en: [
+                'Atomic Firestore transactions against overselling',
+                'Automatic expiration of pending orders via Vercel Cron Jobs',
+                'Input validation with Zod and rate limiting with Upstash',
+                'Checkout with MercadoPago',
+            ],
+        },
+        links: {
+            repo: 'https://github.com/VryDeveloper/kitsuy-store-realese',
+            demo: 'https://kitsuystore.com.br',
+        },
+    },
+    {
         id: 'salao-jade',
         title: 'Salão Jade',
         year: 2026,
@@ -122,48 +164,6 @@ export const projects = [
         links: {
             repo: 'https://github.com/VryDeveloper/salao-jade',
             demo: 'https://salao-jade.vercel.app',
-        },
-    },
-    {
-        id: 'kitsuy-store',
-        title: 'Kitsuy Store',
-        year: 2025,
-        tier: 'featured',
-        categories: ['fullstack'],
-        status: 'production',
-        cover: 'assets/projects/kitsuy-store/cover.webp',
-        gallery: ['galeria', 'estoque', 'como-funciona'],
-        icon: 'bi-bag-check-fill',
-        stack: ['react', 'typescript', 'vite', 'firebase', 'zod', 'vitest', 'vercel'],
-        summary: {
-            pt: 'E-commerce em produção com pagamentos reais via MercadoPago e um endurecimento de segurança próprio: estoque que não vende duas vezes, pedidos que expiram sozinhos e API protegida contra abuso.',
-            en: 'E-commerce in production with real payments through MercadoPago and its own security hardening: stock that never sells twice, orders that expire on their own and an API protected against abuse.',
-        },
-        problem: {
-            pt: 'Uma loja de verdade recebe dinheiro de verdade. Dois clientes não podem comprar a última unidade ao mesmo tempo, um pedido abandonado não pode prender estoque para sempre e nenhuma entrada do usuário pode ser confiada.',
-            en: 'A real store takes real money. Two customers cannot buy the last unit at the same time, an abandoned order cannot hold stock forever, and no user input can be trusted.',
-        },
-        solution: {
-            pt: 'Transações atômicas no Firestore decidem quem fica com o estoque. Um Cron Job na Vercel expira pedidos pendentes e devolve os itens. Toda entrada passa por Zod e as rotas têm limite de requisições com Upstash.',
-            en: 'Atomic Firestore transactions decide who gets the stock. A Vercel Cron Job expires pending orders and returns the items. Every input goes through Zod and the routes are rate limited with Upstash.',
-        },
-        highlights: {
-            pt: [
-                'Transações atômicas no Firestore contra overselling',
-                'Expiração automática de pedidos pendentes via Vercel Cron Jobs',
-                'Validação de entrada com Zod e rate limiting com Upstash',
-                'Checkout com MercadoPago',
-            ],
-            en: [
-                'Atomic Firestore transactions against overselling',
-                'Automatic expiration of pending orders via Vercel Cron Jobs',
-                'Input validation with Zod and rate limiting with Upstash',
-                'Checkout with MercadoPago',
-            ],
-        },
-        links: {
-            repo: 'https://github.com/VryDeveloper/kitsuy-store-realese',
-            demo: 'https://kitsuystore.com.br',
         },
     },
     {
