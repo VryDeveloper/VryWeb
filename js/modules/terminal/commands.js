@@ -1,8 +1,33 @@
 // Command registry. Each entry: { name, aliases?, hidden?, desc: {pt,en}, usage?, complete?(args), run(args, io, line) }.
 import { t } from '../i18n.js';
+import { commandName } from './lib.js';
 import { loadGitHub, githubHTML } from '../github.js';
 
 export const commands = [
+    {
+        name: 'help',
+        aliases: ['ajuda', 'man'],
+        desc: { pt: 'lista os comandos', en: 'list the commands' },
+        complete: () => commands.filter(c => !c.hidden).map(c => c.name),
+        run(args, io) {
+            if (args[0]) {
+                const command = findCommand(commandName(args[0]));
+                if (!command) return io.print(t({ pt: `help: nenhum comando chamado ${args[0]}`, en: `help: no command named ${args[0]}` }), 'err');
+                io.print(`/${command.label ?? command.name}  ${t(command.desc)}`);
+                if (command.usage) io.print(t(command.usage), 'dim');
+                if (command.aliases?.length) io.print(`${t({ pt: 'também', en: 'also' })}: ${command.aliases.join(', ')}`, 'dim');
+                return;
+            }
+            io.print(t({ pt: 'Comandos disponíveis:', en: 'Available commands:' }));
+            io.print('');
+            for (const c of commands.filter(c => !c.hidden)) {
+                const label = c.name === 'clear' ? 'clear' : `/${c.label ?? c.name}`;
+                io.print(['  ', io.span(label.padEnd(15), 'k'), t(c.desc)]);
+            }
+            io.print('');
+            io.print(t({ pt: 'Dica: Tab completa, ↑ repete, help <comando> explica.', en: 'Tip: Tab completes, ↑ repeats, help <command> explains.' }), 'dim');
+        },
+    },
     {
         name: 'gh',
         aliases: ['github'],
