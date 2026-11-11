@@ -260,6 +260,7 @@ export const projects = [
         status: 'wip',
         private: true,
         icon: 'bi-hexagon-fill',
+        cover: 'assets/projects/vryhive/cover.webp',
         code: 'plan(task) → waves[] → integrate()',
         stack: ['typescript', 'react', 'vite', 'tailwind', 'nodejs', 'express', 'zod', 'vitest', 'llmrouting'],
         summary: {
@@ -367,6 +368,7 @@ export const projects = [
         categories: ['fullstack'],
         status: 'production',
         icon: 'bi-hdd-stack-fill',
+        cover: 'assets/projects/kitsuy-storage/cover.webp',
         stack: ['react', 'typescript', 'vite', 'supabase'],
         summary: {
             pt: 'Painel administrativo interno da Kitsuy para gestão de pedidos e precificação, com upload de imagens e calculadora de preço com taxa de conversão.',
