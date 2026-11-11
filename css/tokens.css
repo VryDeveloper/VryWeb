@@ -23,6 +23,8 @@
     --accent: #8b00ff;
     --accent-text: #b388ff;
     --accent-2: #5b8cff;
+    --term-ok: #4ade80;
+    --term-err: #ff6b6b;
     --glow: rgba(139, 0, 255, 0.3);
     --grad: linear-gradient(133deg, rgba(250,0,255,1) 0%, rgba(0,11,255,1) 32%, rgba(139,0,255,1) 68%, rgba(178,0,182,1) 100%);
     --grad-static: linear-gradient(133deg, rgba(250,0,255,1) 0%, rgba(0,11,255,1) 32%, rgba(139,0,255,1) 68%, rgba(178,0,182,1) 100%);
@@ -55,6 +57,8 @@
     --accent: #6d28d9;
     --accent-text: #6d28d9;
     --accent-2: #1d4ed8;
+    --term-ok: #15803d;
+    --term-err: #dc2626;
     --glow: rgba(139, 0, 255, 0.15);
     --pal-1: #a3007a;
     --pal-2: #1d4ed8;

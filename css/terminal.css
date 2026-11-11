@@ -1,0 +1,100 @@
+/* ═══════════════════════════════════════════════════════════════
+   TERMINAL — the GitHub card turned into a shell you can type in
+═══════════════════════════════════════════════════════════════ */
+.terminal-bar { position: relative; }
+
+.term-full {
+    position: absolute; right: 10px; top: 50%; translate: 0 -50%;
+    display: grid; place-items: center; width: 28px; height: 28px;
+    border: 0; border-radius: 6px; background: none;
+    color: var(--text-color-p); cursor: pointer; font-size: 13px;
+    transition: background var(--dur-1), color var(--dur-1);
+}
+.term-full:hover { background: var(--glass-bg); color: var(--accent-text); }
+
+.terminal-body.live {
+    height: 360px; overflow-y: auto; cursor: text;
+    overscroll-behavior: contain; scrollbar-width: thin;
+}
+.term-log { white-space: pre-wrap; overflow-wrap: anywhere; }
+.term-log .term-line { line-height: 1.7; }
+.term-log .term-line:empty::before { content: '\200b'; }   /* blank lines keep their height */
+
+.term-line.err { color: var(--term-err); }
+.term-line.ok { color: var(--term-ok); }
+.term-line.dim, .term-hint { color: var(--text-color-p); opacity: 0.6; }
+.term-line .cmd { color: var(--text-color-h); }
+.term-line .k { color: var(--pal-2); }
+.term-line .v { color: var(--pal-3); }
+
+.term-prompt, .term-echo .p { white-space: nowrap; }
+.term-prompt .u, .term-echo .u { color: var(--pal-2); }
+.term-prompt .h, .term-echo .h { color: var(--pal-1); }
+.term-prompt .d, .term-echo .d { color: var(--pal-3); }
+.term-prompt.ask { color: var(--accent-text); }
+
+/* inline buttons and links printed by commands */
+.term-btn, .term-link {
+    font: inherit; font-size: inherit; color: var(--accent-text);
+    background: none; border: 0; padding: 0; cursor: pointer;
+    text-decoration: underline; text-underline-offset: 3px;
+}
+.term-btn:hover, .term-link:hover { color: var(--text-color-h); }
+
+/* input row: a real <input> with its caret hidden and a block cursor drawn over it */
+.term-form { display: flex; gap: 8px; font-size: 13.5px; line-height: 1.7; }
+.term-form[hidden] { display: none; }
+.term-field { position: relative; flex: 1; min-width: 0; }
+.term-field input {
+    width: 100%; border: 0; outline: 0; padding: 0; background: none;
+    font: inherit; font-family: var(--font-mono); color: var(--text-color-h);
+    caret-color: transparent;
+}
+.term-field input::placeholder { color: var(--text-color-p); opacity: 0.45; }
+.term-cursor {
+    position: absolute; top: 0.15em; left: calc(var(--col, 0) * 1ch);
+    width: 1ch; height: 1.3em; background: var(--accent-2);
+    opacity: 0.35; pointer-events: none;
+}
+.term-field:focus-within .term-cursor { opacity: 0.85; animation: blink 1.06s step-end infinite; }
+/* once the text scrolls inside the input the column math is off: fall back to the native caret */
+.term-field.overflow input { caret-color: var(--accent-2); }
+.term-field.overflow .term-cursor { display: none; }
+
+/* tap targets for people who will not type on a phone */
+.term-chips {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    padding: 12px 16px; border-top: 1px solid var(--glass-border);
+}
+.term-chips[hidden] { display: none; }
+.term-chips button {
+    font-family: var(--font-mono); font-size: 12.5px;
+    color: var(--accent-text); background: var(--glass-bg);
+    border: 1px solid var(--glass-border); border-radius: 999px;
+    padding: 6px 12px; cursor: pointer;
+    transition: border-color var(--dur-1), background var(--dur-1);
+}
+.term-chips button:hover { border-color: var(--accent-text); background: rgba(139,0,255,0.08); }
+
+/* full screen: the same card is moved into this dialog */
+dialog.term-dialog {
+    width: min(960px, calc(100vw - 32px)); max-width: none;
+    padding: 0; border: 0; background: none; color: inherit;
+}
+dialog.term-dialog::backdrop { background: rgba(3,1,5,0.7); backdrop-filter: blur(6px); }
+dialog.term-dialog[open] { animation: dialog-in 0.25s var(--ease-out); }
+dialog.term-dialog .terminal-body.live { height: min(70vh, 560px); }
+dialog.term-dialog .terminal-cta { display: none; }
+
+/* /info: ASCII logo beside the facts, like neofetch */
+.term-fetch { display: flex; gap: 24px; align-items: flex-start; }
+.term-fetch .logo { color: var(--pal-1); line-height: 1.15; margin: 0; }
+@media (max-width: 600px) {
+    .term-fetch .logo { display: none; }
+    .terminal-body.live { height: 320px; }
+    .terminal-body { padding: 18px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .term-field:focus-within .term-cursor { animation: none; }
+}

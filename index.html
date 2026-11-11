@@ -55,6 +55,7 @@
     <link rel="stylesheet" href="./css/components.css">
     <link rel="stylesheet" href="./css/sections.css">
     <link rel="stylesheet" href="./css/projects.css">
+    <link rel="stylesheet" href="./css/terminal.css">
     <link rel="stylesheet" href="./css/motion.css">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"></noscript>
     <script type="module" src="./js/main.js"></script>
@@ -208,18 +209,35 @@
             <div class="interface">
                 <h2 class="titulo" data-path="// ~/github"><span>GitHub</span></h2>
                 <div class="github-container">
-                    <div class="terminal-card">
+                    <div class="terminal-card" id="terminal">
                         <div class="terminal-bar">
                             <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                            <span class="terminal-title">victor@github ~ %</span>
+                            <span class="terminal-title" id="term-title">visitante@vryweb: ~</span>
+                            <button type="button" class="term-full" id="term-full" hidden data-aria-pt="Abrir terminal em tela cheia" data-aria-en="Open terminal full screen" aria-label="Open terminal full screen"><i class="bi bi-arrows-fullscreen" aria-hidden="true"></i></button>
                         </div>
                         <div class="terminal-body" id="gh-terminal">
-                            <p class="term-line"><span class="prompt">$</span><span id="gh-command">gh profile view VryDeveloper</span></p>
-                            <div id="gh-output">
-                                <p class="term-line result"><span class="arrow">→</span>Stack: TypeScript, C#/.NET, Python, Kotlin, Go, SQL</p>
-                                <p class="term-line result"><span class="arrow">→</span><span data-pt="Em produção: Kitsuy Store, Kitsuy Storage, Copec" data-en="In production: Kitsuy Store, Kitsuy Storage, Copec">In production: Kitsuy Store, Kitsuy Storage, Copec</span></p>
-                                <p class="term-line result"><span class="arrow">→</span><span data-pt="Foco: testes automatizados, CI/CD, código limpo" data-en="Focus: automated testing, CI/CD, clean code">Focus: automated testing, CI/CD, clean code</span></p>
+                            <div class="term-log" id="term-log" role="log" aria-live="polite">
+                                <p class="term-line"><span class="prompt">$</span><span id="gh-command">gh profile view VryDeveloper</span></p>
+                                <div id="gh-output">
+                                    <p class="term-line result"><span class="arrow">→</span>Stack: TypeScript, C#/.NET, Python, Kotlin, Go, SQL</p>
+                                    <p class="term-line result"><span class="arrow">→</span><span data-pt="Em produção: Kitsuy Store, Kitsuy Storage, Copec" data-en="In production: Kitsuy Store, Kitsuy Storage, Copec">In production: Kitsuy Store, Kitsuy Storage, Copec</span></p>
+                                    <p class="term-line result"><span class="arrow">→</span><span data-pt="Foco: testes automatizados, CI/CD, código limpo" data-en="Focus: automated testing, CI/CD, clean code">Focus: automated testing, CI/CD, clean code</span></p>
+                                </div>
                             </div>
+                            <form class="term-form" id="term-form" hidden autocomplete="off">
+                                <label class="term-prompt" id="term-prompt" for="term-input"><span class="u">visitante</span>@<span class="h">vryweb</span>:<span class="d">~</span>$</label>
+                                <span class="term-field">
+                                    <input id="term-input" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" enterkeyhint="send" data-aria-pt="Terminal: digite um comando" data-aria-en="Terminal: type a command" aria-label="Terminal: type a command">
+                                    <span class="term-cursor" aria-hidden="true"></span>
+                                </span>
+                            </form>
+                        </div>
+                        <div class="term-chips" id="term-chips" hidden>
+                            <button type="button" data-cmd="/help">/help</button>
+                            <button type="button" data-cmd="/resume">/resume</button>
+                            <button type="button" data-cmd="/info">/info</button>
+                            <button type="button" data-cmd="/linkedin">/linkedin</button>
+                            <button type="button" data-cmd="/git commit">/git commit</button>
                         </div>
                         <a href="https://github.com/VryDeveloper" target="_blank" rel="noopener noreferrer" class="terminal-cta">
                             <i class="bi bi-github"></i>
@@ -322,6 +340,8 @@
             </p>
         </div>
     </footer>
+
+    <dialog class="term-dialog" id="term-dialog" data-aria-pt="Terminal" data-aria-en="Terminal" aria-label="Terminal"></dialog>
 
     <dialog class="case" id="case-study" aria-labelledby="case-title"></dialog>
 
