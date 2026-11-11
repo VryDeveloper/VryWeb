@@ -7,6 +7,7 @@ import { CV, EMAIL, LINKEDIN, downloadCV, copyEmail } from '../actions.js';
 import { projects } from '../../data/projects.js';
 import { gitCommand } from './git.js';
 import { extras } from './extras.js';
+import { fun } from './fun.js';
 
 const LOGO = String.raw`
 __      __
@@ -50,7 +51,7 @@ export const commands = [
             }
             io.print(['  ', io.span(t({ pt: 'também'.padEnd(15), en: 'also'.padEnd(15) }), 'k'), commands.filter(c => c.quiet).map(c => c.name).join(', ')], 'dim');
             io.print('');
-            io.print(t({ pt: 'Dica: Tab completa, ↑ repete, help <comando> explica.', en: 'Tip: Tab completes, ↑ repeats, help <command> explains.' }), 'dim');
+            io.print(t({ pt: 'Dica: Tab completa, ↑ repete, help <comando> explica. Há comandos escondidos. 👀', en: 'Tip: Tab completes, ↑ repeats, help <command> explains. There are hidden commands. 👀' }), 'dim');
         },
     },
     {
@@ -175,6 +176,7 @@ export const commands = [
             list.forEach((line, i) => io.print(`${String(i + 1).padStart(4)}  ${line}`));
         },
     },
+    ...fun,
 ];
 
 export const findCommand = name => commands.find(c => c.name === name || c.aliases?.includes(name));

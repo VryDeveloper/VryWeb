@@ -136,10 +136,11 @@ const io = {
         return b;
     },
 
-    // waits for the visitor's next line; Ctrl+C rejects with Cancel
-    prompt(question) {
+    // waits for the visitor's next line; Ctrl+C rejects with Cancel. secret: typed as a password
+    prompt(question, { secret = false } = {}) {
         return new Promise((resolve, reject) => {
-            ask = { question, resolve, reject };
+            ask = { question, resolve, reject, secret };
+            input.type = secret ? 'password' : 'text';
             renderPrompt();
             input.focus({ preventScroll: true });
             scrollDown();
@@ -157,7 +158,8 @@ export async function execute(raw) {
     if (ask) {
         const pending = ask;
         ask = null;
-        echo(raw, pending.question);
+        input.type = 'text';
+        echo(pending.secret ? '*'.repeat(raw.length) : raw, pending.question);
         renderPrompt();
         pending.resolve(raw);
         return;
@@ -195,6 +197,7 @@ export async function execute(raw) {
     } finally {
         busy = false;
         ask = null;
+        input.type = 'text';
         controller = null;
         renderPrompt();
         scrollDown();
@@ -203,7 +206,8 @@ export async function execute(raw) {
 
 function cancel() {
     if (ask) {
-        echo(`${input.value}^C`, ask.question);
+        echo(`${ask.secret ? '' : input.value}^C`, ask.question);
+        input.type = 'text';
         const pending = ask;
         ask = null;
         input.value = '';

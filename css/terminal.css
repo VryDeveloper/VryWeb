@@ -107,3 +107,12 @@ dialog.term-dialog .terminal-cta { display: none; }
 .term-line .ok-text { color: var(--term-ok); }
 .term-line.para { padding-left: 2ch; }
 .term-line .h { color: var(--pal-1); font-weight: 600; }
+
+/* easter eggs */
+.terminal-body { position: relative; }
+.term-matrix { position: absolute; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+.term-shake { animation: term-shake 0.3s linear; }
+@keyframes term-shake {
+    20%, 60% { translate: -6px 0; }
+    40%, 80% { translate: 6px 0; }
+}
