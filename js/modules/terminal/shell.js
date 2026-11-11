@@ -149,6 +149,7 @@ const io = {
     clear() { log.replaceChildren(); },
     get user() { return getUser(); },
     setUser,
+    closeFull: () => closeFull(),
 };
 
 // ── running a line ───────────────────────────────────────────────

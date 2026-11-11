@@ -1,10 +1,12 @@
-// Command registry. Each entry: { name, aliases?, hidden?, desc: {pt,en}, usage?, complete?(args), run(args, io, line) }.
+// Command registry. Each entry: { name, aliases?, quiet?, hidden?, desc: {pt,en}, usage?, complete?(args), run(args, io, line) }.
+// quiet: left out of /help but completable. hidden: easter eggs, invisible to Tab and typo hints too.
 import { t, getLang } from '../i18n.js';
 import { commandName } from './lib.js';
 import { loadGitHub, githubHTML } from '../github.js';
 import { CV, EMAIL, LINKEDIN, downloadCV, copyEmail } from '../actions.js';
 import { projects } from '../../data/projects.js';
 import { gitCommand } from './git.js';
+import { extras } from './extras.js';
 
 const LOGO = String.raw`
 __      __
@@ -42,10 +44,11 @@ export const commands = [
             }
             io.print(t({ pt: 'Comandos disponíveis:', en: 'Available commands:' }));
             io.print('');
-            for (const c of commands.filter(c => !c.hidden)) {
+            for (const c of commands.filter(c => !c.hidden && !c.quiet)) {
                 const label = c.name === 'clear' ? 'clear' : `/${c.label ?? c.name}`;
                 io.print(['  ', io.span(label.padEnd(15), 'k'), t(c.desc)]);
             }
+            io.print(['  ', io.span(t({ pt: 'também'.padEnd(15), en: 'also'.padEnd(15) }), 'k'), commands.filter(c => c.quiet).map(c => c.name).join(', ')], 'dim');
             io.print('');
             io.print(t({ pt: 'Dica: Tab completa, ↑ repete, help <comando> explica.', en: 'Tip: Tab completes, ↑ repeats, help <command> explains.' }), 'dim');
         },
@@ -139,6 +142,7 @@ export const commands = [
         },
     },
     gitCommand,
+    ...extras,
     {
         name: 'gh',
         aliases: ['github'],
@@ -165,7 +169,7 @@ export const commands = [
     {
         name: 'history',
         desc: { pt: 'comandos digitados', en: 'commands typed so far' },
-        hidden: true,
+        quiet: true,
         run(args, io) {
             const list = io.store.get('term-history', []);
             list.forEach((line, i) => io.print(`${String(i + 1).padStart(4)}  ${line}`));
