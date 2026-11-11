@@ -8,6 +8,7 @@ import { openProject } from './case-study.js';
 import { toast } from './toast.js';
 import { copyEmail, downloadCV, openURL, LINKEDIN, GITHUB } from './actions.js';
 import { openTerminal } from './terminal/loader.js';
+import { emit } from './events.js';
 
 const dialog = document.getElementById('palette');
 const input = document.getElementById('palette-query');
@@ -141,6 +142,7 @@ export function openPalette() {
     selected = 0;
     render();
     dialog.showModal();
+    emit('palette');
 }
 
 export function initPalette() {

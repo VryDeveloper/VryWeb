@@ -4,6 +4,7 @@
 import { t } from '../i18n.js';
 import { tokenize, commandName, suggest, commonPrefix } from './lib.js';
 import { commands, findCommand } from './commands.js';
+import { emit } from '../events.js';
 
 const card = document.getElementById('terminal');
 const body = document.getElementById('gh-terminal');
@@ -154,7 +155,8 @@ const io = {
 };
 
 // ── running a line ───────────────────────────────────────────────
-export async function execute(raw) {
+// auto: run by the intro, not by the visitor, so it earns nothing
+export async function execute(raw, { auto = false } = {}) {
     if (ask) {
         const pending = ask;
         ask = null;
@@ -189,6 +191,7 @@ export async function execute(raw) {
     renderPrompt();
     try {
         await command.run(args, io, line);
+        if (!auto) emit('command', { name: command.name, hidden: !!command.hidden });
     } catch (err) {
         if (!(err instanceof Cancel)) {
             print(`${name}: ${err.message}`, 'err');
@@ -237,7 +240,7 @@ function recall(step) {
 }
 
 // types a command into the prompt, then runs it (used by the chips and the intro)
-export async function type(text, { delay = 40 } = {}) {
+export async function type(text, { delay = 40, auto = false } = {}) {
     if (busy && !ask) return;
     input.value = '';
     for (const ch of text) {
@@ -247,7 +250,7 @@ export async function type(text, { delay = 40 } = {}) {
     }
     input.value = '';
     updateCursor();
-    await execute(text);
+    await execute(text, { auto });
 }
 
 // Tab: complete the command name, or the argument when the command offers candidates.
@@ -385,7 +388,7 @@ export async function start() {
     new IntersectionObserver(([entry], observer) => {
         if (!entry.isIntersecting) return;
         observer.disconnect();
-        if (!input.value && !busy && !history.length) type('gh profile view VryDeveloper', { delay: 28 });
-        else if (!input.value && !busy) execute('gh profile view VryDeveloper');
+        if (!input.value && !busy && !history.length) type('gh profile view VryDeveloper', { delay: 28, auto: true });
+        else if (!input.value && !busy) execute('gh profile view VryDeveloper', { auto: true });
     }, { threshold: 0.4 }).observe(card);
 }
