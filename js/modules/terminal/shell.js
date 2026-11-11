@@ -299,6 +299,37 @@ function onKeydown(e) {
     }
 }
 
+// ── full screen: the same card moves into a <dialog>, so history and state come along ──
+const dialog = document.getElementById('term-dialog');
+const fullButton = document.getElementById('term-full');
+const home = document.createComment('terminal');
+
+function setFullLabel(open) {
+    const label = open ? { pt: 'Sair da tela cheia', en: 'Exit full screen' } : { pt: 'Abrir terminal em tela cheia', en: 'Open terminal full screen' };
+    fullButton.setAttribute('aria-label', t(label));
+    fullButton.dataset.ariaPt = label.pt;
+    fullButton.dataset.ariaEn = label.en;
+    fullButton.querySelector('i').className = `bi ${open ? 'bi-fullscreen-exit' : 'bi-arrows-fullscreen'}`;
+}
+
+export function openFull() {
+    if (dialog.open) return input.focus();
+    card.before(home);
+    dialog.append(card);
+    dialog.showModal();
+    setFullLabel(true);
+    scrollDown();
+    input.focus({ preventScroll: true });
+}
+
+export const closeFull = () => { if (dialog.open) dialog.close(); };
+
+dialog.addEventListener('close', () => {
+    home.replaceWith(card);
+    setFullLabel(false);
+});
+dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); });
+
 let started = false;
 
 export async function start() {
@@ -308,6 +339,8 @@ export async function start() {
     body.classList.add('live');
     form.hidden = false;
     chips.hidden = false;
+    fullButton.hidden = false;
+    fullButton.addEventListener('click', () => (dialog.open ? closeFull() : openFull()));
     renderPrompt();
     input.placeholder = t({ pt: 'digite /help ou toque num comando ↓', en: 'type /help or tap a command ↓' });
 

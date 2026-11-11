@@ -7,6 +7,7 @@ import { setFilter, esc } from './projects.js';
 import { openProject } from './case-study.js';
 import { toast } from './toast.js';
 import { copyEmail, downloadCV, openURL, LINKEDIN, GITHUB } from './actions.js';
+import { openTerminal } from './terminal/loader.js';
 
 const dialog = document.getElementById('palette');
 const input = document.getElementById('palette-query');
@@ -32,6 +33,7 @@ function buildItems() {
         section('sobre', 'bi-person', { pt: 'Sobre', en: 'About' }),
         section('contato', 'bi-envelope', { pt: 'Contato', en: 'Contact' }),
 
+        { group: group.action, icon: 'bi-terminal', label: t({ pt: 'Abrir terminal', en: 'Open terminal' }), hint: '`', run: openTerminal },
         { group: group.action, icon: 'bi-circle-half', label: t({ pt: 'Alternar tema claro/escuro', en: 'Toggle light/dark theme' }), run: toggleTheme },
         { group: group.action, icon: 'bi-translate', label: t({ pt: 'Switch to English', en: 'Mudar para português' }), run: toggleLang },
         { group: group.action, icon: 'bi-copy', label: t({ pt: 'Copiar e-mail', en: 'Copy email' }), run: copyEmail },
