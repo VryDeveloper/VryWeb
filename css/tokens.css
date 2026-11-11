@@ -1,6 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════
    TOKENS — palette, fonts, glass. Light theme overrides below.
 ═══════════════════════════════════════════════════════════════ */
+/* self-hosted latin subsets (SIL OFL), same files Google Fonts serves; preloaded in index.html */
+@font-face { font-family: 'Space Grotesk'; font-weight: 300 700; font-display: swap; src: url("../assets/fonts/space-grotesk.woff2") format("woff2"); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 400 800; font-display: swap; src: url("../assets/fonts/jetbrains-mono.woff2") format("woff2"); }
+
 :root {
     /* ── Original purple/blue/magenta theme, kept — only typography changed ── */
     --font-display: 'Space Grotesk', sans-serif;
