@@ -149,6 +149,11 @@ export function setFilter({ cat = 'all', tech = null } = {}, { scroll = false } 
 }
 
 export function initProjects() {
+    // screenshots wider than the 16:10 frame get letterboxed (img.wide) instead of cropped
+    grid.addEventListener('load', e => {
+        const img = e.target;
+        if (img.tagName === 'IMG') img.classList.toggle('wide', img.naturalWidth / img.naturalHeight > 1.65);
+    }, true);
     renderChips();
     renderGrid();
 

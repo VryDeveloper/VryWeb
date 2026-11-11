@@ -24,18 +24,6 @@
 }
 [data-reveal].visible { opacity: 1; translate: 0 0; }
 
-/* cover images drift a little as their card crosses the viewport */
-@supports (animation-timeline: view()) {
-    .project-grid:not(.list-view) .img-port img {
-        animation: cover-drift linear both;
-        animation-timeline: view();
-    }
-    @keyframes cover-drift {
-        from { scale: 1.08; translate: 0 -2%; }
-        to   { scale: 1.08; translate: 0 2%; }
-    }
-}
-
 /* ── Theme switch: the new theme opens as a circle from the toggle.
       theme.js sets --tx / --ty and the .theme-vt class for the duration. ── */
 .theme-vt::view-transition-old(root),
