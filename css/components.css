@@ -132,3 +132,46 @@ dialog.palette[open] { animation: dialog-in 0.25s var(--ease-out); }
 
 @keyframes toast-in  { from { opacity: 0; translate: 0 16px; scale: 0.9; } }
 @keyframes toast-out { to   { opacity: 0; translate: 0 8px; } }
+
+/* ── Achievements: trophy in the nav and the list dialog ── */
+.nav-trophy { color: var(--pal-4); }
+.nav-trophy[hidden] { display: none; }
+.nav-trophy.bump { animation: trophy-bump 0.6s var(--ease-spring); }
+@keyframes trophy-bump {
+    30% { transform: scale(1.25) rotate(-8deg); }
+    60% { transform: scale(0.95) rotate(4deg); }
+}
+
+dialog.achievements {
+    width: min(520px, calc(100vw - 24px));
+    max-height: min(80vh, 680px);
+    padding: 22px 22px 18px;
+    background: var(--body-bg-alt); color: var(--text-color-p);
+    border: 1px solid var(--glass-border); border-radius: 16px;
+    box-shadow: 0 40px 120px rgba(0,0,0,0.6), 0 0 60px var(--glow);
+}
+dialog.achievements[open] { animation: dialog-in 0.25s var(--ease-out); }
+dialog.achievements::backdrop { background: rgba(3,1,5,0.6); backdrop-filter: blur(4px); }
+dialog.achievements header { display: flex; align-items: center; justify-content: space-between; }
+dialog.achievements h2 { font-size: 22px; color: var(--text-color-h); }
+.ach-close { background: none; border: 0; color: var(--text-color-p); font-size: 18px; cursor: pointer; padding: 6px; }
+.ach-close:hover { color: var(--accent-text); }
+.ach-count { font-family: var(--font-mono); font-size: 12px; margin: 6px 0 8px; opacity: 0.75; }
+.ach-bar { height: 6px; border-radius: 6px; background: var(--glass-bg); overflow: hidden; margin-bottom: 16px; }
+.ach-bar::after {
+    content: ''; display: block; height: 100%;
+    width: calc(var(--p) * 100%); background: var(--grad-static);
+    transition: width 0.6s var(--ease-out);
+}
+dialog.achievements ul { list-style: none; display: grid; gap: 8px; padding: 0; margin: 0; }
+dialog.achievements li {
+    display: flex; gap: 12px; align-items: center;
+    padding: 10px 12px; border-radius: 10px;
+    border: 1px solid var(--glass-border); opacity: 0.6;
+}
+dialog.achievements li.on { opacity: 1; background: var(--glass-bg); border-color: rgba(139,0,255,0.35); }
+dialog.achievements li i { font-size: 18px; width: 22px; text-align: center; color: var(--text-color-p); }
+dialog.achievements li.on i { color: var(--pal-4); }
+dialog.achievements li strong { display: block; color: var(--text-color-h); font-size: 14px; }
+dialog.achievements li span { font-size: 12.5px; }
+.ach-foot { font-family: var(--font-mono); font-size: 12px; margin-top: 14px; opacity: 0.7; }

@@ -4,6 +4,7 @@
 import { t } from '../i18n.js';
 import { tokenize, commandName, suggest, commonPrefix } from './lib.js';
 import { commands, findCommand } from './commands.js';
+import { emit } from '../events.js';
 
 const card = document.getElementById('terminal');
 const body = document.getElementById('gh-terminal');
@@ -136,10 +137,11 @@ const io = {
         return b;
     },
 
-    // waits for the visitor's next line; Ctrl+C rejects with Cancel
-    prompt(question) {
+    // waits for the visitor's next line; Ctrl+C rejects with Cancel. secret: typed as a password
+    prompt(question, { secret = false } = {}) {
         return new Promise((resolve, reject) => {
-            ask = { question, resolve, reject };
+            ask = { question, resolve, reject, secret };
+            input.type = secret ? 'password' : 'text';
             renderPrompt();
             input.focus({ preventScroll: true });
             scrollDown();
@@ -149,14 +151,17 @@ const io = {
     clear() { log.replaceChildren(); },
     get user() { return getUser(); },
     setUser,
+    closeFull: () => closeFull(),
 };
 
 // ── running a line ───────────────────────────────────────────────
-export async function execute(raw) {
+// auto: run by the intro, not by the visitor, so it earns nothing
+export async function execute(raw, { auto = false } = {}) {
     if (ask) {
         const pending = ask;
         ask = null;
-        echo(raw, pending.question);
+        input.type = 'text';
+        echo(pending.secret ? '*'.repeat(raw.length) : raw, pending.question);
         renderPrompt();
         pending.resolve(raw);
         return;
@@ -186,6 +191,7 @@ export async function execute(raw) {
     renderPrompt();
     try {
         await command.run(args, io, line);
+        if (!auto) emit('command', { name: command.name, hidden: !!command.hidden });
     } catch (err) {
         if (!(err instanceof Cancel)) {
             print(`${name}: ${err.message}`, 'err');
@@ -194,6 +200,7 @@ export async function execute(raw) {
     } finally {
         busy = false;
         ask = null;
+        input.type = 'text';
         controller = null;
         renderPrompt();
         scrollDown();
@@ -202,7 +209,8 @@ export async function execute(raw) {
 
 function cancel() {
     if (ask) {
-        echo(`${input.value}^C`, ask.question);
+        echo(`${ask.secret ? '' : input.value}^C`, ask.question);
+        input.type = 'text';
         const pending = ask;
         ask = null;
         input.value = '';
@@ -232,7 +240,7 @@ function recall(step) {
 }
 
 // types a command into the prompt, then runs it (used by the chips and the intro)
-export async function type(text, { delay = 40 } = {}) {
+export async function type(text, { delay = 40, auto = false } = {}) {
     if (busy && !ask) return;
     input.value = '';
     for (const ch of text) {
@@ -242,7 +250,7 @@ export async function type(text, { delay = 40 } = {}) {
     }
     input.value = '';
     updateCursor();
-    await execute(text);
+    await execute(text, { auto });
 }
 
 // Tab: complete the command name, or the argument when the command offers candidates.
@@ -380,7 +388,7 @@ export async function start() {
     new IntersectionObserver(([entry], observer) => {
         if (!entry.isIntersecting) return;
         observer.disconnect();
-        if (!input.value && !busy && !history.length) type('gh profile view VryDeveloper', { delay: 28 });
-        else if (!input.value && !busy) execute('gh profile view VryDeveloper');
+        if (!input.value && !busy && !history.length) type('gh profile view VryDeveloper', { delay: 28, auto: true });
+        else if (!input.value && !busy) execute('gh profile view VryDeveloper', { auto: true });
     }, { threshold: 0.4 }).observe(card);
 }

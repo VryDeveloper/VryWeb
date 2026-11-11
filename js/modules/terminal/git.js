@@ -4,6 +4,7 @@
 import { t } from '../i18n.js';
 import { EMAIL, whatsappURL, WHATSAPP, copyEmail } from '../actions.js';
 import { shortHash, slug } from './lib.js';
+import { emit } from '../events.js';
 
 const KEY = 'term-git';
 const MAX = 500;
@@ -94,6 +95,7 @@ async function commit(args, io) {
     state.author = { name: draft.name, company: draft.company };
     state.draft = null;
     save(io, state);
+    emit('commit');
 
     io.print('');
     await io.lines([
@@ -121,6 +123,7 @@ async function push(args, io) {
     ], { delay: 90 });
     pending.pushed = true;
     save(io, state);
+    emit('push');
     io.print(`✔ ${t({ pt: 'Abrindo o WhatsApp...', en: 'Opening WhatsApp...' })}`, 'ok');
     // still within the Enter's user activation, so the popup is allowed; the link below covers stricter browsers
     window.open(url, '_blank', 'noopener');
