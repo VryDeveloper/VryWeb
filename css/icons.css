@@ -19,6 +19,7 @@
 .bi-diagram-3-fill::before{content:"\f2ed"}
 .bi-download::before{content:"\f30a"}
 .bi-envelope::before{content:"\f32f"}
+.bi-eye::before{content:"\f341"}
 .bi-file-earmark-person::before{content:"\f379"}
 .bi-folder2-open::before{content:"\f3d8"}
 .bi-fullscreen-exit::before{content:"\f3de"}
@@ -49,6 +50,7 @@
 .bi-stars::before{content:"\f589"}
 .bi-terminal::before{content:"\f5c3"}
 .bi-trophy-fill::before{content:"\f5e6"}
+.bi-trophy::before{content:"\f5e7"}
 .bi-whatsapp::before{content:"\f618"}
 .bi-wind::before{content:"\f61d"}
 .bi-translate::before{content:"\f658"}
