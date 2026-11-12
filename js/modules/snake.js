@@ -124,7 +124,7 @@ function start(root, data) {
 
     play.addEventListener('click', () => {
         if (state === 'playing') return run('paused');
-        if (state !== 'paused') reset();
+        if (state !== 'paused') { reset(); emit('play', { game: 'snake' }); }
         run('playing');
     });
 

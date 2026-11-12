@@ -1,9 +1,10 @@
 // Achievements: small goals that reward exploring the site. Progress lives in
-// localStorage only; nothing is sent anywhere. Sources:
+// localStorage only; stats.js just counts, anonymously, that someone unlocked one. Sources:
 //   vw:event   from the terminal, git and the palette (events.js)
 //   observed   theme (data-theme), language (langchange), case studies (#/p/<id>), Konami code
 import { t } from './i18n.js';
 import { toast } from './toast.js';
+import { emit } from './events.js';
 
 const KEY = 'vw-achievements';
 
@@ -48,6 +49,7 @@ function unlock(id) {
     if (isUnlocked(id) || !ACHIEVEMENTS.some(a => a.id === id)) return;
     state.unlocked[id] = Date.now();
     write();
+    emit('unlock', { id });
     const a = ACHIEVEMENTS.find(x => x.id === id);
     const { done, total } = progress();
     toast(`🏆 ${t({ pt: 'Conquista desbloqueada', en: 'Achievement unlocked' })}: ${t(a.name)} · ${done}/${total}`);

@@ -724,3 +724,12 @@ footer { padding: 0 4% 40px; }
 .stack-note { flex-basis: 100%; color: var(--term-err); font-size: 12px; }
 .pill.hint { animation: pill-hint 0.8s ease-in-out 3; border-color: var(--term-ok); }
 @keyframes pill-hint { 50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--term-ok) 45%, transparent), 0 0 24px var(--term-ok); } }
+
+/* ── Footer: anonymous visit counters (stats.js) ── */
+.visit-stats { margin-top: 18px; text-align: center; }
+.visit-stats[hidden] { display: none; }
+.visit-stats ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 22px; font-family: var(--font-mono); font-size: 12.5px; }
+.visit-stats li { display: inline-flex; align-items: center; gap: 6px; }
+.visit-stats b { color: var(--text-color-h); }
+.visit-stats p { margin-top: 8px; font-size: 11.5px; opacity: 0.65; }
+@media (max-width: 600px) { .visit-stats { padding-bottom: 72px; } }   /* clear of the floating WhatsApp button */

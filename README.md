@@ -17,6 +17,7 @@ Meu portfólio tem projetos com estudo de caso, habilidades contadas a partir do
 | **Habilidades com física** | Cada tecnologia é uma pílula que cai, empilha e pode ser arrastada e arremessada (Matter.js). O desafio "monte a stack" pede a stack de um projeto real. Clicar numa pílula filtra os projetos, e "ver como lista" volta para a grade |
 | **Cobrinha no grid do GitHub** | O jogo da cobrinha roda em cima do meu grid real de contribuições do último ano. Os dias com commit são a comida, e a pontuação soma os commits comidos |
 | **15 conquistas** | Pequenos objetivos que premiam quem explora o site: rodar comandos, trocar tema e idioma, abrir projetos, o código Konami... O progresso fica só no navegador e, a 100%, o terminal gera um certificado |
+| **Contador de visitas** | No rodapé: quantas pessoas visitaram, usaram o terminal, jogaram a cobrinha e desbloquearam conquistas. Contagem anônima e sem cookies pelo [GoatCounter](https://www.goatcounter.com), com no máximo um evento de cada tipo por visita |
 | **Paleta de comandos** | `Ctrl+K` (ou `/`) busca projetos, tecnologias, seções e ações, com busca fuzzy escrita à mão |
 | **Hero** | Canvas 2D com luzes que seguem o ponteiro, cartão de código que se digita e contadores calculados a partir dos dados |
 | **Tema e idioma** | Claro/escuro com revelação circular e PT/EN em todo o conteúdo. O primeiro acesso segue o sistema e o navegador |
@@ -44,6 +45,7 @@ js/
     skills-challenge.js    desafio "monte a stack"
     snake.js               cobrinha no grid de contribuições
     achievements.js        conquistas (escutam eventos de events.js)
+    stats.js               contador de visitas e interações (GoatCounter)
     github.js              dados ao vivo da API pública do GitHub, com cache de 6 h
     terminal/              shell, comandos, git, extras e easter eggs (carregado sob demanda)
     hero-canvas.js · typewriter.js · fx.js · toast.js · actions.js · events.js
